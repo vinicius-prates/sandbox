@@ -1,11 +1,14 @@
 import styled from "styled-components";
-import { Navbar } from '../../global_components/Navbar/Navbar'
+import { BoschLine } from "./components/bosch_line/BoschLine"
+import { InputText } from '../../global_components/inputs/input_text/InputText'
 
 export const LoginPage = () => {
   return (
     <Main>
-      <Navbar />
-      <Form>oi</Form>
+      <BoschLine />
+      <Form>
+        <InputText />
+      </Form>
     </Main>
   );
 };
