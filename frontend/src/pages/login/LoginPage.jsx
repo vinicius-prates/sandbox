@@ -1,13 +1,16 @@
 import styled from "styled-components";
+import { useState } from "react";
 import { BoschLine } from "./components/bosch_line/BoschLine"
 import { InputText } from '../../global_components/inputs/input_text/InputText'
 
 export const LoginPage = () => {
+  const [nome, setNome] = useState("")
+
   return (
     <Main>
       <BoschLine />
       <Form>
-        <InputText />
+        <InputText value={nome} error={nome != ""} onchange={(evt) => setNome(evt.target.value)}/>
       </Form>
     </Main>
   );
