@@ -4,13 +4,13 @@ import { BoschLine } from "./components/bosch_line/BoschLine"
 import { InputText } from '../../global_components/inputs/input_text/InputText'
 
 export const LoginPage = () => {
-  const [nome, setNome] = useState("")
+  const [data, setData] = useState("")
 
   return (
     <Main>
       <BoschLine />
       <Form>
-        <InputText value={nome} error={nome != ""} onchange={(evt) => setNome(evt.target.value)}/>
+        <InputText value={data} error={data != ""} onchange={(evt) => setData(evt.target.value)}/>
       </Form>
     </Main>
   );
