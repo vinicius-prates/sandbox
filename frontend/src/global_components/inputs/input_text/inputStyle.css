@@ -1,6 +1,11 @@
+input{
+    width: 100%;
+}
+
 input:focus{
     outline: 0;
 }
+
 .normal{
     border: 0;
     border-bottom: 1px solid black;

@@ -4,13 +4,16 @@ import { BoschLine } from "./components/bosch_line/BoschLine"
 import { InputText } from '../../global_components/inputs/input_text/InputText'
 
 export const LoginPage = () => {
-  const [data, setData] = useState("")
+  const [edv, setEdv] = useState("")
+  const [pass, setPass] = useState("")
 
   return (
     <Main>
       <BoschLine />
       <Form>
-        <InputText value={data} error={data != ""} onchange={(evt) => setData(evt.target.value)}/>
+        <div>Sign in</div>
+        <InputText placeholder="EDV" value={edv} error={false} onchange={(evt) => setEdv(evt.target.value)}/>
+        <InputText placeholder="Password" value={pass} error={true} onchange={(evt) => setPass(evt.target.value)}/>
       </Form>
     </Main>
   );
@@ -27,6 +30,9 @@ const Main = styled.div`
 
 const Form = styled.div`
   background-color: #fff;
-  width: 450px;
-  height: 350px;
+  width: 250px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
 `;
