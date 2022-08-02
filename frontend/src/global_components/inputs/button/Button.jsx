@@ -1,7 +1,7 @@
 import './style.css'
 
-export const Button = () => {
+export const Button = (props) => {
     return (
-        <button>Click</button>
+        <button>{props.name}</button>
     )
 }

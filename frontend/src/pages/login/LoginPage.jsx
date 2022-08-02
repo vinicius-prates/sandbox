@@ -15,7 +15,7 @@ export const LoginPage = () => {
       <FormContainer>
         <BoschLogo />
         <Form>
-          <div>Sign in</div>
+          <Header>Sign in</Header>
           <InputContainer>
             <InputText
               placeholder="EDV"
@@ -29,7 +29,7 @@ export const LoginPage = () => {
               error={true}
               onchange={(evt) => setPass(evt.target.value)}
             />
-            <Button />
+            <Button name="Login" />
           </InputContainer>
         </Form>
       </FormContainer>
@@ -59,13 +59,18 @@ const Form = styled.div`
   height: 200px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   padding: 40px;
   gap: 20px;
 `;
+
+const Header = styled.div`
+font-size: 1.5em;
+`
 
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 `;

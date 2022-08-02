@@ -2,4 +2,8 @@ button{
     border: 0;
     background-color: #2394FC;
     width: 100%;
+    padding: 10px 0px;
+    font-size: 1em;
+    color: white;
+    cursor: pointer;
 }
