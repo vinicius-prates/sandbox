@@ -11,25 +11,37 @@ export const LoginForm = () => {
   const [pass, setPass] = useState("");
   const [errorEdv, setErrorEdv] = useState(false);
   const [errorPass, setErrorPass] = useState(false);
-  
+
 
   function ValidateLogin() {
-    if (edv != "9289") {
+    // Validate EDV input field
+    if (edv.length == 0) {
+      setErrorEdv(true)
+      return ['Campo EDV vazio', 'O campo do EDV esta vazio, coloque o seu EDV!', 'Entendido']
+    } else if (edv.length != 8) {
       setErrorEdv(true);
+      return ['EDV invalido', 'O EDV inserido apresenta um tamanho invalido!', 'Entendido']
+    } else if (/[a-zA-Z]/g.test(edv)) {
+      setErrorEdv(true)
+      return ['EDV invalido', 'O EDV inserido apresenta letras, olhe atentamente!', 'Entendido']
     } else {
-      setErrorEdv(false);
-    }
-    if (pass != "123") {
-      setErrorPass(true);
-    } else {
-      setErrorPass(false);
+      setErrorEdv(false)
     }
 
-    if (!errorEdv && !errorPass){
+    // Validate Password input field
+    if (pass.length == 0) {
+      setErrorPass(true)
+      return ['Campo SENHA vazia', 'O campo da SENHA esta vazia, insira sua senha!', 'Entendido']
+    } else {
+      setErrorPass(false)
+    }
+
+    // Validate login data
+    if (!errorEdv && !errorPass) {
       const auth = AuthService.tryLogin(edv, pass)
-      if(auth){
+      if (auth) {
         console.log("logado com sucesso")
-      }else{
+      } else {
         console.log("login incorreto")
       }
     }
