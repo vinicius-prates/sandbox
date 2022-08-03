@@ -4,7 +4,7 @@ import { BoschLogo } from "../../bosch_logo/BoschLogo";
 export const FormHeader = (props) => {
   return (
     <Main>
-      <BoschLogo />
+      <BoschLogo slash={true} />
       <div>{props.name}</div>
     </Main>
   );
