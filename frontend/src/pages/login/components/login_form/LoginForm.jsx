@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import { InputText } from "../../../../global_components/inputs/input_text/InputText";
 import { Button } from "../../../../global_components/inputs/button/Button";
-import { BoschLogo } from "../bosch_logo/BoschLogo";
+import { Header } from "./header/Header";
 
 export const LoginForm = () => {
   const [edv, setEdv] = useState("");
@@ -10,38 +10,48 @@ export const LoginForm = () => {
 
   return (
     <Main>
-      <HeaderContainer>
-        <BoschLogo />
-        <div>|</div>
-        <div>LOGIN</div>
-      </HeaderContainer>
-      <InputContainer>
+      <Header />
+      <Container>
         <InputText placeholder="EDV" />
         <InputText placeholder="Senha" />
-        <Button name="Entrar" />
-      </InputContainer>
+        <div>
+          <Button name="Entrar" />
+          <div>Esqueceu a senha?</div>
+        </div>
+      </Container>
     </Main>
   );
 };
 
 const Main = styled.div`
   background-color: pink;
-  width: 700px;
-  height: 600px;
-  padding: 20px;
+  width: 680px;
+  height: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 60px;
 `;
 
-const HeaderContainer = styled.div`
+const Container = styled.div`
   display: flex;
-  gap: 5px;
-`;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  gap: 60px;
 
-const InputContainer = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-width: 50%;
+  & div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    gap: 5px;
+    color: #287eff;
+
+    & div {
+      font-size: 13px;
+      cursor: pointer;
+    }
+  }
 `;
