@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { BoschLogo } from "../bosch_logo/BoschLogo";
 
-export const Header = () => {
+export const Header = (props) => {
   return (
     <Main>
       <BoschLogo />
-      <div>LOGIN</div>
+      <div>{props.name}</div>
     </Main>
   );
 };
