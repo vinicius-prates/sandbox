@@ -2,15 +2,18 @@ import styled from "styled-components";
 import { useState } from "react";
 import { InputText } from "../../../../global_components/inputs/input_text/InputText";
 import { Button } from "../../../../global_components/inputs/button/Button";
-import { Header } from "./header/Header";
+import { FormHeader } from "../../../../global_components/forms/header/FormHeader";
+import { AuthService } from "../../../../services/authService";
+
 
 export const LoginForm = () => {
   const [edv, setEdv] = useState("");
   const [pass, setPass] = useState("");
   const [errorEdv, setErrorEdv] = useState(false);
   const [errorPass, setErrorPass] = useState(false);
+  
 
-  function printNum() {
+  function ValidateLogin() {
     if (edv != "9289") {
       setErrorEdv(true);
     } else {
@@ -21,11 +24,20 @@ export const LoginForm = () => {
     } else {
       setErrorPass(false);
     }
+
+    if (!errorEdv && !errorPass){
+      const auth = AuthService.tryLogin(edv, pass)
+      if(auth){
+        console.log("logado com sucesso")
+      }else{
+        console.log("login incorreto")
+      }
+    }
   }
 
   return (
     <Main>
-      <Header name="LOGIN" />
+      <FormHeader name="LOGIN" />
       <Container>
         <InputText
           placeholder="EDV"
@@ -41,7 +53,7 @@ export const LoginForm = () => {
           onchange={(evt) => setPass(evt.target.value)}
         />
         <div className="ButtonLoginContainer">
-          <Button name="Login" onClick={printNum} />
+          <Button name="Login" onClick={ValidateLogin} />
           <div className="ForgetPasswordLink">Esqueceu a senha?</div>
         </div>
       </Container>

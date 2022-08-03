@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { BoschLogo } from "../bosch_logo/BoschLogo";
+import { BoschLogo } from "../../bosch_logo/BoschLogo";
 
-export const Header = (props) => {
+export const FormHeader = (props) => {
   return (
     <Main>
       <BoschLogo />
