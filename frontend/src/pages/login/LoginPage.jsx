@@ -1,16 +1,18 @@
 import styled from "styled-components";
 import { LoginForm } from "./components/login_form/LoginForm";
+import BoschBackground from "./assets/bosch-background.png";
 
 export const LoginPage = () => {
   return (
-    <Main>
+    <Main bg={BoschBackground}>
       <LoginForm />
     </Main>
   );
 };
 
 const Main = styled.div`
-  background-color: #f5f5f5;
+  background-image: url(${props => props.bg});
+  background-size: cover;
   height: 100vh;
   display: flex;
   flex-direction: column;

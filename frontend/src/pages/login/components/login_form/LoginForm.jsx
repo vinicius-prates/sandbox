@@ -24,7 +24,7 @@ export const LoginForm = () => {
 };
 
 const Main = styled.div`
-  background-color: pink;
+  background-color: white;
   width: 680px;
   height: 500px;
   display: flex;
