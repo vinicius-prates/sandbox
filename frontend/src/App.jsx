@@ -1,7 +1,7 @@
-
+import { LoginPage } from './pages/login/LoginPage'
 
 export const App = () => {
   return (
-    <h1>app</h1>
-  )
-}
+    <LoginPage />
+  );
+};
