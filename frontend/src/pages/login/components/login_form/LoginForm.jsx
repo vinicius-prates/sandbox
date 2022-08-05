@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Notiflix from "notiflix";
 import { useState } from "react";
 import { InputText } from "../../../../global_components/inputs/input_text/InputText";
 import { Button } from "../../../../global_components/inputs/button/Button";
@@ -11,54 +12,41 @@ export const LoginForm = () => {
   const [errorEdv, setErrorEdv] = useState(false);
   const [errorPass, setErrorPass] = useState(false);
 
+  const errorMessage = (msg) => {
+    Notiflix.Notify.failure(
+      msg,
+      { position: "center-top" }
+    )
+  }
+
   function ValidateLogin() {
-    // Validate EDV input field
+
+    setErrorEdv(edv.length == 0);
     if (edv.length == 0) {
-      setErrorEdv(true);
-      return [
-        "Campo EDV vazio",
-        "O campo do EDV esta vazio, coloque o seu EDV!",
-        "Entendido",
-      ];
-    } else if (edv.length != 8) {
-      setErrorEdv(true);
-      return [
-        "EDV invalido",
-        "O EDV inserido apresenta um tamanho invalido!",
-        "Entendido",
-      ];
-    } else if (/[a-zA-Z]/g.test(edv)) {
-      setErrorEdv(true);
-      return [
-        "EDV invalido",
-        "O EDV inserido apresenta letras, olhe atentamente!",
-        "Entendido",
-      ];
-    } else {
-      setErrorEdv(false);
+      errorMessage("Campo EDV vazio");
+      return
     }
 
-    // Validate Password input field
+    setErrorEdv(edv.length != 8 || /[a-zA-Z]/g.test(edv));
+    if (edv.length != 8 || /[a-zA-Z]/g.test(edv)) {
+      errorMessage("EDV Inválido");
+      return
+    }
+
+    setErrorPass(pass.length == 0);
     if (pass.length == 0) {
-      setErrorPass(true);
-      return [
-        "Campo SENHA vazia",
-        "O campo da SENHA esta vazia, insira sua senha!",
-        "Entendido",
-      ];
-    } else {
-      setErrorPass(false);
+      errorMessage("Campo SENHA vazia");
     }
 
     // Validate login data
-    if (!errorEdv && !errorPass) {
-      const auth = AuthService.tryLogin(edv, pass);
-      if (auth) {
-        console.log("logado com sucesso");
-      } else {
-        console.log("login incorreto");
-      }
-    }
+    // if (!errorEdv && !errorPass) {
+    //   const auth = AuthService.tryLogin(edv, pass);
+    //   if (auth) {
+    //     console.log("logado com sucesso");
+    //   } else {
+    //     console.log("login incorreto");
+    //   }
+    // }
   }
 
   return (
