@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { BoschLogo } from '../../bosch_logo/BoschLogo'
 import { NavbarLinks } from '../links/NavbarLinks'
+import { LogoutLink } from '../links/LogoutLink'
 
-export const NavbarContainer = () => {
+export const NavbarContainerAdmin = () => {
   return (
     <Nav>
       <BoschLogo slash={false} />
@@ -11,7 +12,7 @@ export const NavbarContainer = () => {
           <NavbarLinks name="Justificativas" />
           <NavbarLinks name="Cadastro" />
         </LinksContainer>
-        <Logout>EX</Logout>
+        <LogoutLink />
       </NavbarContent>
     </Nav>
   );
@@ -29,15 +30,11 @@ const Nav = styled.div`
 const NavbarContent = styled.div`
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 50px;
 `;
 
 const LinksContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
-`;
-
-const Logout = styled.div`
-  font-size: 20px;
+  gap: 20px;
 `;
