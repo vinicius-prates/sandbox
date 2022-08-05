@@ -5,44 +5,58 @@ import { Button } from "../../../../global_components/inputs/button/Button";
 import { FormHeader } from "../../../../global_components/forms/header/FormHeader";
 import { AuthService } from "../../../../services/authService";
 
-
 export const LoginForm = () => {
   const [edv, setEdv] = useState("");
   const [pass, setPass] = useState("");
   const [errorEdv, setErrorEdv] = useState(false);
   const [errorPass, setErrorPass] = useState(false);
 
-
   function ValidateLogin() {
     // Validate EDV input field
     if (edv.length == 0) {
-      setErrorEdv(true)
-      return ['Campo EDV vazio', 'O campo do EDV esta vazio, coloque o seu EDV!', 'Entendido']
+      setErrorEdv(true);
+      return [
+        "Campo EDV vazio",
+        "O campo do EDV esta vazio, coloque o seu EDV!",
+        "Entendido",
+      ];
     } else if (edv.length != 8) {
       setErrorEdv(true);
-      return ['EDV invalido', 'O EDV inserido apresenta um tamanho invalido!', 'Entendido']
+      return [
+        "EDV invalido",
+        "O EDV inserido apresenta um tamanho invalido!",
+        "Entendido",
+      ];
     } else if (/[a-zA-Z]/g.test(edv)) {
-      setErrorEdv(true)
-      return ['EDV invalido', 'O EDV inserido apresenta letras, olhe atentamente!', 'Entendido']
+      setErrorEdv(true);
+      return [
+        "EDV invalido",
+        "O EDV inserido apresenta letras, olhe atentamente!",
+        "Entendido",
+      ];
     } else {
-      setErrorEdv(false)
+      setErrorEdv(false);
     }
 
     // Validate Password input field
     if (pass.length == 0) {
-      setErrorPass(true)
-      return ['Campo SENHA vazia', 'O campo da SENHA esta vazia, insira sua senha!', 'Entendido']
+      setErrorPass(true);
+      return [
+        "Campo SENHA vazia",
+        "O campo da SENHA esta vazia, insira sua senha!",
+        "Entendido",
+      ];
     } else {
-      setErrorPass(false)
+      setErrorPass(false);
     }
 
     // Validate login data
     if (!errorEdv && !errorPass) {
-      const auth = AuthService.tryLogin(edv, pass)
+      const auth = AuthService.tryLogin(edv, pass);
       if (auth) {
-        console.log("logado com sucesso")
+        console.log("logado com sucesso");
       } else {
-        console.log("login incorreto")
+        console.log("login incorreto");
       }
     }
   }
@@ -66,7 +80,7 @@ export const LoginForm = () => {
         />
         <div className="ButtonLoginContainer">
           <Button name="Login" onClick={ValidateLogin} />
-          <div className="ForgetPasswordLink">Esqueceu a senha?</div>
+          <div className="ForgotPasswordLink">Esqueceu a senha?</div>
         </div>
       </Container>
     </Main>
@@ -99,9 +113,13 @@ const Container = styled.div`
     gap: 5px;
     color: #287eff;
 
-    & .ForgetPasswordLink {
+    & .ForgotPasswordLink {
       font-size: 13px;
       cursor: pointer;
+
+      &:hover {
+        color: #73abff;
+      }
     }
   }
 `;
