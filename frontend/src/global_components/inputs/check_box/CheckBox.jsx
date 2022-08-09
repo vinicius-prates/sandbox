@@ -4,7 +4,7 @@ export const CheckBox = (props) => {
   return (
     <Box>
       {props.name}
-      <input type="radio" name="radio" />
+      <input type="radio" name="radio" checked={props.checked}/>
       <Checkmark className="checkmark"></Checkmark>
     </Box>
   );
