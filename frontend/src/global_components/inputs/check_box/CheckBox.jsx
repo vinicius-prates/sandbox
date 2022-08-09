@@ -11,21 +11,14 @@ export const CheckBox = (props) => {
 };
 
 const Box = styled.label`
-  display: block;
   position: relative;
   padding-left: 35px;
-  margin-bottom: 12px;
   cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  font-size: 16px;
 
   & > input {
     position: absolute;
-    opacity: 0;
-    cursor: pointer;
+    display: none;
   }
 
   &:hover > input ~ .checkmark {
@@ -37,12 +30,12 @@ const Box = styled.label`
   }
 
   & > .checkmark:after {
-    top: 9px;
-    left: 9px;
-    width: 8px;
-    height: 8px;
+    top: 5px;
+    left: 5px;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
-    background: #000000;
+    background-color: #000000;
   }
 `;
 

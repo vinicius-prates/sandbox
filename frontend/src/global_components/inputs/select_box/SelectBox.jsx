@@ -13,6 +13,7 @@ export const SelectBox = () => {
 
 const Select = styled.select`
   width: 200px;
+  height: 35px;
   padding: 0 10px;
   background-color: white;
   border: 0;

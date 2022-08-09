@@ -9,12 +9,15 @@ export const InputsContainer = () => {
       <SearchBar placeholder="Pesquisar..."/>
       <SelectBox />
       <CheckBox name='Tudo' />
+      <CheckBox name='Justificado' />
+      <CheckBox name='Nao Justificado' />
     </InputContainer>
   );
 };
 
 const InputContainer = styled.div`
   display: flex;
+  align-items: center;
   gap: 20px;
   margin: 20px;
 `;
