@@ -30,7 +30,7 @@ const Search = styled.div`
     border-bottom-right-radius: 10px;
 
     &:active {
-      box-shadow: 1px 1px 1px black inset;
+      box-shadow: 0 0 1px black inset;
     }
 
     & > img {
