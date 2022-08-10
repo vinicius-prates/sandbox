@@ -1,7 +1,11 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-export const NavbarLinks = (props) => {
-    return <Links>{props.name}</Links>
+
+export const NavbarLinks = ({ name, link = "/" }) => {
+    return (
+        <Links><Link to={link}>{name}</Link></Links>
+    )
 }
 
 const Links = styled.div`
@@ -9,7 +13,12 @@ const Links = styled.div`
     cursor: pointer;
     transition: 250ms;
 
-    &:hover{
-       color: #2D7DB5
+    & > a{
+        text-decoration: none;
+        color: black;
+
+        &:hover{
+            color: #2D7DB5
+        }
     }
 `;

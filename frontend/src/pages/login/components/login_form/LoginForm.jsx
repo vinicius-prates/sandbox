@@ -16,7 +16,7 @@ export const LoginForm = () => {
     Notiflix.Notify.failure(
       msg,
       { position: "center-top" }
-    )
+    ) 
   }
 
   function ValidateLogin() {
