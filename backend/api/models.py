@@ -7,6 +7,9 @@ class Turno(models.Model):
     entrada = models.CharField(max_length=8)
     saida = models.CharField(max_length=8)
 
+    def __str__(self):
+        return self.descricao
+
 
 class Colaborador(models.Model):
     class DiaCurso(models.TextChoices):
@@ -36,9 +39,13 @@ class Colaborador(models.Model):
         default='Usuário'
     )
 
+    # overriding default save method to auto encrypt password on save
     def save(self, *args, **kwargs):
         self.senha = hashlib.sha256(self.senha.encode()).hexdigest()
         super(Colaborador, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.nome
 
 
 class Justificativa(models.Model):
@@ -70,5 +77,8 @@ class Justificativa(models.Model):
         choices=Justificado.choices,
         default='N'
     )
+
+    def __str__(self):
+        return f'{self.ocorrencia} - {self.colaborador.nome}'
 
 
