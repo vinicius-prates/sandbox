@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Colaborador, Turno
+from .models import Colaborador, Turno, Justificativa
 
 
 class TurnoSerializer(serializers.ModelSerializer):
@@ -18,3 +18,9 @@ class ColaboradorSerializer(serializers.ModelSerializer):
 class LoginSerializer(serializers.Serializer):
     class Meta:
         fields = ['auth']
+
+
+class JustificativaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Justificativa
+        fields = '__all__'

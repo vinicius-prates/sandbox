@@ -80,5 +80,3 @@ class Justificativa(models.Model):
 
     def __str__(self):
         return f'{self.ocorrencia} - {self.colaborador.nome}'
-
-

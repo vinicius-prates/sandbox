@@ -6,8 +6,8 @@ from rest_framework.viewsets import GenericViewSet, ModelViewSet
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Colaborador, Turno
-from .serializers import ColaboradorSerializer, TurnoSerializer, LoginSerializer
+from .models import Colaborador, Turno, Justificativa
+from .serializers import ColaboradorSerializer, TurnoSerializer, LoginSerializer, JustificativaSerializer
 
 
 class ColaboradorViewSet(GenericViewSet,
@@ -25,6 +25,11 @@ class TurnoViewSet(ModelViewSet):
 
     serializer_class = TurnoSerializer
     queryset = Turno.objects.all()
+
+
+class JustificativaViewSet(ModelViewSet):
+    serializer_class = JustificativaSerializer
+    queryset = Justificativa.objects.all()
 
 
 class LoginAPIView(APIView):
