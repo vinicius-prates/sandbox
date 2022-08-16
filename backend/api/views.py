@@ -50,4 +50,4 @@ class LoginAPIView(APIView):
             return Response(serializer.initial_data, status=status.HTTP_200_OK)
         except Colaborador.DoesNotExist:
             serializer = LoginSerializer(data=login_data)
-            return Response(serializer.initial_data, status=status.HTTP_401_UNAUTHORIZED)
+            return Response(serializer.initial_data, status=status.HTTP_200_OK)
