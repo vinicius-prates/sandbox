@@ -4,7 +4,7 @@ import { useState } from "react";
 import { InputText } from "../../../../global_components/inputs/input_text/InputText";
 import { Button } from "../../../../global_components/inputs/button/Button";
 import { FormHeader } from "../../../../global_components/forms/header/FormHeader";
-import { AuthService } from "../../../../services/authService";
+import axios from "axios";
 
 export const LoginForm = () => {
   const [edv, setEdv] = useState("");
@@ -19,7 +19,7 @@ export const LoginForm = () => {
     ) 
   }
 
-  function ValidateLogin() {
+  async function ValidateLogin() {
 
     setErrorEdv(edv.length == 0);
     if (edv.length == 0) {
@@ -38,15 +38,17 @@ export const LoginForm = () => {
       errorMessage("Campo SENHA vazia");
     }
 
-    // Validate login data
-    // if (!errorEdv && !errorPass) {
-    //   const auth = AuthService.tryLogin(edv, pass);
-    //   if (auth) {
-    //     console.log("logado com sucesso");
-    //   } else {
-    //     console.log("login incorreto");
-    //   }
-    // }
+    if (!errorEdv && !errorPass) {
+      await axios.post('http://localhost:8000/api/tryLogin/', {edv: edv, senha: pass})
+        .then(({data}) => {
+          console.log(data)
+          if (data.auth) {
+            console.log("logado com sucesso");
+          } else {
+            console.log("login incorreto");
+          }
+      })
+    }
   }
 
   return (

@@ -6,7 +6,7 @@ export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<LoginPage />} />
-      <Route path="/admManagePage" element={<JustifyManage />} />
+      <Route path="/admin" element={<JustifyManage />} />
     </Routes>
   );
 };
