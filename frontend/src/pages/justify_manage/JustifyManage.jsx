@@ -6,12 +6,12 @@ import { ListContainer } from "./components/ListContainer";
 export const JustifyManage = () => {
   return (
     <>
-      <Navbar admin={true} />
+      <Navbar />
       <Whole>
         <InputsContainer />
         <div className="ListContainerBlock">
-        <ListContainer display={true} />
-        <ListContainer display={false} />
+          <ListContainer display={true} />
+          <ListContainer display={true} />
         </div>
       </Whole>
     </>

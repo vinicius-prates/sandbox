@@ -10,6 +10,7 @@ export const InputText = (props) => {
           value={props.value}
           onChange={props.onchange}
           className="error"
+          type={props.type}
         />
         <ErrorMsg>{props.placeholder} Inválido</ErrorMsg>
       </Wrapper>
@@ -21,6 +22,7 @@ export const InputText = (props) => {
       value={props.value}
       onChange={props.onchange}
       className="normal"
+      type={props.type}
     />
   );
 };

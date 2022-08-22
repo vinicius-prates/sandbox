@@ -4,19 +4,22 @@ import { useState } from "react";
 import { InputText } from "../../../../global_components/inputs/input_text/InputText";
 import { Button } from "../../../../global_components/inputs/button/Button";
 import { FormHeader } from "../../../../global_components/forms/header/FormHeader";
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import { createSession } from "../../../../session";
 
 export const LoginForm = () => {
   const [edv, setEdv] = useState("");
   const [pass, setPass] = useState("");
   const [errorEdv, setErrorEdv] = useState(false);
   const [errorPass, setErrorPass] = useState(false);
+  const navigate = useNavigate();
 
   const errorMessage = (msg) => {
     Notiflix.Notify.failure(
       msg,
       { position: "center-top" }
-    ) 
+    )
   }
 
   async function ValidateLogin() {
@@ -39,15 +42,15 @@ export const LoginForm = () => {
     }
 
     if (!errorEdv && !errorPass) {
-      await axios.post('http://localhost:8000/api/tryLogin/', {edv: edv, senha: pass})
-        .then(({data}) => {
-          console.log(data)
+      await axios.post('http://localhost:8000/api/tryLogin/', { edv: edv, senha: pass })
+        .then(({ data }) => {
           if (data.auth) {
-            console.log("logado com sucesso");
+            createSession(data.colaborador);
+            navigate('/admin');
           } else {
-            console.log("login incorreto");
+            errorMessage("Login incorreto");
           }
-      })
+        })
     }
   }
 
@@ -60,6 +63,7 @@ export const LoginForm = () => {
           value={edv}
           error={errorEdv}
           onchange={(evt) => setEdv(evt.target.value)}
+          type="text"
         />
 
         <InputText
@@ -67,6 +71,7 @@ export const LoginForm = () => {
           value={pass}
           error={errorPass}
           onchange={(evt) => setPass(evt.target.value)}
+          type="password"
         />
         <div className="ButtonLoginContainer">
           <Button name="Login" onClick={ValidateLogin} />

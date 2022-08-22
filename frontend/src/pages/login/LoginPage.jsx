@@ -1,8 +1,21 @@
 import styled from "styled-components";
 import { LoginForm } from "./components/login_form/LoginForm";
 import BoschBackground from "./assets/bosch-background.png";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { getSession } from "../../session";
 
 export const LoginPage = () => {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const session = getSession();
+    if (session && session.perm == 'Admin') {
+      navigate("/admin");
+    }
+  }, [])
+
   return (
     <Main bg={BoschBackground}>
       <LoginForm />

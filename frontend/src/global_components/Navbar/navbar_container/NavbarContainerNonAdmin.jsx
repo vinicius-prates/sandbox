@@ -1,13 +1,22 @@
 import styled from "styled-components";
 import { BoschLogo } from "../../bosch_logo/BoschLogo";
 import { LogoutLink } from "../links/LogoutLink";
+import { useNavigate } from "react-router-dom";
+import { endSession } from "./../../../session"
 
 export const NavbarContainerNonAdmin = () => {
+  const navigate = useNavigate();
+
+  const logout = () => {
+    endSession();
+    navigate("/");
+  }
+
   return (
     <Nav>
       <BoschLogo slash={false} />
       <NavbarContent>
-        <LogoutLink />
+        <LogoutLink onclick={logout} />
       </NavbarContent>
     </Nav>
   );

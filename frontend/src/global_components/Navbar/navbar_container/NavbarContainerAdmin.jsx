@@ -2,17 +2,27 @@ import styled from "styled-components";
 import { BoschLogo } from '../../bosch_logo/BoschLogo'
 import { NavbarLinks } from '../links/NavbarLinks'
 import { LogoutLink } from '../links/LogoutLink'
+import { useNavigate } from "react-router-dom";
+import { endSession } from "./../../../session"
 
 export const NavbarContainerAdmin = () => {
+
+  const navigate = useNavigate();
+
+  const logout = () => {
+    endSession();
+    navigate("/");
+  }
+
   return (
     <Nav>
       <BoschLogo slash={false} />
       <NavbarContent>
         <LinksContainer>
-          <NavbarLinks name="Justificativas" link="/admManagePage"/>
+          <NavbarLinks name="Justificativas" link="/admin" />
           <NavbarLinks name="Cadastro" />
         </LinksContainer>
-        <LogoutLink />
+        <LogoutLink onclick={logout} />
       </NavbarContent>
     </Nav>
   );
