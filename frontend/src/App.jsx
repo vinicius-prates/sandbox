@@ -1,7 +1,12 @@
-
+import { JustifyManage } from "./pages/justify_manage/JustifyManage";
+import { Routes, Route } from "react-router-dom";
+import { LoginPage } from "./pages/login/LoginPage"
 
 export const App = () => {
   return (
-    <h1>app</h1>
-  )
-}
+    <Routes>
+      <Route path="/" element={<LoginPage />} />
+      <Route path="/admin" element={<JustifyManage />} />
+    </Routes>
+  );
+};
