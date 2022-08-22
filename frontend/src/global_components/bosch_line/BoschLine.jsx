@@ -11,4 +11,8 @@ export const BoschLine = () => {
 
 const Line = styled.div`
   line-height: 0;
+
+  & img{
+    width: 100vw;
+  }
 `;

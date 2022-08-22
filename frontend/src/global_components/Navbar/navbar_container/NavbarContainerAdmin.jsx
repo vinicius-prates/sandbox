@@ -9,7 +9,7 @@ export const NavbarContainerAdmin = () => {
       <BoschLogo slash={false} />
       <NavbarContent>
         <LinksContainer>
-          <NavbarLinks name="Justificativas" />
+          <NavbarLinks name="Justificativas" link="/admManagePage"/>
           <NavbarLinks name="Cadastro" />
         </LinksContainer>
         <LogoutLink />

@@ -1,8 +1,12 @@
-import { Navbar } from './global_components/Navbar/Navbar'
-import { LoginPage } from './pages/login/LoginPage'
+import { JustifyManage } from "./pages/justify_manage/JustifyManage";
+import { Routes, Route } from "react-router-dom";
+import { LoginPage } from "./pages/login/LoginPage"
 
 export const App = () => {
   return (
-    <LoginPage />
+    <Routes>
+      <Route path="/" element={<LoginPage />} />
+      <Route path="/admin" element={<JustifyManage />} />
+    </Routes>
   );
 };
