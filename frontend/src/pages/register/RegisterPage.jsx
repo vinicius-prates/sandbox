@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { getSession } from "../../session";
 import styled from "styled-components";
 import Notiflix from "notiflix";
+import { Navbar } from "../../global_components/Navbar/Navbar";
 
 export const RegisterPage = () => {
 
@@ -25,6 +26,7 @@ export const RegisterPage = () => {
   
 
     return (
-        <div>lero</div>
+        <Navbar/>
+        
     )
 }
