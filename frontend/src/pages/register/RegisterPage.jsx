@@ -44,7 +44,7 @@ export const RegisterPage = () => {
         <Navbar/>
         <Content>
         <RegisterForm>
-            <FormHeader name="REGISTRO"/>
+            <FormHeader name="CADASTRO"/>
             <RegisterInputs>
                 <InputText
                 placeholder="Nome Completo"
@@ -74,11 +74,19 @@ export const RegisterPage = () => {
                 placeholder="Email"
                 value={email}
                 type="email"/>
+                
+                <SelectBoxesDiv>
                 <SelectBox/>
                 <SelectBox/>
+                </SelectBoxesDiv>
+                    
 
             </RegisterInputs>
+            <ButtonDiv>
             <Button name="Cadastrar"/>
+
+            </ButtonDiv>
+                
         </RegisterForm>
         </Content>
         </>
@@ -87,7 +95,8 @@ export const RegisterPage = () => {
 }
 
 const Content = styled.div `
-    height: 100vh;
+    height: 92.5vh;
+    width: 100vw;
     background-color: #eff1f2;
     display: flex;
     flex-direction: column;
@@ -97,13 +106,31 @@ const Content = styled.div `
 
 `
 const RegisterForm = styled.div`
+    width: 450px;
     background-color: #ffffff;
-    padding: 50px;
+    padding: 70px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
 `
 
+const SelectBoxesDiv = styled.div`
+    display: flex;
+    flex-direction: row;
+`
 const RegisterInputs = styled.div`
+    margin: 20px 0 20px 0;
 
+    display: flex;
+    flex-direction:column ;
+    gap: 40px;
+
+`
+
+const ButtonDiv = styled.div`
+    
+
+    width: 300px;
+    height: 40px;
 `

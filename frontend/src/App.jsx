@@ -8,7 +8,7 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<LoginPage />} />
       <Route path="/admin" element={<JustifyManage />} />
-      <Route path="/registro" element={<RegisterPage/>} />
+      <Route path="/cadastro" element={<RegisterPage/>} />
     </Routes>
   );
 };
