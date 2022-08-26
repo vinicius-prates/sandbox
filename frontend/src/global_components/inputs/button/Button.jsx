@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Button = (props) => {
-  return <Btn onClick={props.onClick}>{props.name}</Btn>;
+  return <Btn onClick={props.onClick}>{props.children}</Btn>;
 };
 
 const Btn = styled.button`
