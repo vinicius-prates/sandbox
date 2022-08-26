@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
-export const SelectBox = ({label, options}) => {
+export const SelectBox = ({ label, options, onchange }) => {
+
   return (
     <Container>
-    {label &&
-    <Label>{label}</Label> }
-    <Select>
-      {options.map((option) => <option key={option.value} value={option.value}>{option.text}</option>)}
-    </Select>
+      {label &&
+        <Label>{label}</Label>}
+      <Select onChange={(e) => onchange(e.target.value)}>
+        {options.map((option) => <option key={option.value} value={option.value}>{option.text}</option>)}
+      </Select>
     </Container>
   );
 };
