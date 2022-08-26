@@ -8,7 +8,7 @@ export const InputsContainer = () => {
   return (
     <InputContainer>
       <SearchBar placeholder="Pesquisar..." />
-      <SelectBox />
+      <SelectBox options={[]}/>
       <div className="checkboxContainer">
         <CheckBox name="Tudo" />
         <CheckBox name="Justificado" />

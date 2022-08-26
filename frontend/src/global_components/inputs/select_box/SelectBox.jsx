@@ -1,26 +1,38 @@
 import styled from "styled-components";
 
-export const SelectBox = () => {
+export const SelectBox = ({ label, options, onchange }) => {
+
   return (
-    <Select>
-      <option value="">Numero 1</option>
-      <option value="">Numero 2</option>
-      <option value="">Numero 3</option>
-      <option value="">Numero 4</option>
-    </Select>
+    <Container>
+      {label &&
+        <Label>{label}</Label>}
+      <Select onChange={(e) => onchange(e.target.value)}>
+        {options.map((option) => <option key={option.value} value={option.value}>{option.text}</option>)}
+      </Select>
+    </Container>
   );
 };
 
+
+const Container = styled.div`
+  max-width: 150px;
+`
+
+const Label = styled.p`
+  font-weight: bold;
+  color: #bbbbbb;
+`
+
 const Select = styled.select`
-  width: 200px;
+  min-width: 150px;
+  width: max-content;
   height: 35px;
-  padding: 0 10px;
-  background-color: white;
+  background-color: #f9f9f9;
   border: 0;
   border-radius: 10px;
 
   &:hover {
-    background-color: #f9f9f9;
+    background-color: #f0f0f0;
     transition: 150ms;
   }
 `;
