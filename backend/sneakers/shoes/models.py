@@ -1,6 +1,7 @@
 import uuid
-from xml.etree.ElementInclude import default_loader
 from django.db import models
+from stdimage import StdImageField
+
 from uuid import uuid4
 
 class Sneakers(models.Model):
@@ -10,5 +11,5 @@ class Sneakers(models.Model):
     condition = models.CharField(max_length=50)
     releaser_year = models.IntegerField()
     price = models.FloatField()
-    image = models.ImageField()
+    image = StdImageField(upload_to='%y/%m/%d')
     

@@ -5,27 +5,26 @@ import { Navbar } from './components/navbar/navbar'
 
 function App() {
 
-  const [apidetails, setApiDetails] = useState([])
+  const [apiresult, setApiresult] = useState([]);
 
-  const ListarSneakers = () => {
-    fetch ('http://127.0.0.1:8000/sneakers/').then(
-      (res) =>  res.json().then(
-        (data) => {
-          setApiDetails(data)
-        } )) 
-  }
+    const fetchApi = () => {
+        fetch("http://localhost:8000/sneakers/")
+            .then((res) => res.json().then((data) => {
+                setApiresult(data)
+            }))
+    }
 
-  useEffect(() => {
-    ListarSneakers()
-  }, [])
+    useEffect(() => {
+        fetchApi()
+    }, [])
 
   return (
     <>
        <Navbar/>
        <div>
         <h1>All Sneakers</h1>
-        {apidetails.map((item, index) => (
-          <div>{item.name} - {item.price} </div>
+        {apiresult.map((item, index) => (
+          <div key={index}>{item.name} - {item.price} <img src={item.image}/></div>
         ))}
        </div>
     </>
