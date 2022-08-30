@@ -4,7 +4,12 @@ import { SelectBox } from "../../../global_components/inputs/select_box/SelectBo
 import { CheckBox } from "../../../global_components/inputs/check_box/CheckBox";
 import { Button } from "../../../global_components/inputs/button/Button";
 
-export const InputsContainer = ({ checklist, setChecklist, filtroSelecionado, setFiltroSelecionado }) => {
+export const InputsContainer = ({ checklist, setChecklist, filtroSelecionado, setFiltroSelecionado, setJustificativaSelecionada }) => {
+
+  const toggleCheckboxes = () => {
+    setChecklist(!checklist);
+    setJustificativaSelecionada(undefined);
+  }
 
   return (
     <InputContainer>
@@ -16,7 +21,7 @@ export const InputsContainer = ({ checklist, setChecklist, filtroSelecionado, se
         <CheckBox label="Nao Justificado" checked={filtroSelecionado == "nao_justificado"} onChange={() => setFiltroSelecionado("nao_justificado")} />
       </div>
       <div className="btnContainer">
-        <Button onClick={() => setChecklist(!checklist)} selected={checklist}>Gerar Relatório</Button>
+        <Button onClick={toggleCheckboxes} selected={checklist}>Gerar Relatório</Button>
       </div>
     </InputContainer>
   );

@@ -22,7 +22,7 @@ export const JustificativaInfo = ({ display, justificativa }) => {
             {display ?
                 <JustificativaInfoContainer>
                     <PdfContainer id="pdfcontainerdiv">
-                        <BoschLogo height />
+                        <BoschLogo pdfMode />
                         <PdfTitulo>
                             Colaborador: {justificativa.colaborador.nome} - EDV: {justificativa.colaborador.edv}
                         </PdfTitulo>

@@ -2,9 +2,21 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export const ListContainer = ({ checklist, setJustificativaSelecionada }) => {
+export const ListContainer = ({ checklist, setJustificativaSelecionada, setSelecionados, selecionados }) => {
 
   const [justificativas, setJustificativas] = useState([]);
+
+  const toggleSelecionado = (just) => {
+    let lista = [...selecionados];
+
+    if (lista.includes(just)) {
+      lista.pop(lista.indexOf(just));
+      setSelecionados(lista)
+      return
+    }
+
+    setSelecionados([...lista, just])
+  }
 
   const getJustificativas = async () => {
     await axios.get("http://localhost:8000/api/justificativas/")
@@ -25,7 +37,7 @@ export const ListContainer = ({ checklist, setJustificativaSelecionada }) => {
           return (
             <JustificativaCheckBox key={just.id} htmlFor={`checkbox${just.id}`}>
               <div>
-                <input type="checkbox" id={`checkbox${just.id}`} onClick={() => console.log(just.id)} />
+                <input type="checkbox" id={`checkbox${just.id}`} onClick={() => toggleSelecionado(just)} />
               </div>
               <div className="justInfo">
                 <span>{just.colaborador.nome}</span> <span>{just.data_inicio}</span>
