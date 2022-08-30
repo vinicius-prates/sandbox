@@ -1,3 +1,4 @@
+from pyexpat import model
 from rest_framework import serializers
 from .models import Colaborador, Turno, Justificativa
 
@@ -20,6 +21,14 @@ class LoginSerializer(serializers.Serializer):
 
 
 class JustificativaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Justificativa
+        fields = "__all__"
+
+
+class JustificativaInfoSerializer(serializers.ModelSerializer):
+    colaborador = ColaboradorSerializer()
+
     class Meta:
         model = Justificativa
         fields = "__all__"
