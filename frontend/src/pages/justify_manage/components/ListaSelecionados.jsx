@@ -16,10 +16,17 @@ export const ListaSelecionados = ({ selecionados }) => {
 
             let counter_posicao = 1;
             let counter_loop = selecionados.length;
+            let counter_pagina = 0;
 
             selecionados.forEach((just) => {
                 document.querySelector(`#pdfcontainerdiv${just.id}`).style.display = 'flex';
                 html2canvas(document.querySelector(`#pdfcontainerdiv${just.id}`)).then(canvas => {
+                    counter_pagina++;
+                    if(counter_pagina > 4) {
+                        pdf.addPage();
+                        counter_pagina = 0;
+                        counter_posicao = 0;
+                    }
                     let imgData = canvas.toDataURL('image/png');
                     pdf.addImage(imgData, 'PNG', 0, (counter_posicao * 160), 600, 400, undefined, false);
                     counter_posicao++;
@@ -62,7 +69,7 @@ export const ListaSelecionados = ({ selecionados }) => {
             }
             {
                 <JustificativaInfoContainer>
-                    <div>
+                    <div class="selecionados">
                         {selecionados.map(just => <TituloJustificativa key={just.id}>{just.colaborador.nome}</TituloJustificativa>)}
                     </div>
                     <BtnBox>
@@ -97,6 +104,11 @@ const JustificativaInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  & .selecionados {
+    overflow-y: scroll;
+    padding-bottom: 1rem;
+  }
 `;
 
 const TituloJustificativa = styled.p`

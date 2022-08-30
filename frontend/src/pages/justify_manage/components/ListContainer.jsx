@@ -65,6 +65,7 @@ const PersonsListContainer = styled.div`
   width: 30%;
   padding: 10px;
   background-color: white;
+  overflow-y: scroll;
   height: 50%;
   visibility: ${props => props.invisible ? 'hidden' : 'visible'};
 `;
