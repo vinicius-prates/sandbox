@@ -18,7 +18,7 @@ export const InputsContainer = ({ checklist, setChecklist }) => {
         <CheckBox label="Nao Justificado" checked={filtroSelecionado == "nao_justificado"} onChange={() => setFiltroSelecionado("nao_justificado")} />
       </div>
       <div className="btnContainer">
-        <Button onClick={setChecklist(!checklist)}>Gerar Relatório</Button>
+        <Button onClick={() => setChecklist(!checklist)}>Gerar Relatório</Button>
       </div>
     </InputContainer>
   );
