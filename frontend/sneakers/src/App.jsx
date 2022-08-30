@@ -1,6 +1,7 @@
-
+import styled from 'styled-components'
 import { useEffect, useState } from 'react'
 import './App.css'
+import { Card } from './components/card/card';
 import { Navbar } from './components/navbar/navbar'
 
 function App() {
@@ -21,15 +22,23 @@ function App() {
   return (
     <>
        <Navbar/>
-       <div>
-        <h1>All Sneakers</h1>
+
+
+       <DivAllSneakers>
         {apiresult.map((item, index) => (
-          <div key={index}>{item.name} - {item.price} <img src={item.image}/></div>
+          <div key={index}><Card image={item.image} name={item.name} price={item.price} releaser_year={item.releaser_year} condition={item.condition} brand={item.brand} /></div>
         ))}
-       </div>
+       </DivAllSneakers>
     </>
    
   )
 }
+
+const DivAllSneakers = styled.div`
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  gap: 3vw;
+`
 
 export default App

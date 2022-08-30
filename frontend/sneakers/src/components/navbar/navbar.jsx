@@ -5,7 +5,7 @@ export const Navbar = () => {
     return(
         <NavBar>
             <NavBarTittle>
-                <a href="#">Sneakers Store</a>
+                <a href="#">Zimbas Sneakers</a>
 
             </NavBarTittle>
             <NavBarLinks>
@@ -20,6 +20,7 @@ export const Navbar = () => {
 }
 
 const NavBar = styled.div`
+    background-color: whitesmoke;
     margin: 2vw 5vw 2vw 5vw;
     display: flex;
     flex-direction: row;
