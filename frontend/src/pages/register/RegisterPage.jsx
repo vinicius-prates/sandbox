@@ -204,7 +204,7 @@ export const RegisterPage = () => {
 
                     </RegisterInputs>
                     <ButtonDiv>
-                        <Button name="Cadastrar" onClick={validateCadastro} />
+                        <Button onClick={validateCadastro}>Cadastrar</Button>
 
                     </ButtonDiv>
 
