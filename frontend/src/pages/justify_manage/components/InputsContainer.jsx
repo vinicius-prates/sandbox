@@ -3,10 +3,8 @@ import { SearchBar } from "../../../global_components/inputs/search_bar/SearchBa
 import { SelectBox } from "../../../global_components/inputs/select_box/SelectBox";
 import { CheckBox } from "../../../global_components/inputs/check_box/CheckBox";
 import { Button } from "../../../global_components/inputs/button/Button";
-import { useState } from "react";
 
-export const InputsContainer = ({ checklist, setChecklist }) => {
-  const [filtroSelecionado, setFiltroSelecionado] = useState("tudo")
+export const InputsContainer = ({ checklist, setChecklist, filtroSelecionado, setFiltroSelecionado }) => {
 
   return (
     <InputContainer>
@@ -18,7 +16,7 @@ export const InputsContainer = ({ checklist, setChecklist }) => {
         <CheckBox label="Nao Justificado" checked={filtroSelecionado == "nao_justificado"} onChange={() => setFiltroSelecionado("nao_justificado")} />
       </div>
       <div className="btnContainer">
-        <Button onClick={() => setChecklist(!checklist)}>Gerar Relatório</Button>
+        <Button onClick={() => setChecklist(!checklist)} selected={checklist}>Gerar Relatório</Button>
       </div>
     </InputContainer>
   );

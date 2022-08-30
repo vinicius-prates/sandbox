@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const Button = (props) => {
-  return <Btn onClick={props.onClick}>{props.children}</Btn>;
+  return <Btn onClick={props.onClick} selected={props.selected}>{props.children}</Btn>;
 };
 
 const Btn = styled.button`
   border: 0;
-  background-color: #2394fc;
+  background-color: ${(props) => props.selected ? '#16538b' : '#2394fc'};
   width: 100%;
   height: 100%;
   font-size: 1em;
