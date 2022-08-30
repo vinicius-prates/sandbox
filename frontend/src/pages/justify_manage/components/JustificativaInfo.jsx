@@ -24,6 +24,11 @@ export const JustificativaInfo = ({ display, justificativa }) => {
                     <PdfContainer id="pdfcontainerdiv">
                         <BoschLogo pdfMode />
                         <PdfTitulo>
+                            Relatório de justificativa ETS - Feito no dia {new Date().toLocaleDateString()}
+                        </PdfTitulo>
+                        <br /><br />
+                        <Line />
+                        <PdfTitulo>
                             Colaborador: {justificativa.colaborador.nome} - EDV: {justificativa.colaborador.edv}
                         </PdfTitulo>
                         <PdfTitulo>
@@ -68,6 +73,13 @@ const PdfContainer = styled.div`
     z-index: -15;
 `;
 
+const Line = styled.div`
+    height: 2px;
+    width: 75%;
+    background-color: #b5b5b5;
+    margin: .25rem auto;
+`;
+
 const BtnBox = styled.div`
     min-height: 2rem;
     width: 75%;
@@ -104,7 +116,9 @@ const PdfTitulo = styled.p`
 `;
 
 const PdfDescricao = styled.p`
-    margin-top: 2rem;
     font-size: 1.5rem;
     text-align: center;
+    max-width: 80%;
+    margin: 0 auto;
+    margin-top: 2rem;
 `;

@@ -11,22 +11,25 @@ export const ListaSelecionados = ({ selecionados }) => {
 
         document.querySelector("#pdfcontainerlogo").style.display = 'flex';
         html2canvas(document.querySelector("#pdfcontainerlogo")).then(canvas => {
-            pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 600, 350, undefined, false)
+            pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 600, 450, undefined, false)
             document.querySelector("#pdfcontainerlogo").style.display = 'none';
 
-            let counter = 1;
+            let counter_posicao = 1;
+            let counter_loop = selecionados.length;
 
-            selecionados.forEach(just => {
+            selecionados.forEach((just) => {
                 document.querySelector(`#pdfcontainerdiv${just.id}`).style.display = 'flex';
                 html2canvas(document.querySelector(`#pdfcontainerdiv${just.id}`)).then(canvas => {
                     let imgData = canvas.toDataURL('image/png');
-                    pdf.addImage(imgData, 'PNG', 0, (counter * 350), 600, 350, undefined, false);
-                    counter++;
+                    pdf.addImage(imgData, 'PNG', 0, (counter_posicao * 160), 600, 400, undefined, false);
+                    counter_posicao++;
                     document.querySelector(`#pdfcontainerdiv${just.id}`).style.display = 'none';
+                    counter_loop -= 1;
+                    if (counter_loop === 0) {
+                        pdf.save("Relatório.pdf");
+                    }
                 })
             })
-
-            pdf.save("Relatório.pdf");
         })
     }
 
@@ -34,11 +37,15 @@ export const ListaSelecionados = ({ selecionados }) => {
         <>
             <PdfContainer id="pdfcontainerlogo">
                 <BoschLogo pdfMode />
+                <PdfTitulo>
+                    Relatório de justificativas ETS - Feito no dia {new Date().toLocaleDateString()}
+                </PdfTitulo>
             </PdfContainer>
             {
                 selecionados.map(justificativa => {
                     return (
                         <PdfContainer key={justificativa.id} id={`pdfcontainerdiv${justificativa.id}`}>
+                            <Line />
                             <PdfTitulo>
                                 Colaborador: {justificativa.colaborador.nome} - EDV: {justificativa.colaborador.edv}
                             </PdfTitulo>
@@ -48,6 +55,7 @@ export const ListaSelecionados = ({ selecionados }) => {
                             <PdfDescricao>
                                 {justificativa.motivo}
                             </PdfDescricao>
+                            <br /><br />
                         </PdfContainer>
                     )
                 })
@@ -71,6 +79,13 @@ const BtnBox = styled.div`
     width: 75%;
     margin: 0 auto;
     margin-bottom: 1rem;
+`;
+
+const Line = styled.div`
+    height: 2px;
+    width: 75%;
+    background-color: #b5b5b5;
+    margin: .25rem auto;
 `;
 
 const JustificativaInfoContainer = styled.div`
@@ -111,7 +126,9 @@ const PdfTitulo = styled.p`
 `;
 
 const PdfDescricao = styled.p`
-    margin-top: 2rem;
     font-size: 1.5rem;
     text-align: center;
+    max-width: 80%;
+    margin: 0 auto;
+    margin-top: 2rem;
 `;
