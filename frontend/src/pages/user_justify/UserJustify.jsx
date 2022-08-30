@@ -3,8 +3,12 @@ import { Navbar } from "../../global_components/Navbar/Navbar";
 import { InputText } from "../../global_components/inputs/input_text/InputText";
 import { SelectBox } from "../../global_components/inputs/select_box/SelectBox";
 import { Button } from "../../global_components/inputs/button/Button";
+import { useState } from "react";
 
 export const UserJustify = () => {
+  const [timeone, setTimeone] = useState("07:30");
+  const [timetwo, setTimetwo] = useState("17:30");
+
   return (
     <>
       <Navbar />
@@ -23,7 +27,7 @@ export const UserJustify = () => {
 
             <DateContainer>
               <div>
-                <label>Data:</label>
+                <label>De:</label>
                 <InputText type="date" />
               </div>
               <div>
@@ -33,13 +37,10 @@ export const UserJustify = () => {
             </DateContainer>
 
             <InputsContainerFlex>
-              <label>Horario de Registro 1M:</label>
-              <InputText type="time" />
-            </InputsContainerFlex>
-
-            <InputsContainerFlex>
-              <label>Horario de Registro 2M:</label>
-              <InputText type="time" />
+              <label>Hora:</label>
+              <InputText type="time" value={timeone} onchange={(evt) => setTimeone(evt.target.value)}  />
+              <label>Até:</label>
+              <InputText type="time" value={timetwo} onchange={(evt) => setTimetwo(evt.target.value)}  />
             </InputsContainerFlex>
 
             <TextAreaContainer>
@@ -90,6 +91,7 @@ const DateContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 10px;
   }
 `;
 
@@ -102,6 +104,7 @@ const InputsContainerFlex = styled.div`
 const TextareaInput = styled.textarea`
   resize: none;
   border: 1px solid black;
+  padding: 8px;
 `;
 
 const TextAreaContainer = styled.div`
