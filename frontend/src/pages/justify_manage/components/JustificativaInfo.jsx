@@ -1,26 +1,51 @@
-import { useEffect } from "react";
 import styled from "styled-components";
 import { Button } from "../../../global_components/inputs/button/Button";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
+import { BoschLogo } from "../../../global_components/bosch_logo/BoschLogo";
 
 export const JustificativaInfo = ({ display, justificativa }) => {
 
-    useEffect(() => {
-        console.log(justificativa)
-    }, []);
+    const exportPdf = () => {
+        document.querySelector("#pdfcontainerdiv").style.display = 'flex';
+        html2canvas(document.querySelector("#pdfcontainerdiv")).then(canvas => {
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF('p', 'pt', 'a4', false);
+            pdf.addImage(imgData, 'PNG', 0, 0, 600, 450, undefined, false);
+            pdf.save("download.pdf");
+            document.querySelector("#pdfcontainerdiv").style.display = 'none';
+        })
+    }
+
     return (
         <>
             {display ?
                 <JustificativaInfoContainer>
-                    <PdfContainer>
+                    <PdfContainer id="pdfcontainerdiv">
+                        <BoschLogo height />
+                        <PdfTitulo>
+                            Colaborador: {justificativa.colaborador.nome} - EDV: {justificativa.colaborador.edv}
+                        </PdfTitulo>
+                        <PdfTitulo>
+                            {justificativa.justificado == "S" ? "Justificado" : "Não Justificado"} - {justificativa.data_inicio} - Ocorrência: {justificativa.ocorrencia}
+                        </PdfTitulo>
+                        <PdfDescricao>
+                            {justificativa.motivo}
+                        </PdfDescricao>
+                    </PdfContainer>
+                    <div>
+                        <TituloJustificativa>
+                            Colaborador: {justificativa.colaborador.nome}
+                        </TituloJustificativa>
                         <TituloJustificativa>
                             {justificativa.justificado == "S" ? "Justificado" : "Não Justificado"} - {justificativa.data_inicio} - Ocorrência: {justificativa.ocorrencia}
                         </TituloJustificativa>
                         <DescJustificativa>
                             {justificativa.motivo}
                         </DescJustificativa>
-                    </PdfContainer>
+                    </div>
                     <BtnBox>
-                        <Button>Gerar PDF</Button>
+                        <Button onClick={exportPdf}>Gerar PDF</Button>
                     </BtnBox>
                 </JustificativaInfoContainer>
                 :
@@ -31,7 +56,16 @@ export const JustificativaInfo = ({ display, justificativa }) => {
 }
 
 const PdfContainer = styled.div`
-
+    width: 1024px;
+    padding: 10px;
+    background-color: white;
+    height: 768px;
+    visibility: ${props => props.invisible ? 'hidden' : 'visible'};
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    z-index: -15;
 `;
 
 const BtnBox = styled.div`
@@ -55,10 +89,22 @@ const JustificativaInfoContainer = styled.div`
 const TituloJustificativa = styled.p`
     font-size: large;
     text-align: center;
-    padding-top: 4px;
+    padding-top: 1rem;
 `;
 
 const DescJustificativa = styled.p`
     margin-top: 2rem;
+    text-align: center;
+`;
+
+const PdfTitulo = styled.p`
+    font-size: 1.75rem;
+    text-align: center;
+    padding-top: 1rem;
+`;
+
+const PdfDescricao = styled.p`
+    margin-top: 2rem;
+    font-size: 1.5rem;
     text-align: center;
 `;

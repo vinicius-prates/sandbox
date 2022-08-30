@@ -11,6 +11,8 @@
   "dependencies": {
     "@formkit/auto-animate": "^1.0.0-beta.1",
     "axios": "^0.27.2",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
     "notiflix": "^3.2.5",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
