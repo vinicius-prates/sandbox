@@ -11,6 +11,9 @@ export const InputText = (props) => {
           onChange={props.onchange}
           className="error"
           type={props.type}
+          readOnly={props.readonly}
+          min={props.min}
+          max={props.max}
         />
         <ErrorMsg>{props.placeholder} Inválido</ErrorMsg>
       </Wrapper>
