@@ -28,7 +28,7 @@ export const ListaSelecionados = ({ selecionados }) => {
                         counter_posicao = 0;
                     }
                     let imgData = canvas.toDataURL('image/png');
-                    pdf.addImage(imgData, 'PNG', 0, (counter_posicao * 160), 600, 400, undefined, false);
+                    pdf.addImage(imgData, 'PNG', 0, (counter_posicao * 170), 600, 400, undefined, false);
                     counter_posicao++;
                     document.querySelector(`#pdfcontainerdiv${just.id}`).style.display = 'none';
                     counter_loop -= 1;
@@ -54,7 +54,13 @@ export const ListaSelecionados = ({ selecionados }) => {
                         <PdfContainer key={justificativa.id} id={`pdfcontainerdiv${justificativa.id}`}>
                             <Line />
                             <PdfTitulo>
-                                Colaborador: {justificativa.colaborador.nome} - EDV: {justificativa.colaborador.edv}
+                                <strong>Colaborador:</strong> {justificativa.colaborador.nome} - <strong>EDV:</strong> {justificativa.colaborador.edv}
+                            </PdfTitulo>
+                            <PdfTitulo>
+                                <strong>Data:</strong> De {justificativa.data_inicio} até {justificativa.data_fim}
+                            </PdfTitulo>
+                            <PdfTitulo>
+                                <strong>Horário:</strong> De {justificativa.horario_inicio} até {justificativa.horario_fim}
                             </PdfTitulo>
                             <PdfTitulo>
                                 {justificativa.justificado == "S" ? "Justificado" : "Não Justificado"} - {justificativa.data_inicio} - Ocorrência: {justificativa.ocorrencia}
@@ -132,15 +138,15 @@ const PdfContainer = styled.div`
 `;
 
 const PdfTitulo = styled.p`
-    font-size: 1.75rem;
+    font-size: 1.65rem;
     text-align: center;
-    padding-top: 1rem;
+    padding-top: .5rem;
 `;
 
 const PdfDescricao = styled.p`
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     text-align: center;
     max-width: 80%;
     margin: 0 auto;
-    margin-top: 2rem;
+    margin-top: .5rem;
 `;

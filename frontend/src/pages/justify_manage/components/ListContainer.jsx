@@ -30,6 +30,7 @@ export const ListContainer = ({
           return {
             ...just,
             data_inicio: new Date(just.data_inicio).toLocaleDateString(),
+            data_fim: new Date(just.data_fim).toLocaleDateString(),
           }
         })
         setJustificativas(data)

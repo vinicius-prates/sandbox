@@ -29,21 +29,35 @@ export const JustificativaInfo = ({ display, justificativa }) => {
                         <br /><br />
                         <Line />
                         <PdfTitulo>
-                            Colaborador: {justificativa.colaborador.nome} - EDV: {justificativa.colaborador.edv}
+                            <strong>Colaborador:</strong> {justificativa.colaborador.nome} - <strong>EDV:</strong> {justificativa.colaborador.edv}
                         </PdfTitulo>
                         <PdfTitulo>
-                            {justificativa.justificado == "S" ? "Justificado" : "Não Justificado"} - {justificativa.data_inicio} - Ocorrência: {justificativa.ocorrencia}
+                            <strong>Data:</strong> De {justificativa.data_inicio} até {justificativa.data_fim}
+                        </PdfTitulo>
+                        <PdfTitulo>
+                            <strong>Horário:</strong> De {justificativa.horario_inicio} até {justificativa.horario_fim}
+                        </PdfTitulo>
+                        <PdfTitulo>
+                            {justificativa.justificado == "S" ? "Justificado" : "Não Justificado"} - Ocorrência: {justificativa.ocorrencia}
                         </PdfTitulo>
                         <PdfDescricao>
                             {justificativa.motivo}
                         </PdfDescricao>
                     </PdfContainer>
+
+
                     <div>
                         <TituloJustificativa>
-                            Colaborador: {justificativa.colaborador.nome}
+                            <strong>Colaborador</strong>: {justificativa.colaborador.nome} - <strong>EDV</strong>: {justificativa.colaborador.edv}
                         </TituloJustificativa>
                         <TituloJustificativa>
-                            {justificativa.justificado == "S" ? "Justificado" : "Não Justificado"} - {justificativa.data_inicio} - Ocorrência: {justificativa.ocorrencia}
+                            <strong>Data:</strong> De {justificativa.data_inicio} até {justificativa.data_fim}
+                        </TituloJustificativa>
+                        <TituloJustificativa>
+                            <strong>Horário:</strong> De {justificativa.horario_inicio} até {justificativa.horario_fim}
+                        </TituloJustificativa>
+                        <TituloJustificativa>
+                            {justificativa.justificado == "S" ? "Justificado" : "Não Justificado"} - Ocorrência: {justificativa.ocorrencia}
                         </TituloJustificativa>
                         <DescJustificativa>
                             {justificativa.motivo}
