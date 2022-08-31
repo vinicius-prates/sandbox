@@ -6,10 +6,10 @@ export const BoschLogo = (props) => {
   if (props.slash) {
     return <Img src={LogoBoschSlash} />
   } else {
-    return <Img src={LogoBoschDefault} />
+    return <Img src={LogoBoschDefault} pdfMode={props.pdfMode} />
   }
 };
 
 const Img = styled.img`
-  height: 40px;
+  height: ${props => props.pdfMode ? '80px' : '40px'};
 `

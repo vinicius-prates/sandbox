@@ -71,9 +71,7 @@ export const LoginForm = () => {
           type="password"
         />
         <div className="ButtonLoginContainer">
-          <div className="btn-login">
-            <Button name="Login" onClick={ValidateLogin} />
-          </div>
+          <Button onClick={ValidateLogin}>Login</Button>
           <div className="ForgotPasswordLink">Esqueceu a senha?</div>
         </div>
       </Container>
@@ -107,9 +105,8 @@ const Container = styled.div`
     gap: 5px;
     color: #287eff;
 
-    .btn-login {
-      width: 100%;
-      height: 40px;
+    & Button {
+      padding: .5rem 0;
     }
 
     & .ForgotPasswordLink {

@@ -4,18 +4,33 @@ import { SelectBox } from "../../../global_components/inputs/select_box/SelectBo
 import { CheckBox } from "../../../global_components/inputs/check_box/CheckBox";
 import { Button } from "../../../global_components/inputs/button/Button";
 
-export const InputsContainer = () => {
+export const InputsContainer = ({
+  checklist,
+  setChecklist,
+  filtroSelecionado,
+  setFiltroSelecionado,
+  setJustificativaSelecionada,
+  setFiltroPesquisa,
+  filtroPesquisa,
+  ocorrenciaOptions,
+  setOcorrencia }) => {
+
+  const toggleCheckboxes = () => {
+    setChecklist(!checklist);
+    setJustificativaSelecionada(undefined);
+  }
+
   return (
     <InputContainer>
-      <SearchBar placeholder="Pesquisar..." />
-      <SelectBox options={[]}/>
+      <SearchBar placeholder="Pesquisar..." onchange={(e) => setFiltroPesquisa(e.target.value)} value={filtroPesquisa} />
+      <SelectBox options={ocorrenciaOptions} onchange={setOcorrencia} maisClaro />
       <div className="checkboxContainer">
-        <CheckBox name="Tudo" />
-        <CheckBox name="Justificado" />
-        <CheckBox name="Nao Justificado" />
+        <CheckBox label="Justificado" checked={filtroSelecionado == "S"} onChange={() => setFiltroSelecionado("S")} />
+        <CheckBox label="Tudo" checked={filtroSelecionado == "tudo"} onChange={() => setFiltroSelecionado("tudo")} />
+        <CheckBox label="Nao Justificado" checked={filtroSelecionado == "N"} onChange={() => setFiltroSelecionado("N")} />
       </div>
       <div className="btnContainer">
-        <Button name="Gerar Relatório" />
+        <Button onClick={toggleCheckboxes} selected={checklist}>Gerar Relatório</Button>
       </div>
     </InputContainer>
   );

@@ -50,11 +50,11 @@ class Justificativa(models.Model):
     ocorrencia = models.CharField(
         max_length=30, choices=Ocorrencia.choices, default=None
     )
-    data_inicio = models.CharField(max_length=10)
-    data_fim = models.CharField(max_length=10)
+    data_inicio = models.DateField()
+    data_fim = models.DateField()
     horario_inicio = models.TimeField()
     horario_fim = models.TimeField()
-    motivo = models.TextField(max_length=2000)
+    motivo = models.TextField(max_length=400)
     justificado = models.CharField(
         max_length=1, choices=Justificado.choices, default="N"
     )
