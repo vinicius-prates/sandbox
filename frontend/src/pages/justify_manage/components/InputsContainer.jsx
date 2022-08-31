@@ -16,9 +16,9 @@ export const InputsContainer = ({ checklist, setChecklist, filtroSelecionado, se
       <SearchBar placeholder="Pesquisar..." />
       <SelectBox options={[]} onchange={undefined} />
       <div className="checkboxContainer">
-        <CheckBox label="Justificado" checked={filtroSelecionado == "justificado"} onChange={() => setFiltroSelecionado("justificado")} />
+        <CheckBox label="Justificado" checked={filtroSelecionado == "S"} onChange={() => setFiltroSelecionado("S")} />
         <CheckBox label="Tudo" checked={filtroSelecionado == "tudo"} onChange={() => setFiltroSelecionado("tudo")} />
-        <CheckBox label="Nao Justificado" checked={filtroSelecionado == "nao_justificado"} onChange={() => setFiltroSelecionado("nao_justificado")} />
+        <CheckBox label="Nao Justificado" checked={filtroSelecionado == "N"} onChange={() => setFiltroSelecionado("N")} />
       </div>
       <div className="btnContainer">
         <Button onClick={toggleCheckboxes} selected={checklist}>Gerar Relatório</Button>
