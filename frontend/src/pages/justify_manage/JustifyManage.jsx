@@ -24,13 +24,11 @@ export const JustifyManage = () => {
     { value: "Falta", text: "Falta" },
     { value: "Afastamento", text: "Afastamento" },
     { value: "Intervalo Irregular", text: "Intervalo Irregular" },
-    { value: "Cracha Provisorio", text: "Crachá Provisorio" },
+    { value: "Crachá provisório", text: "Crachá provisório" },
   ];
 
   useEffect(() => {
     let arr_filtrar = justificativas;
-
-    // ?????????????????????????????????????????????????? PQ OCORRENCIA Q N TEM NENHUMA FILTRA COMO TODAS? DESCOBRIR. TALVEZ FILTER N POSSA DELETAR TUDO. SLA.
 
     arr_filtrar = filtroSelecionado == "tudo" ? arr_filtrar :
       arr_filtrar = arr_filtrar.filter(just => just.justificado == filtroSelecionado);
@@ -64,17 +62,21 @@ export const JustifyManage = () => {
           {checklist &&
             <ListContainer
               checklist
-              justificativas={filtradas.length ? filtradas : justificativas}
+              justificativas={filtradas}
               setJustificativas={setJustificativas}
               setJustificativaSelecionada={setJustificativaSelecionada}
               selecionados={selecionados}
               setSelecionados={setSelecionados}
+              setFiltradas={setFiltradas}
             />}
           {!checklist &&
             <ListContainer
-              justificativas={filtradas.length ? filtradas : justificativas}
+              justificativas={filtradas}
               setJustificativas={setJustificativas}
               setJustificativaSelecionada={setJustificativaSelecionada}
+              selecionados={selecionados}
+              setSelecionados={setSelecionados}
+              setFiltradas={setFiltradas}
             />}
 
           {justificativaSelecionada && <JustificativaInfo display={true} justificativa={justificativaSelecionada} />}

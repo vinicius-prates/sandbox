@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export const ListContainer = ({ checklist, setJustificativaSelecionada, setSelecionados, selecionados, justificativas, setJustificativas }) => {
+export const ListContainer = ({ checklist, setJustificativaSelecionada, setSelecionados, selecionados, justificativas, setJustificativas, setFiltradas }) => {
 
   const toggleSelecionado = (just) => {
     let lista = [...selecionados];
@@ -20,6 +20,7 @@ export const ListContainer = ({ checklist, setJustificativaSelecionada, setSelec
     await axios.get("http://localhost:8000/api/justificativas/")
       .then(({ data }) => {
         setJustificativas(data)
+        setFiltradas(data)
       });
   }
 
