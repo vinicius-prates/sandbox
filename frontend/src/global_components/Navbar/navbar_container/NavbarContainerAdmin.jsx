@@ -21,6 +21,7 @@ export const NavbarContainerAdmin = () => {
         <LinksContainer>
           <NavbarLinks name="Justificativas" link="/admin" />
           <NavbarLinks name="Cadastro" link="/cadastro" />
+          <NavbarLinks name="Nova Justificativa" link="/justificativa" />
         </LinksContainer>
         <LogoutLink onclick={logout} />
       </NavbarContent>
