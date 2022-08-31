@@ -59,25 +59,15 @@ export const JustifyManage = () => {
           ocorrenciaOptions={ocorrenciaOptions}
         />
         <div className="ListContainerBlock">
-          {checklist &&
             <ListContainer
-              checklist
+              checklist={checklist}
               justificativas={filtradas}
               setJustificativas={setJustificativas}
               setJustificativaSelecionada={setJustificativaSelecionada}
               selecionados={selecionados}
               setSelecionados={setSelecionados}
               setFiltradas={setFiltradas}
-            />}
-          {!checklist &&
-            <ListContainer
-              justificativas={filtradas}
-              setJustificativas={setJustificativas}
-              setJustificativaSelecionada={setJustificativaSelecionada}
-              selecionados={selecionados}
-              setSelecionados={setSelecionados}
-              setFiltradas={setFiltradas}
-            />}
+            />
 
           {justificativaSelecionada && <JustificativaInfo display={true} justificativa={justificativaSelecionada} />}
           {checklist && <ListaSelecionados selecionados={selecionados} />}
