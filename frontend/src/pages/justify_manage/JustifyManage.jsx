@@ -69,7 +69,7 @@ export const JustifyManage = () => {
               setFiltradas={setFiltradas}
             />
 
-          {justificativaSelecionada && <JustificativaInfo display={true} justificativa={justificativaSelecionada} />}
+          {justificativaSelecionada && <JustificativaInfo display={true} justificativa={justificativaSelecionada} setJustificativaSelecionada={setJustificativaSelecionada} />}
           {checklist && <ListaSelecionados selecionados={selecionados} />}
           {!justificativaSelecionada && !checklist && <JustificativaInfo display={false} />}
 

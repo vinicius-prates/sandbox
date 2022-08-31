@@ -3,8 +3,10 @@ import { Button } from "../../../global_components/inputs/button/Button";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { BoschLogo } from "../../../global_components/bosch_logo/BoschLogo";
+import axios from 'axios';
+import Notiflix from "notiflix";
 
-export const JustificativaInfo = ({ display, justificativa }) => {
+export const JustificativaInfo = ({ display, justificativa, setJustificativaSelecionada }) => {
 
     const exportPdf = () => {
         document.querySelector("#pdfcontainerdiv").style.display = 'flex';
@@ -15,6 +17,21 @@ export const JustificativaInfo = ({ display, justificativa }) => {
             pdf.save("download.pdf");
             document.querySelector("#pdfcontainerdiv").style.display = 'none';
         })
+    }
+
+    const justificarOcorrencia = async () => {
+        await axios.patch(`http://localhost:8000/api/justificativas/${justificativa.id}/`, {justificado: "S"})
+            .then(({data}) => {
+                Notiflix.Notify.success("Justificado com sucesso.")
+                setJustificativaSelecionada({
+                    ...justificativa,
+                    justificado: data.justificado,
+                });
+            })
+            .catch((err) => {
+                Notiflix.Notify.failure("Algo aconteceu de errado. Entre em contato com a equipe de desenvolvimento quando possível.");
+                console.log(err);
+            })
     }
 
     return (
@@ -65,6 +82,9 @@ export const JustificativaInfo = ({ display, justificativa }) => {
                     </div>
                     <BtnBox>
                         <Button onClick={exportPdf}>Gerar PDF</Button>
+                    </BtnBox>
+                    <BtnBox>
+                        <Button onClick={justificarOcorrencia} disabled={justificativa.justificado == "S"}>Justificar Ocorrência</Button>
                     </BtnBox>
                 </JustificativaInfoContainer>
                 :
