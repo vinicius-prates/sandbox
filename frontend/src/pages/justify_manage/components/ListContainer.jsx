@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 
 export const ListContainer = ({ checklist, setJustificativaSelecionada, setSelecionados, selecionados, justificativas, setJustificativas, setFiltradas }) => {
@@ -19,6 +19,12 @@ export const ListContainer = ({ checklist, setJustificativaSelecionada, setSelec
   const getJustificativas = async () => {
     await axios.get("http://localhost:8000/api/justificativas/")
       .then(({ data }) => {
+        data = data.map(just => {
+          return {
+            ...just,
+            data_inicio: new Date(just.data_inicio).toLocaleDateString(),
+          }
+        })
         setJustificativas(data)
         setFiltradas(data)
       });
