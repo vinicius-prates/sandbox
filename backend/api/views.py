@@ -41,7 +41,7 @@ class TurnoViewSet(ModelViewSet):
 
 
 class JustificativaViewSet(ModelViewSet):
-    queryset = Justificativa.objects.all()
+    queryset = Justificativa.objects.order_by("-data_inicio")
 
     def get_serializer_class(self):
         if not self.request.method in SAFE_METHODS:
