@@ -2,7 +2,14 @@ import styled from "styled-components";
 import { useEffect } from "react";
 import axios from "axios";
 
-export const ListContainer = ({ checklist, setJustificativaSelecionada, setSelecionados, selecionados, justificativas, setJustificativas, setFiltradas }) => {
+export const ListContainer = ({
+  checklist,
+  setJustificativaSelecionada,
+  setSelecionados,
+  selecionados,
+  justificativas,
+  setJustificativas,
+  setFiltradas }) => {
 
   const toggleSelecionado = (just) => {
     let lista = [...selecionados];
