@@ -14,14 +14,21 @@ export const JustifyManage = () => {
   const [selecionados, setSelecionados] = useState([]);
   const [filtroSelecionado, setFiltroSelecionado] = useState("tudo");
   const [justificativaSelecionada, setJustificativaSelecionada] = useState();
+  const [filtroPesquisa, setFiltroPesquisa] = useState("");
 
   useEffect(() => {
     if (filtroSelecionado != "tudo") {
-      setFiltradas(justificativas.filter(just => just.justificado == filtroSelecionado));
+      filtroPesquisa.length ?
+        setFiltradas(justificativas.filter(just => just.justificado == filtroSelecionado && just.colaborador.nome.toLowerCase().includes(filtroPesquisa.toLowerCase())))
+        :
+        setFiltradas(justificativas.filter(just => just.justificado == filtroSelecionado))
     } else {
-      setFiltradas(justificativas);
+      filtroPesquisa.length ?
+        setFiltradas(justificativas.filter(just => just.colaborador.nome.toLowerCase().includes(filtroPesquisa.toLowerCase())))
+        :
+        setFiltradas(justificativas);
     }
-  }, [filtroSelecionado]);
+  }, [filtroSelecionado, filtroPesquisa]);
 
   return (
     <>
@@ -33,6 +40,8 @@ export const JustifyManage = () => {
           filtroSelecionado={filtroSelecionado}
           setFiltroSelecionado={setFiltroSelecionado}
           setJustificativaSelecionada={setJustificativaSelecionada}
+          setFiltroPesquisa={setFiltroPesquisa}
+          filtroPesquisa={filtroPesquisa}
         />
         <div className="ListContainerBlock">
           {checklist &&

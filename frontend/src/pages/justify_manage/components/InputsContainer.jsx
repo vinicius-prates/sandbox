@@ -4,7 +4,7 @@ import { SelectBox } from "../../../global_components/inputs/select_box/SelectBo
 import { CheckBox } from "../../../global_components/inputs/check_box/CheckBox";
 import { Button } from "../../../global_components/inputs/button/Button";
 
-export const InputsContainer = ({ checklist, setChecklist, filtroSelecionado, setFiltroSelecionado, setJustificativaSelecionada }) => {
+export const InputsContainer = ({ checklist, setChecklist, filtroSelecionado, setFiltroSelecionado, setJustificativaSelecionada, setFiltroPesquisa, filtroPesquisa }) => {
 
   const toggleCheckboxes = () => {
     setChecklist(!checklist);
@@ -13,7 +13,7 @@ export const InputsContainer = ({ checklist, setChecklist, filtroSelecionado, se
 
   return (
     <InputContainer>
-      <SearchBar placeholder="Pesquisar..." />
+      <SearchBar placeholder="Pesquisar..." onchange={(e) => setFiltroPesquisa(e.target.value)} value={filtroPesquisa} />
       <SelectBox options={[]} onchange={undefined} />
       <div className="checkboxContainer">
         <CheckBox label="Justificado" checked={filtroSelecionado == "S"} onChange={() => setFiltroSelecionado("S")} />
