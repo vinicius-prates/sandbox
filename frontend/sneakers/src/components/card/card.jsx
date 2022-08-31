@@ -27,7 +27,16 @@ const DivContent = styled.div`
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    transition: 0.4s;
 
+
+    &:hover{
+        background-color: black;
+        margin-top: -20px;
+        transition: 0.4s;
+    }
+
+    
 
 `
 const DivImg = styled.div`
@@ -47,7 +56,7 @@ const DivSneakerInfo = styled.div`
 
     width: 280px;
     color: whitesmoke;
-    background-color: #383838;
+    background-color: transparent;
 
     h1 {
         letter-spacing: 2px;

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import { Card } from './components/card/card';
 import { Navbar } from './components/navbar/navbar'
+import { Footer } from './components/footer/footer';
 
 function App() {
 
@@ -26,9 +27,11 @@ function App() {
 
        <DivAllSneakers>
         {apiresult.map((item, index) => (
-          <div key={index}><Card image={item.image} name={item.name} price={item.price} releaser_year={item.releaser_year} condition={item.condition} brand={item.brand} /></div>
+          <DivCard key={index}><Card image={item.image} name={item.name} price={item.price} releaser_year={item.releaser_year} condition={item.condition} brand={item.brand} /></DivCard>
         ))}
        </DivAllSneakers>
+
+       <Footer/>
     </>
    
   )
@@ -38,7 +41,15 @@ const DivAllSneakers = styled.div`
   justify-content: center;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 3vw;
+  margin: 0 20px 0 20px;
+`
+
+const DivCard = styled.div`
+
+    
+
 `
 
 export default App
