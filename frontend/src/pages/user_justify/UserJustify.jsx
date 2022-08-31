@@ -59,6 +59,7 @@ export const UserJustify = () => {
       <WholeContentArea>
         <JustifyForm>
           <InputsContainerInForm>
+          <JustifyTitle>Criar Nova Justificativa</JustifyTitle>
             <InputsContainerFlex>
               <label>Nome:</label>
               <InputText value={colaborador.nome} readonly={true} />
@@ -108,6 +109,11 @@ export const UserJustify = () => {
     </>
   );
 };
+
+const JustifyTitle = styled.h1`
+  text-align: center;
+  font-weight: 400;
+`;
 
 const WholeContentArea = styled.div`
   height: 100vh;

@@ -43,7 +43,7 @@ export const LoginForm = () => {
         .then(({ data }) => {
           if (data.auth) {
             createSession(data.colaborador);
-            navigate("/admin");
+            navigate("/justificativa");
             Notiflix.Notify.success(`Bem-vindo, ${data.colaborador.nome}`)
           } else {
             errorMessage("Login incorreto");
