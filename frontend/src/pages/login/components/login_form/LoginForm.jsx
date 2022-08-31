@@ -44,6 +44,7 @@ export const LoginForm = () => {
           if (data.auth) {
             createSession(data.colaborador);
             navigate("/admin");
+            Notiflix.Notify.success(`Bem-vindo, ${data.colaborador.nome}`)
           } else {
             errorMessage("Login incorreto");
           }
@@ -72,7 +73,7 @@ export const LoginForm = () => {
         />
         <div className="ButtonLoginContainer">
           <Button onClick={ValidateLogin}>Login</Button>
-          <div className="ForgotPasswordLink">Esqueceu a senha?</div>
+          {/* <div className="ForgotPasswordLink">Esqueceu a senha?</div> */}
         </div>
       </Container>
     </Main>

@@ -1,12 +1,15 @@
-import styled from "styled-components";
+import styled, { ThemeConsumer } from "styled-components";
 import { Navbar } from "../../global_components/Navbar/Navbar";
 import { InputText } from "../../global_components/inputs/input_text/InputText";
 import { SelectBox } from "../../global_components/inputs/select_box/SelectBox";
 import { Button } from "../../global_components/inputs/button/Button";
 import { useState, useEffect } from "react";
 import { getSession } from "../../session";
+import axios from "axios";
+import Notiflix from "notiflix";
 
 export const UserJustify = () => {
+  const [motivo, setMotivo] = useState("");
   const [timeone, setTimeone] = useState("07:30");
   const [timetwo, setTimetwo] = useState("17:30");
   const [dateone, setDateone] = useState(new Date().toISOString().split("T")[0]);
@@ -26,6 +29,29 @@ export const UserJustify = () => {
   useEffect(() => {
     setColaborador(getSession());
   }, [])
+
+  const createJustificativa = async () => {
+    const justData = {
+      ocorrencia: ocorrencia,
+      data_inicio: dateone,
+      data_fim: datetwo,
+      horario_inicio: timeone,
+      horario_fim: timetwo,
+      motivo: motivo,
+      justificado: "N",
+      colaborador: colaborador.id
+  };
+
+    await axios
+            .post("http://localhost:8000/api/justificativas/", justData)
+            .then(({data}) => {
+              Notiflix.Notify.success("Justificativa criada com sucesso.")
+            })
+            .catch((err) => {
+              Notiflix.Notify.failure("Algo aconteceu de errado. Entre em contato com a equipe de desenvolvimento quando possível.")
+              console.log(err)
+            })
+  }
 
   return (
     <>
@@ -64,11 +90,17 @@ export const UserJustify = () => {
 
             <TextAreaContainer>
               <label>Motivo:</label>
-              <TextareaInput rows="4" cols="50" maxLength={400} />
+              <TextareaInput 
+               rows="4" 
+               cols="50" 
+               maxLength={400} 
+               value={motivo} 
+               onChange={(e) => setMotivo(e.target.value)} 
+               />
             </TextAreaContainer>
 
             <DivButton>
-              <Button name="Enviar" />
+              <Button onClick={createJustificativa}>Enviar</Button>
             </DivButton>
           </InputsContainerInForm>
         </JustifyForm>
