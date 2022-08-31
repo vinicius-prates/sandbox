@@ -72,7 +72,7 @@ export const LoginForm = () => {
         />
         <div className="ButtonLoginContainer">
           <Button onClick={ValidateLogin}>Login</Button>
-          <div className="ForgotPasswordLink">Esqueceu a senha?</div>
+          {/* <div className="ForgotPasswordLink">Esqueceu a senha?</div> */}
         </div>
       </Container>
     </Main>
