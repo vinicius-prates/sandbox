@@ -10,7 +10,7 @@ export const App = () => {
       <Route path="/" element={<LoginPage />} />
       <Route path="/admin" element={<JustifyManage />} />
       <Route path="/cadastro" element={<RegisterPage/>} />
-      <Route path="/justify" element={<UserJustify/>} />
+      <Route path="/justificativa" element={<UserJustify/>} />
     </Routes>
   );
 };
