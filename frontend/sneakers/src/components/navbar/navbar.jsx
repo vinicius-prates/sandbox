@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Navbar = () => {
@@ -5,13 +6,12 @@ export const Navbar = () => {
     return(
         <NavBar>
             <NavBarTittle>
-                <a href="#">Zimbas Sneakers</a>
+                <Link to='/'>Zimbas Sneakers </Link>
 
             </NavBarTittle>
             <NavBarLinks>
-                <a href=""> Sneakers</a>
-                <a href="#">Contact</a>
-                <a href="#">About Us</a>
+                <a href=""> Contact</a>
+                <Link to="addsneaker">Add New Sneaker </Link>
             </NavBarLinks>
 
 

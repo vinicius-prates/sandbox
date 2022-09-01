@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+from pickle import TRUE
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -124,8 +125,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOWED_ORIGINS = [
-    
-    "http://localhost:8000",
-    "http://127.0.0.1:5173",
-]
+CORS_ORIGIN_ALLOW_ALL = True
