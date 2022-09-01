@@ -20,6 +20,8 @@ export const SearchBar = (props) => {
 const Search = styled.div`
   display: flex;
   align-items: center;
+  background-color: #fafafa;
+  border-radius: 10px;
 
   & > button {
     border: 0;
@@ -48,7 +50,7 @@ const Search = styled.div`
 
     &:focus {
       outline: 0;
-      background-color: #f9f9f9;
+      background-color: #fdfdfd;
       transition: 150ms;
     }
   }

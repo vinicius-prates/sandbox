@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import axios from "axios";
 import Notiflix from "notiflix";
 import { useState } from "react";
-import { InputText } from "../../../../global_components/inputs/input_text/InputText";
-import { Button } from "../../../../global_components/inputs/button/Button";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import { FormHeader } from "../../../../global_components/forms/header/FormHeader";
-import { useNavigate } from 'react-router-dom';
-import axios from "axios";
+import { Button } from "../../../../global_components/inputs/button/Button";
+import { InputText } from "../../../../global_components/inputs/input_text/InputText";
 import { createSession } from "../../../../session";
 
 export const LoginForm = () => {
@@ -16,24 +16,20 @@ export const LoginForm = () => {
   const navigate = useNavigate();
 
   const errorMessage = (msg) => {
-    Notiflix.Notify.failure(
-      msg,
-      { position: "center-top" }
-    )
-  }
+    Notiflix.Notify.failure(msg, { position: "center-top" });
+  };
 
   async function ValidateLogin() {
-
     setErrorEdv(edv.length == 0);
     if (edv.length == 0) {
       errorMessage("Campo EDV vazio");
-      return
+      return;
     }
 
     setErrorEdv(edv.length != 8 || /[a-zA-Z]/g.test(edv));
     if (edv.length != 8 || /[a-zA-Z]/g.test(edv)) {
       errorMessage("EDV Inválido");
-      return
+      return;
     }
 
     setErrorPass(pass.length == 0);
@@ -42,15 +38,19 @@ export const LoginForm = () => {
     }
 
     if (!errorEdv && !errorPass) {
-      await axios.post('http://localhost:8000/api/tryLogin/', { edv: edv, senha: pass })
+      await axios
+        .post("http://localhost:8000/api/tryLogin/", { edv: edv, senha: pass })
         .then(({ data }) => {
           if (data.auth) {
             createSession(data.colaborador);
-            navigate('/admin');
+            navigate("/justificativa");
+            Notiflix.Notify.success(`Bem-vindo, ${data.colaborador.nome}`, {
+              position: "left-top",
+            });
           } else {
             errorMessage("Login incorreto");
           }
-        })
+        });
     }
   }
 
@@ -74,8 +74,8 @@ export const LoginForm = () => {
           type="password"
         />
         <div className="ButtonLoginContainer">
-          <Button name="Login" onClick={ValidateLogin} />
-          <div className="ForgotPasswordLink">Esqueceu a senha?</div>
+          <Button onClick={ValidateLogin}>Login</Button>
+          <button onClick={ () => {navigate('/login/forgotPassword/')}} className="ForgotPasswordLink">Esqueceu a senha?</button>
         </div>
       </Container>
     </Main>
@@ -108,9 +108,16 @@ const Container = styled.div`
     gap: 5px;
     color: #287eff;
 
+    & Button {
+      padding: 0.5rem 0;
+    }
+
     & .ForgotPasswordLink {
       font-size: 13px;
       cursor: pointer;
+      border: 0;
+      background-color: transparent;
+      color: #287eff;
 
       &:hover {
         color: #73abff;

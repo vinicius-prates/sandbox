@@ -20,7 +20,8 @@ export const NavbarContainerAdmin = () => {
       <NavbarContent>
         <LinksContainer>
           <NavbarLinks name="Justificativas" link="/admin" />
-          <NavbarLinks name="Cadastro" />
+          <NavbarLinks name="Cadastro" link="/cadastro" />
+          <NavbarLinks name="Nova Justificativa" link="/justificativa" />
         </LinksContainer>
         <LogoutLink onclick={logout} />
       </NavbarContent>

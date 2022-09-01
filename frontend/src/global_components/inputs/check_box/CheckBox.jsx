@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-export const CheckBox = (props) => {
+export const CheckBox = ({ label, checked, onChange }) => {
   return (
     <Box>
-      {props.name}
-      <input type="radio" name="radio" checked={props.checked}/>
+      {label}
+      <input type="radio" name="radio" checked={checked} onChange={onChange} />
       <Checkmark className="checkmark"></Checkmark>
     </Box>
   );

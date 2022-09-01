@@ -1,3 +1,4 @@
+from pyexpat import model
 from rest_framework import serializers
 from .models import Colaborador, Turno, Justificativa
 
@@ -5,22 +6,29 @@ from .models import Colaborador, Turno, Justificativa
 class TurnoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Turno
-        fields = ['descricao', 'entrada', 'saida']
+        fields = ["id", "descricao", "entrada", "saida"]
 
 
 class ColaboradorSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Colaborador
-        fields = ['id', 'edv', 'nome', 'senha', 'dia_curso', 'perm', 'turno']
+        fields = ["id", "edv", "nome", "email", "senha", "perm", "turno"]
 
 
 class LoginSerializer(serializers.Serializer):
     class Meta:
-        fields = ['auth']
+        fields = ["auth"]
 
 
 class JustificativaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Justificativa
-        fields = '__all__'
+        fields = "__all__"
+
+
+class JustificativaInfoSerializer(serializers.ModelSerializer):
+    colaborador = ColaboradorSerializer()
+
+    class Meta:
+        model = Justificativa
+        fields = "__all__"
