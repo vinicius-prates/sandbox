@@ -1,14 +1,15 @@
+import styled from "styled-components";
+import BoschBackground from "../login/assets/bosch-background.png";
 import axios from "axios";
 import Notiflix from "notiflix";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import { FormHeader } from "../../../../global_components/forms/header/FormHeader";
-import { Button } from "../../../../global_components/inputs/button/Button";
-import { InputText } from "../../../../global_components/inputs/input_text/InputText";
-import { createSession } from "../../../../session";
+import { FormHeader } from "../../global_components/forms/header/FormHeader";
+import { Button } from "../../global_components/inputs/button/Button";
+import { InputText } from "../../global_components/inputs/input_text/InputText";
+import { createSession } from "../../session";
 
-export const LoginForm = () => {
+export const ForgotPassword = () => {
   const [edv, setEdv] = useState("");
   const [pass, setPass] = useState("");
   const [errorEdv, setErrorEdv] = useState(false);
@@ -53,36 +54,55 @@ export const LoginForm = () => {
         });
     }
   }
-
   return (
-    <Main>
-      <FormHeader name="LOGIN" />
-      <Container>
-        <InputText
-          placeholder="EDV"
-          value={edv}
-          error={errorEdv}
-          onchange={(evt) => setEdv(evt.target.value)}
-          type="text"
-        />
+    <Main bg={BoschBackground}>
+      <MainFormContainer>
+        <FormHeader name="RECUPERAR SENHA" />
+        <Container>
+          <InputText
+            placeholder="EDV"
+            value={edv}
+            error={errorEdv}
+            onchange={(evt) => setEdv(evt.target.value)}
+            type="text"
+          />
 
-        <InputText
-          placeholder="Senha"
-          value={pass}
-          error={errorPass}
-          onchange={(evt) => setPass(evt.target.value)}
-          type="password"
-        />
-        <div className="ButtonLoginContainer">
-          <Button onClick={ValidateLogin}>Login</Button>
-          <button onClick={ () => {navigate('/login/forgotPassword/')}} className="ForgotPasswordLink">Esqueceu a senha?</button>
-        </div>
-      </Container>
+          <InputText
+            placeholder="Email"
+            value={pass}
+            error={errorPass}
+            onchange={(evt) => setPass(evt.target.value)}
+            type="email"
+          />
+          <div className="ButtonLoginContainer">
+            <Button onClick={ValidateLogin}>Login</Button>
+            <button
+              onClick={() => {
+                navigate("/");
+              }}
+              className="ForgotPasswordLink"
+            >
+              Voltar
+            </button>
+          </div>
+        </Container>
+      </MainFormContainer>
     </Main>
   );
 };
 
 const Main = styled.div`
+  background-image: url(${(props) => props.bg});
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+`;
+
+const MainFormContainer = styled.div`
   background-color: white;
   width: 680px;
   height: 500px;
