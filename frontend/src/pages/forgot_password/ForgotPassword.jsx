@@ -43,7 +43,7 @@ export const ForgotPassword = () => {
         .get("http://127.0.0.1:8000/api/colaboradores/")
         .then(({ data }) => {
             data.map((item) => {
-                item.edv == edv && item.email == email & navigate("/")
+                item.edv == edv && item.email == email && navigate("/")
             })
         })
     }
