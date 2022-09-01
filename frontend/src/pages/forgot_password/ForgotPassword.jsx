@@ -11,8 +11,13 @@ import { InputText } from "../../global_components/inputs/input_text/InputText";
 export const ForgotPassword = () => {
   const [edv, setEdv] = useState("");
   const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const [confSenha, setConfSenha] = useState("");
   const [errorEdv, setErrorEdv] = useState(false);
   const [errorEmail, setErrorEmail] = useState(false);
+  const [errorSenha, setErrorSenha] = useState(false);
+  const [errorConfSenha, setErrorConfSenha] = useState(false);
+
   const navigate = useNavigate();
 
   const errorMessage = (msg) => {
@@ -28,26 +33,76 @@ export const ForgotPassword = () => {
 
     setErrorEdv(edv.length != 8 || /[a-zA-Z]/g.test(edv));
     if (edv.length != 8 || /[a-zA-Z]/g.test(edv)) {
-      errorMessage("EDV Inválido");
+      errorMessage("EDV Inválido (Precisa possuir 8 dígitos)");
       return;
     }
 
     setErrorEmail(email.length == 0)
     if (email.length == 0){
-        errorMessage("Email Inválido")
+        errorMessage("Campo Email vazio");
         return;
     }
 
-    if (!errorEdv) {
+    setErrorSenha(senha.length == 0)
+    if (senha.length == 0) {
+      errorMessage("Campo senha vazio");
+      return;
+    }
+
+    setErrorConfSenha(confSenha.length == 0)
+    if (confSenha.length == 0){
+      errorMessage("Campo Confirmar senha vazio");
+      return;
+    }
+
+    setErrorConfSenha(confSenha !== senha)
+    setErrorSenha(confSenha !== senha)
+    if (confSenha !== senha) {
+      errorMessage("As senhas não conferem");
+      return;
+    }
+
+    let colaboradorFound = false;
+
+    if (
+      !errorEdv && 
+      !errorEmail &&
+      !errorSenha &&
+      !errorConfSenha
+      ) {
       await axios
-        .get("http://127.0.0.1:8000/api/colaboradores/")
+        .get("http://localhost:8000/api/colaboradores/")
         .then(({ data }) => {
-            data.map((item) => {
-                item.edv == edv && item.email == email && navigate("/")
+            let contador_ultima_iter = data.length;
+            data.forEach(async (colab) => {
+                if (colab.edv == edv && colab.email == email) {
+                  colaboradorFound = true;
+                  await axios.patch(`http://localhost:8000/api/colaboradores/${colab.id}/`, {senha: senha})
+                    .then(({data}) => {
+                      Notiflix.Notify.success(`Colaborador ${data.nome} teve sua senha atualizada com sucesso.`);
+                      navigate("/");
+                    })
+                    .catch(err => {
+                      errorMessage("Algo aconteceu de errado. Entre em contato com a equipe de desenvolvimento quando possível.");
+                      console.log(err);
+                    })
+                }
+
+                contador_ultima_iter -= 1;
+                if(contador_ultima_iter == 0){
+                  if (!colaboradorFound) {
+                    errorMessage("Colaborador inexistente.")
+                  }
+                }
             })
+        })
+        .catch(err => {
+          errorMessage("Algo aconteceu de errado. Entre em contato com a equipe de desenvolvimento quando possível.");
+          console.log(err);
         })
     }
   }
+
   return (
     <Main bg={BoschBackground}>
       <MainFormContainer>
@@ -66,6 +121,20 @@ export const ForgotPassword = () => {
             error={errorEmail}
             onchange={(evt) => setEmail(evt.target.value)}
             type="email"
+          />
+          <InputText
+            placeholder="Nova senha"
+            value={senha}
+            error={errorSenha}
+            onchange={(evt) => setSenha(evt.target.value)}
+            type="password"
+          />
+          <InputText
+            placeholder="Confirmar nova senha"
+            value={confSenha}
+            error={errorConfSenha}
+            onchange={(evt) => setConfSenha(evt.target.value)}
+            type="password"
           />
           <div className="ButtonLoginContainer">
             <Button onClick={ValidateLogin}>Renovar Senha</Button>
@@ -98,7 +167,7 @@ const Main = styled.div`
 const MainFormContainer = styled.div`
   background-color: white;
   width: 680px;
-  height: 500px;
+  height: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
