@@ -7,13 +7,12 @@ import { useNavigate } from "react-router-dom";
 import { FormHeader } from "../../global_components/forms/header/FormHeader";
 import { Button } from "../../global_components/inputs/button/Button";
 import { InputText } from "../../global_components/inputs/input_text/InputText";
-import { createSession } from "../../session";
 
 export const ForgotPassword = () => {
   const [edv, setEdv] = useState("");
-  const [pass, setPass] = useState("");
+  const [email, setEmail] = useState("");
   const [errorEdv, setErrorEdv] = useState(false);
-  const [errorPass, setErrorPass] = useState(false);
+  const [errorEmail, setErrorEmail] = useState(false);
   const navigate = useNavigate();
 
   const errorMessage = (msg) => {
@@ -33,31 +32,26 @@ export const ForgotPassword = () => {
       return;
     }
 
-    setErrorPass(pass.length == 0);
-    if (pass.length == 0) {
-      errorMessage("Campo SENHA vazia");
+    setErrorEmail(email.length == 0)
+    if (email.length == 0){
+        errorMessage("Email Inválido")
+        return;
     }
 
-    if (!errorEdv && !errorPass) {
+    if (!errorEdv) {
       await axios
-        .post("http://localhost:8000/api/tryLogin/", { edv: edv, senha: pass })
+        .get("http://127.0.0.1:8000/api/colaboradores/")
         .then(({ data }) => {
-          if (data.auth) {
-            createSession(data.colaborador);
-            navigate("/justificativa");
-            Notiflix.Notify.success(`Bem-vindo, ${data.colaborador.nome}`, {
-              position: "left-top",
-            });
-          } else {
-            errorMessage("Login incorreto");
-          }
-        });
+            data.map((item) => {
+                item.edv == edv && item.email == email & navigate("/")
+            })
+        })
     }
   }
   return (
     <Main bg={BoschBackground}>
       <MainFormContainer>
-        <FormHeader name="RECUPERAR SENHA" />
+        <FormHeader name="NOVA SENHA" />
         <Container>
           <InputText
             placeholder="EDV"
@@ -66,16 +60,15 @@ export const ForgotPassword = () => {
             onchange={(evt) => setEdv(evt.target.value)}
             type="text"
           />
-
           <InputText
             placeholder="Email"
-            value={pass}
-            error={errorPass}
-            onchange={(evt) => setPass(evt.target.value)}
+            value={email}
+            error={errorEmail}
+            onchange={(evt) => setEmail(evt.target.value)}
             type="email"
           />
           <div className="ButtonLoginContainer">
-            <Button onClick={ValidateLogin}>Login</Button>
+            <Button onClick={ValidateLogin}>Renovar Senha</Button>
             <button
               onClick={() => {
                 navigate("/");
