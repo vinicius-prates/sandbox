@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import axios from "axios";
 import Notiflix from "notiflix";
 import { useState } from "react";
-import { InputText } from "../../../../global_components/inputs/input_text/InputText";
-import { Button } from "../../../../global_components/inputs/button/Button";
-import { FormHeader } from "../../../../global_components/forms/header/FormHeader";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import styled from "styled-components";
+import { FormHeader } from "../../../../global_components/forms/header/FormHeader";
+import { Button } from "../../../../global_components/inputs/button/Button";
+import { InputText } from "../../../../global_components/inputs/input_text/InputText";
 import { createSession } from "../../../../session";
 
 export const LoginForm = () => {
@@ -44,7 +44,9 @@ export const LoginForm = () => {
           if (data.auth) {
             createSession(data.colaborador);
             navigate("/justificativa");
-            Notiflix.Notify.success(`Bem-vindo, ${data.colaborador.nome}`)
+            Notiflix.Notify.success(`Bem-vindo, ${data.colaborador.nome}`, {
+              position: "left-top",
+            });
           } else {
             errorMessage("Login incorreto");
           }
@@ -73,7 +75,7 @@ export const LoginForm = () => {
         />
         <div className="ButtonLoginContainer">
           <Button onClick={ValidateLogin}>Login</Button>
-          {/* <div className="ForgotPasswordLink">Esqueceu a senha?</div> */}
+          <button onClick={ () => {navigate('/login/forgotPassword/')}} className="ForgotPasswordLink">Esqueceu a senha?</button>
         </div>
       </Container>
     </Main>
@@ -107,12 +109,15 @@ const Container = styled.div`
     color: #287eff;
 
     & Button {
-      padding: .5rem 0;
+      padding: 0.5rem 0;
     }
 
     & .ForgotPasswordLink {
       font-size: 13px;
       cursor: pointer;
+      border: 0;
+      background-color: transparent;
+      color: #287eff;
 
       &:hover {
         color: #73abff;
