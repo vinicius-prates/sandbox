@@ -145,9 +145,9 @@ export const RegisterPage = () => {
                     successMessage(`Usuário ${data.nome} criado com sucesso.`)
                 })
                 .catch(err => {
-                    if (err.code === "ERR_BAD_REQUEST") {
-                        errorMessage("EDV Já cadastrado.")
-                    }
+                    Object.values(err.response.data).forEach(errormsg => {
+                        errorMessage(errormsg[0])
+                    })
                 })
 
         }
