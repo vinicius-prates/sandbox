@@ -22,7 +22,7 @@ export const JustificativaInfo = ({ display, justificativa, setJustificativaSele
     const justificarOcorrencia = async () => {
         await axios.patch(`http://localhost:8000/api/justificativas/${justificativa.id}/`, {justificado: "S"})
             .then(({data}) => {
-                Notiflix.Notify.success("Justificado com sucesso.")
+                Notiflix.Notify.success("Justificado com sucesso.",{position: "left-top"})
                 setJustificativaSelecionada({
                     ...justificativa,
                     justificado: data.justificado,

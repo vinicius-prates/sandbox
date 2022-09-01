@@ -45,7 +45,7 @@ export const UserJustify = () => {
     await axios
             .post("http://localhost:8000/api/justificativas/", justData)
             .then(({data}) => {
-              Notiflix.Notify.success("Justificativa criada com sucesso.")
+              Notiflix.Notify.success("Justificativa criada com sucesso.", {position: "left-top"})
             })
             .catch((err) => {
               Notiflix.Notify.failure("Algo aconteceu de errado. Entre em contato com a equipe de desenvolvimento quando possível.")
