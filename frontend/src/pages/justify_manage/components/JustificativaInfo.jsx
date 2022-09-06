@@ -5,8 +5,11 @@ import html2canvas from "html2canvas";
 import { BoschLogo } from "../../../global_components/bosch_logo/BoschLogo";
 import axios from 'axios';
 import Notiflix from "notiflix";
+import { getSession } from "../../../session";
 
 export const JustificativaInfo = ({ display, justificativa, setJustificativaSelecionada }) => {
+
+    const session = getSession();
 
     const exportPdf = () => {
         document.querySelector("#pdfcontainerdiv").style.display = 'flex';
@@ -20,9 +23,9 @@ export const JustificativaInfo = ({ display, justificativa, setJustificativaSele
     }
 
     const justificarOcorrencia = async () => {
-        await axios.patch(`http://localhost:8000/api/justificativas/${justificativa.id}/`, {justificado: "S"})
-            .then(({data}) => {
-                Notiflix.Notify.success("Justificado com sucesso.",{position: "left-top"})
+        await axios.patch(`http://localhost:8000/api/justificativas/${justificativa.id}/`, { justificado: "S" })
+            .then(({ data }) => {
+                Notiflix.Notify.success("Justificado com sucesso.", { position: "left-top" })
                 setJustificativaSelecionada({
                     ...justificativa,
                     justificado: data.justificado,
@@ -84,7 +87,7 @@ export const JustificativaInfo = ({ display, justificativa, setJustificativaSele
                         <Button onClick={exportPdf}>Gerar PDF</Button>
                     </BtnBox>
                     <BtnBox>
-                        <Button onClick={justificarOcorrencia} disabled={justificativa.justificado == "S"}>Justificar Ocorrência</Button>
+                        <Button onClick={justificarOcorrencia} disabled={justificativa.justificado == "S" || session.perm === "Usuário"}>Justificar Ocorrência</Button>
                     </BtnBox>
                 </JustificativaInfoContainer>
                 :

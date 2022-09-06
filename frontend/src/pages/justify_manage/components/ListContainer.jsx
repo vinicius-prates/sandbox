@@ -34,7 +34,7 @@ export const ListContainer = ({
           }
         })
         setJustificativas(data)
-        setFiltradas(data)
+        setFiltradas && setFiltradas(data)
       });
   }
 
