@@ -3,6 +3,7 @@ import { BoschLogo } from "../../bosch_logo/BoschLogo";
 import { LogoutLink } from "../links/LogoutLink";
 import { useNavigate } from "react-router-dom";
 import { endSession } from "./../../../session"
+import { NavbarLinks } from "../links/NavbarLinks";
 
 export const NavbarContainerNonAdmin = () => {
   const navigate = useNavigate();
@@ -16,6 +17,10 @@ export const NavbarContainerNonAdmin = () => {
     <Nav>
       <BoschLogo slash={false} />
       <NavbarContent>
+        <LinksContainer>
+          <NavbarLinks name="Justificativas" link="/minhas-justificativas" />
+          <NavbarLinks name="Nova Justificativa" link="/justificativa" />
+        </LinksContainer>
         <LogoutLink onclick={logout} />
       </NavbarContent>
     </Nav>
@@ -35,4 +40,10 @@ const NavbarContent = styled.div`
   display: flex;
   align-items: center;
   gap: 50px;
+`;
+
+const LinksContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
 `;
