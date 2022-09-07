@@ -4,6 +4,8 @@ import BoschBackground from "./assets/bosch-background.png";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { getSession } from "../../session";
+import { Link } from "react-router-dom";
+
 
 export const LoginPage = () => {
 
@@ -19,6 +21,7 @@ export const LoginPage = () => {
   return (
     <Main bg={BoschBackground}>
       <LoginForm />
+      <Link className="link-devs" to="/developers">{'</>'}</Link>
     </Main>
   );
 };
@@ -32,4 +35,28 @@ const Main = styled.div`
   align-items: center;
   justify-content: center;
   font-weight: bold;
-`;
+
+  .link-devs{
+    position: absolute;
+    bottom: 3rem;
+    right: 3rem;
+    border-radius: 8px;
+    background-color: dodgerblue;
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 1.5rem;
+
+    &:hover{
+    background-color: #1977d6;
+    
+    }
+  }
+`
+
+
