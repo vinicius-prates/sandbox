@@ -1,6 +1,6 @@
 import axios from "axios";
 import Notiflix from "notiflix";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { FormHeader } from "../../../../global_components/forms/header/FormHeader";
@@ -14,6 +14,20 @@ export const LoginForm = () => {
   const [errorEdv, setErrorEdv] = useState(false);
   const [errorPass, setErrorPass] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const listener = event => {
+      if (event.code === "Enter" || event.code === "NumpadEnter") {
+        event.preventDefault();
+        event.stopPropagation();
+        ValidateLogin();
+      }
+    };
+    document.addEventListener("keydown", listener);
+    return () => {
+      document.removeEventListener("keydown", listener);
+    };
+  }, [])
 
   const errorMessage = (msg) => {
     Notiflix.Notify.failure(msg, { position: "center-top" });
