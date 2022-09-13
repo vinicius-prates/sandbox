@@ -8,9 +8,9 @@ export const RegisterPage = () => {
             <NavBar/>
             <div className="flex justify-center align-middle w-screen items-center h-[90vh]">
 
-                <div className="flex flex-col text-center items-center gap-10  bg-gray-100 p-6 mx-6 p rounded-lg w-[42rem] h-[24rem] shadow-xl shadow-gray-300">
+                <div className="flex flex-col text-center items-center gap-10  bg-gray-100 p-6 mx-6 p rounded-lg w-[42rem] lg:h-[24rem] shadow-xl shadow-gray-300">
                     <h1 className="font-bold text-3xl ">First time here?</h1>
-                    <div className="flex gap-8">
+                    <div className="flex lg:flex-row flex-col gap-8">
                     <div className="flex flex-col gap-4">
 
                     <input placeholder="Your name" type="text" className="p-1 border-b-2 focus:outline-none" ></input>
