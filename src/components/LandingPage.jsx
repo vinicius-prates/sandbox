@@ -13,9 +13,9 @@ export const LandingPage = () => {
                     <Link to="login" className="bg-white text-black font-bold p-4 rounded-[20px] w-32 text-center
                     hover:bg-black hover:text-white ease-in-out duration-300"
                      >Login</Link>
-                    <Link to="" className="bg-blue-600 text-white font-bold p-4 rounded-[20px] w-32 text-center
+                    <Link to="register" className="bg-blue-600 text-white font-bold p-4 rounded-[20px] w-32 text-center
                     hover:bg-white hover:text-blue-600 ease-in-out duration-300"
-                    href=""> Sign Up</Link>
+                    > Sign Up</Link>
                 </div>
                     
             </div>
