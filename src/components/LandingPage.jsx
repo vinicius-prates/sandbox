@@ -1,4 +1,6 @@
 import '../App.css';
+import { Link } from 'react-router-dom'
+
 export const LandingPage = () => {
     return(
         <>
@@ -8,12 +10,12 @@ export const LandingPage = () => {
                     New here? Create an account.
                 </h1>
                 <div className="my-8 flex gap-6 self-center">
-                    <a className="bg-white text-black font-bold p-4 rounded-[20px] w-32 text-center
+                    <Link to="login" className="bg-white text-black font-bold p-4 rounded-[20px] w-32 text-center
                     hover:bg-black hover:text-white ease-in-out duration-300"
-                    href="" >Login</a>
-                    <a className="bg-blue-600 text-white font-bold p-4 rounded-[20px] w-32 text-center
+                     >Login</Link>
+                    <Link to="" className="bg-blue-600 text-white font-bold p-4 rounded-[20px] w-32 text-center
                     hover:bg-white hover:text-blue-600 ease-in-out duration-300"
-                    href=""> Sign Up</a>
+                    href=""> Sign Up</Link>
                 </div>
                     
             </div>

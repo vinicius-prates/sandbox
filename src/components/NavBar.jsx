@@ -1,4 +1,6 @@
 import '../App.css';
+import { Link } from 'react-router-dom'
+
 export const NavBar = () => {
    
 
@@ -12,19 +14,19 @@ export const NavBar = () => {
       
         <div >
 			   <nav className="relative px-4 py-4 flex justify-between items-center bg-white w-full">
-		<a  className="text-3xl font-bold leading-none" href="#">
+		<Link to="/"  className="text-3xl font-bold leading-none" >
 			EXOBANK
-		</a>
+		</Link>
 		<div  className="lg:hidden">
-			<button onClick={toggleMenu}  className="navbar-burger flex items-center text-blue-600 p-3">
+			<button onClick={toggleMenu}  className="navbar-burger flex items-center text-blue-600 p-2">
 				<svg  className="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
 					<title>Mobile menu</title>
 					<path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
 				</svg>
 			</button>
 		</div>
-		<ul  className="mobile-menu  mt-36 ml-0 bg-white w-[100%]  gap-y-1.5 p-6 rounded-b-lg grid flex md:hidden md:mt-0 md:ml-0 md:bg-transparent text-center justify-center hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
-			<li><a  className="text-sm text-gray-800 font-bold hover:text-gray-500 border-b-2" href="#">Home</a></li>
+		<ul  className="mobile-menu  mt-[7rem] ml-0 bg-white w-[100%] p-3 gap-y-1.5 rounded-b-lg grid flex md:hidden md:mt-0 md:ml-0 md:bg-transparent text-center justify-center hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
+			<li><Link to="/"  className="text-sm text-gray-800 font-bold hover:text-gray-500 border-b-2" >Home</Link></li>
 			<li  className="text-gray-300">
 				
 			</li>
