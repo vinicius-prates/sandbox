@@ -12,7 +12,7 @@ export const LoginPage = () =>{
                 <input placeholder="CPF" type="text" className="p-1 border-b-2 focus:outline-none"></input>
                 <input placeholder="Password" type="password" className="p-1 border-b-2 focus:outline-none"></input>
                 <a className="bg-blue-600 text-white font-bold p-4 rounded-[20px] w-52  text-center
-                    hover:bg-white hover:text-blue-600 ease-in-out duration-300">Log in</a>
+                    hover:bg-white hover:text-blue-600 ease-in-out duration-300 cursor-pointer">Log in</a>
                 <a className=""></a>
             </div>
             </div>
