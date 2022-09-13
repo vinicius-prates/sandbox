@@ -14,35 +14,27 @@ export const NavBar = () => {
       
         <div >
 			   <nav className="relative px-4 py-4 flex justify-between items-center bg-white w-full">
-		<Link to="/"  className="text-3xl font-bold leading-none" >
+		<Link to="/"  className="text-3xl font-bold leading-none  select-none">
 			EXOBANK
 		</Link>
 		<div  className="lg:hidden">
-			<button onClick={toggleMenu}  className="navbar-burger flex items-center text-blue-600 p-2">
+			<button onClick={toggleMenu}  className="navbar-burger flex items-center text-blue-600 p-2 ">
 				<svg  className="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
 					<title>Mobile menu</title>
 					<path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
 				</svg>
 			</button>
 		</div>
-		<ul  className="mobile-menu  mt-[7rem] ml-0 bg-white w-[100%] p-3 gap-y-1.5 rounded-b-lg grid flex md:hidden md:mt-0 md:ml-0 md:bg-transparent text-center justify-center hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
-			<li><Link to="/"  className="text-sm text-gray-800 font-bold hover:text-gray-500 border-b-2" >Home</Link></li>
-			<li  className="text-gray-300">
-				
-			</li>
-			<li><a  className="text-sm text-gray-800 hover:text-gray-500 font-bold border-b-2 duration-300" href="#">About Exo</a></li>
-			<li  className="text-gray-300">
-				
-			</li>
-			<li><a  className="text-sm text-gray-800 hover:text-gray-500 font-bold border-b-2  duration-300" href="#">Services</a></li>
-			<li  className="text-gray-300">
-				
-			</li>
-			<li><a  className="text-sm text-gray-800 hover:text-gray-500 font-bold border-b-2 duration-300" href="#">For you</a></li>
-			<li  className="text-gray-300">
+		<ul  className="mobile-menu  mt-[25rem] ml-0 bg-white w-[100%]  rounded-b-lg flex-col gap-4 flex md:hidden md:mt-0 md:ml-0 md:bg-transparent text-center  hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6 h-screen">
+			<li><Link to="/"  className="text-sm text-gray-800 font-bold hover:text-gray-500 border-b-2  select-none" >Home</Link></li>
+		
+			<li><a  className="text-sm text-gray-800 hover:text-gray-500 font-bold border-b-2 duration-300 select-none" href="#">About Exo</a></li>
 			
-			</li>
-			<li><a  className="text-sm text-gray-800 hover:text-gray-500 font-bold border-b-2 duration-300" href="#">Contact</a></li>
+			<li><a  className="text-sm text-gray-800 hover:text-gray-500 font-bold border-b-2  duration-300 select-none" href="#">Services</a></li>
+		
+			<li><a  className="text-sm text-gray-800 hover:text-gray-500 font-bold border-b-2 duration-300  select-none" href="#">For you</a></li>
+			
+			<li><a  className="text-sm text-gray-800 hover:text-gray-500 font-bold border-b-2 duration-300  select-none" href="#">Contact</a></li>
 		</ul>
 		<a  className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200" href="#">Sign In</a>
 		<a  className="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" href="#">Sign up</a>
