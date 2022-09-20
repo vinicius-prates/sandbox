@@ -25,8 +25,8 @@ export const NavBar = () => {
 				</svg>
 			</button>
 		</div>
-		<ul  className="mobile-menu lg:mt-0 mt-[20rem] ml-0 bg-white w-80  h-80	justify-center
-		 rounded-lg flex-col gap-4 flex md:hidden  md:ml-0 md:bg-transparent text-center  hidden absolute top-1/2 left-1/2 
+		<ul  className="mobile-menu lg:mt-0 mt-[25rem] ml-0 bg-white w-[90%]  h-[40rem]	justify-center
+		 rounded-lg flex-col gap-6 flex md:hidden  md:ml-0 md:bg-transparent text-center  hidden absolute top-1/2 left-1/2 
 		 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6 lg:flex  
 		 lg:gap-0 lg:flex-row lg:h-0  h-screen">
 			<li><Link to="/"  className="text-lg lg:text-sm text-gray-800 font-bold hover:text-gray-500 border-b-2  select-none" >Home</Link></li>
