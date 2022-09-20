@@ -5,7 +5,7 @@ import  Cartoes  from '../assets/cartoes.png';
 export const ForYou = () => {
 
     return(
-        <div className="bg-[#161616] bg-cover text-center flex flex-col gap-4 py-8 px-6 justify-center">
+        <div className="bg-[#161616] bg-cover text-center flex flex-col gap-4 py-16 px-6 justify-center">
 
             <div className="flex flex-col lg:flex-row justify-center gap-20">
             <div className=" flex flex-col lg:flex-col gap-5 align-center justify-center lg:w-[25%]">
@@ -16,7 +16,7 @@ export const ForYou = () => {
             <a className="text-white   text-center border-white border-b-2 w-[50%] text-lg self-center lg:self-start lg:text-left lg:w-[32.5%]" 
                 href=''>See Card Options </a>
             </div>
-            <img src={Cartoes} className="w-96 p-4 lg:w-[30%] "></img>
+            <img src={Cartoes} className="w-96 p-4 lg:w-[30%]   "></img>
            
             
             
