@@ -9,7 +9,7 @@ export const AboutExo = () => {
             <div className="w-full lg:w-[50%]">
                 <img src={Phone} className="w-[100%] h-full  lg:w-[100%]"></img>
             </div>
-            <div className=" flex flex-col gap-4 lg:w-[50%] justify-center ">
+            <div className=" flex flex-col gap-8 lg:w-[50%] justify-center ">
                 <h1  className="text-white text-3xl lg:text-right ">About exo</h1>
                 <p className="text-white lg:text-right font-thin tracking-wide">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet leo lectus.
                  Phasellus in felis sed libero sagittis consequat. Curabitur et tellus turpis. Integer mattis odio ex,
