@@ -25,16 +25,19 @@ export const NavBar = () => {
 				</svg>
 			</button>
 		</div>
-		<ul  className="mobile-menu  mt-[25rem] ml-0 bg-white w-[100%]  rounded-b-lg flex-col gap-4 flex md:hidden md:mt-0 md:ml-0 md:bg-transparent text-center  hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6 lg:flex  lg:gap-0 lg:flex-row lg:h-0  h-screen">
-			<li><Link to="/"  className="text-sm text-gray-800 font-bold hover:text-gray-500 border-b-2  select-none" >Home</Link></li>
+		<ul  className="mobile-menu lg:mt-0 mt-[20rem] ml-0 bg-white w-80  h-80	justify-center
+		 rounded-lg flex-col gap-4 flex md:hidden  md:ml-0 md:bg-transparent text-center  hidden absolute top-1/2 left-1/2 
+		 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6 lg:flex  
+		 lg:gap-0 lg:flex-row lg:h-0  h-screen">
+			<li><Link to="/"  className="text-lg lg:text-sm text-gray-800 font-bold hover:text-gray-500 border-b-2  select-none" >Home</Link></li>
 		
-			<li><a  className="text-sm text-gray-800 hover:text-gray-500 font-bold border-b-2 duration-300 select-none" href="#">About Exo</a></li>
+			<li><a  className="text-lg lg:text-sm text-gray-800 hover:text-gray-500 font-bold border-b-2 duration-300 select-none" href="#">About Exo</a></li>
 			
-			<li><a  className="text-sm text-gray-800 hover:text-gray-500 font-bold border-b-2  duration-300 select-none" href="#">Services</a></li>
+			<li><a  className="text-lg lg:text-sm text-gray-800 hover:text-gray-500 font-bold border-b-2  duration-300 select-none" href="#">Services</a></li>
 		
-			<li><a  className="text-sm text-gray-800 hover:text-gray-500 font-bold border-b-2 duration-300  select-none" href="#">For you</a></li>
+			<li><a  className="text-lg lg:text-sm text-gray-800 hover:text-gray-500 font-bold border-b-2 duration-300  select-none" href="#">For you</a></li>
 			
-			<li><a  className="text-sm text-gray-800 hover:text-gray-500 font-bold border-b-2 duration-300  select-none" href="#">Contact</a></li>
+			<li><a  className="text-lg lg:text-sm text-gray-800 hover:text-gray-500 font-bold border-b-2 duration-300  select-none" href="#">Contact</a></li>
 		</ul>
 		<a  className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200" href="#">Sign In</a>
 		<a  className="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" href="#">Sign up</a>
