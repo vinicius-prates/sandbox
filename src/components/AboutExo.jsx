@@ -6,7 +6,7 @@ export const AboutExo = () => {
     return(
         <>
         <div className="bg-[#1B4372] bg-cover h-full flex flex-col p-6 gap-12 lg:flex-row lg:space-content-evenly lg:py-10 lg:px-[20rem] " >
-            <div className="w-full lg:w-[50%]">
+            <div className="w-full lg:w-[40%]">
                 <img src={Phone} className="w-[100%] h-full  lg:w-[100%]"></img>
             </div>
             <div className=" flex flex-col gap-8 lg:w-[50%] justify-center ">
