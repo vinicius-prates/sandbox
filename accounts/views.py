@@ -1,4 +1,8 @@
 from django.shortcuts import render
+from .models import (Client, 
+Account, Abstract, Advance,
+ AdvancePayment, Card, Invoice,
+  Transfers, User)
 from rest_framework.viewsets import ModelViewSet
 from .serializers import (
     ClientSerializer, AccountSerializer, TransfersSerializer,

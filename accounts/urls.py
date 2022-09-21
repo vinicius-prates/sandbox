@@ -8,3 +8,16 @@ from .views import (
 )
 
 router = routers.DefaultRouter()
+router.register("client", ClientViewSet)
+router.register("account", AccountViewSet)
+router.register("transfers", TransfersViewSet)
+router.register("cards", CardViewSet)
+router.register("invoice", InvoiceViewSet)
+router.register("advance", AdvanceViewSet)
+router.register("advance-payment", AdvancePaymentViewSet)
+router.register("abstract", AbstractViewSet)
+
+urlpatterns = [
+    path("",include(router.urls)),
+
+]

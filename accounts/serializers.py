@@ -1,5 +1,3 @@
-from asyncore import file_dispatcher
-from dataclasses import field, fields
 from rest_framework.serializers import ModelSerializer
 from .models import (Client, 
 Account, Abstract, Advance,
