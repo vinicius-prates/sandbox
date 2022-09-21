@@ -1,5 +1,3 @@
-from tkinter import CASCADE
-from turtle import onclick
 from django.db import models
 
 class User(models.Model):
