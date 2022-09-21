@@ -1,6 +1,7 @@
 # exobank-site2.0
 
 > Tools: React + Vite, Django RestFrameWork, TailWind CSS
+> Front-End from the repository <a href="https://github.com/vinicius-prates/exobank-backend"> Exobank back-end</a>
 
 
 ### First look at the app (Phone):
