@@ -5,7 +5,7 @@ export const LandingPage = () => {
     return(
         
         <div className="bg-cover bg-center  w-full h-[91.5vh]  bg-[url('./assets/navbar-image.jpg')]">
-            <div className="flex flex-col w-full justify-center self-center pt-64">
+            <div className="flex flex-col w-full justify-center gap-10 self-center pt-64">
                 <h1 className="text-white font-bold text-2xl self-center text-center justify-center">Welcome to Exo!
                     New here? Create an account.
                 </h1>
