@@ -13,8 +13,8 @@ export const ForYou = () => {
             <p className="text-white  lg:text-left font-bold tracking-wide text-bs ">Integer quis sem efficitur, 
                   sollicitudin sem non, vulputate tortor.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet leo lectus.
                  Phasellus in felis sed libero sagittis consequat.</p>
-            <a className="text-white   text-center border-white border-b-2 w-[50%] text-lg self-center lg:self-start lg:text-left lg:w-[32.5%]" 
-                href=''>See Card Options </a>
+            <Link to="/cards" className="text-white   text-center border-white border-b-2 w-[50%] text-lg self-center lg:self-start lg:text-left lg:w-[32.5%]" 
+                href=''>See Card Options </Link>
             </div>
             <img src={Cartoes} className="w-96 p-4 lg:w-[30%]   "></img>
            
