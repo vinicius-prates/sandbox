@@ -1,12 +1,13 @@
 import '../App.css';
 import { Link } from 'react-router-dom'
 import { NavBar } from '../components/NavBar';
+import { Footer } from '../components/Footer';
 
 export const RegisterPage = () => {
     return(
         <div>
             <NavBar/>
-            <div className="flex justify-center align-middle w-screen items-center h-[90vh]">
+            <div className="flex justify-center align-middle w-full items-center h-[90vh]">
 
                 <div className="flex flex-col text-center items-center gap-10  bg-gray-100 p-6 mx-6 p rounded-lg w-[42rem] lg:h-[24rem] shadow-xl shadow-gray-300">
                     <h1 className="font-bold text-3xl ">First time here?</h1>
@@ -28,9 +29,17 @@ export const RegisterPage = () => {
                     </div>
                     <a className="bg-blue-600 text-white font-bold p-4 rounded-[20px] w-52  text-center
                         hover:bg-white hover:text-blue-600 ease-in-out duration-300 cursor-pointer">Register</a>
-                    <a className=""></a>
+                        <div className="flex gap-1 lg:mt-[-30px] lg:m-2">
+                            <p>Already have a login?</p>
+                        <Link to="/login" className="text-blue-600">Login</Link>
+                        </div>
+                    
+                    
+
                 </div>
             </div>
+            <Footer/>
+
         </div>
     )
 }

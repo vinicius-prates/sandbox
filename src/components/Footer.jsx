@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export const Footer = () => {
 
     return(
-        <div className="bg-[#373737] w-full  mb-0 flex flex-col p-16 gap-4 lg:flex-row lg:px-96">
+        <div className="bg-[#373737] w-full mb-0 flex flex-col p-16 gap-4 lg:flex-row lg:px-96">
             <div className="flex flex-col gap-2">
             <h1 className="text-[#646464] text-lg">Prates Copyright@2022</h1>
             <p className="text-[#646464] text-sm">Integer quis sem efficitur, 
