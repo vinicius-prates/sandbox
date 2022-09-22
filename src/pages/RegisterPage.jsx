@@ -31,7 +31,7 @@ export const RegisterPage = () => {
                         hover:bg-white hover:text-blue-600 ease-in-out duration-300 cursor-pointer">Register</a>
                         <div className="flex gap-1 lg:mt-[-30px] lg:m-2">
                             <p>Already have a login?</p>
-                        <Link to="/login" className="text-blue-600">Login</Link>
+                        <Link to="/login" className="text-blue-600 hover:text-blue-400 transition">Login</Link>
                         </div>
                     
                     

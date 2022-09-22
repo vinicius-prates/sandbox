@@ -18,7 +18,7 @@ export const LoginPage = () =>{
                 
                 <div className="flex gap-1 lg:mt-[-30px]  mt-[-25px]">
                     <p>New Here?</p>
-                    <Link to="/register" className="text-blue-600">Register</Link>
+                    <Link to="/register" className="text-blue-600 hover:text-blue-400 transition">Register</Link>
                 </div>
             </div>
             
