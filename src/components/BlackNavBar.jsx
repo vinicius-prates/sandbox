@@ -29,15 +29,15 @@ export const BlackNavBar = () => {
 		 rounded-lg flex-col gap-6 flex md:hidden  md:ml-0 md:bg-transparent text-center  hidden absolute top-1/2 left-1/2 
 		 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto  lg:items-center lg:w-auto lg:space-x-6 
 		 lg:gap-0 lg:flex-row lg:h-0  ">
-			<li><Link to="/"  className="text-lg lg:text-sm text-gray-800 font-bold hover:text-gray-500 border-b-2  select-none" >Home</Link></li>
+			<li><Link to="/"  className="text-lg lg:text-sm text-white font-bold hover:text-gray-500 border-b-2  select-none" >Home</Link></li>
 		
-			<li><Link to="#aboutexo"  className="text-lg lg:text-sm text-gray-800 hover:text-gray-500 font-bold border-b-2 duration-300 select-none" >About Exo</Link></li>
+			<li><Link to="#aboutexo"  className="text-lg lg:text-sm text-white hover:text-gray-500 font-bold border-b-2 duration-300 select-none" >About Exo</Link></li>
 			
-			<li><a  className="text-lg lg:text-sm text-gray-800 hover:text-gray-500 font-bold border-b-2  duration-300 select-none" href="#">Services</a></li>
+			<li><a  className="text-lg lg:text-sm text-white hover:text-gray-500 font-bold border-b-2  duration-300 select-none" href="#">Services</a></li>
 		
-			<li><a  className="text-lg lg:text-sm text-gray-800 hover:text-gray-500 font-bold border-b-2 duration-300  select-none" href="#">For you</a></li>
+			<li><a  className="text-lg lg:text-sm text-white hover:text-gray-500 font-bold border-b-2 duration-300  select-none" href="#">For you</a></li>
 			
-			<li><a  className="text-lg lg:text-sm text-gray-800 hover:text-gray-500 font-bold border-b-2 duration-300  select-none" href="#">Contact</a></li>
+			<li><a  className="text-lg lg:text-sm text-white hover:text-gray-500 font-bold border-b-2 duration-300  select-none" href="#">Contact</a></li>
 		</ul>
 		<a  className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200" href="#">Sign In</a>
 		<a  className="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" href="#">Sign up</a>
