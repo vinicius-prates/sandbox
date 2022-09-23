@@ -16,8 +16,8 @@ export const Footer = () => {
                 <h1 className="text-[#646464] text-lg">Contacts</h1>
                 <div className="flex gap-2">
                     <a href="https://github.com/vinicius-prates"><img src="https://img.icons8.com/666666/ios11/2x/github.png" className="w-[3rem] "/></a>
-                    <a href="https://www.instagram.com/__viney/"> <img src="https://img.icons8.com/666666/ios11/2x/linkedin-circled.png" className="w-[3rem]  "/></a>
-                    <a href="https://www.linkedin.com/in/vinicius-prates22/"><img src="https://img.icons8.com/666666/ios11/2x/instagram-circle.png" className="w-[3rem]" /></a>
+                    <a href="https://www.linkedin.com/in/vinicius-prates22/"> <img src="https://img.icons8.com/666666/ios11/2x/linkedin-circled.png" className="w-[3rem]  "/></a>
+                    <a href="https://www.instagram.com/__viney"><img src="https://img.icons8.com/666666/ios11/2x/instagram-circle.png" className="w-[3rem]" /></a>
 
                     </div> 
             </div>

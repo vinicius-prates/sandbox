@@ -71,7 +71,7 @@ export const CardsPage = () => {
                 <p className="text-white text-lg text-left">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at turpis eleifend,
                      dignissim ipsum eu, rutrum neque. In vehicula rhoncus interdum. </p>
-                <a className="text-white text-lg font-bold py-6 px-2 bg-blue-700  rounded-2xl transition duration-200 text-center hover:bg-white hover:text-blue-600" href=""> Register!</a>
+                <Link to="/register" className="text-white text-lg font-bold py-6 px-2 bg-blue-700  rounded-2xl transition duration-200 text-center hover:bg-white hover:text-blue-600" > Register!</Link>
             </div>
         </div>
         <Footer/>
