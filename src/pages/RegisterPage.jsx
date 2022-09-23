@@ -2,10 +2,12 @@ import '../App.css';
 import { Link } from 'react-router-dom'
 import { NavBar } from '../components/NavBar';
 import { Footer } from '../components/Footer';
+import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import axios from 'axios';
 
 export const RegisterPage = () => {
+    const navigate = useNavigate();
 
 
     const [cpf, setCPF] = useState("");
@@ -23,6 +25,7 @@ export const RegisterPage = () => {
         if(password == confirmPassword && password != "" ){
 
             axios.post(url, data)
+            navigate("/register/client")
         } else {
             console.log("senha inválida!")
         }
@@ -42,9 +45,9 @@ export const RegisterPage = () => {
                     <form className="flex flex-col gap-4" onSubmit={saveUserRegister}>
                         <input placeholder="CPF" type="text" value={cpf} onChange={(evt) =>{setCPF(evt.target.value)}} className="p-1 border-b-2 focus:outline-none"></input>
                         <input placeholder="Password" type="password" value={password} onChange={(evt) => {setPassword(evt.target.value)}} className="p-1 border-b-2 focus:outline-none"></input>
-                        <input placeholder="Confirm Passpword" type="password" value={confirmPassword} onChange={(evt) => {setConfirmPassword(evt.target.value)}} className="p-1 border-b-2 focus:outline-none"></input>
+                        <input placeholder="Confirm Password" type="password" value={confirmPassword} onChange={(evt) => {setConfirmPassword(evt.target.value)}} className="p-1 border-b-2 focus:outline-none"></input>
                         <button className="bg-blue-600 text-white font-bold p-4 rounded-[20px] w-52  text-center
-                        hover:bg-white hover:text-blue-600 ease-in-out duration-300 cursor-pointer">Register</button>
+                        hover:bg-white hover:text-blue-600 ease-in-out duration-300 cursor-pointer" >Register</button>
                     </form>
 
                     </div>
