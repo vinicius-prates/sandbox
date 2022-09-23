@@ -2,8 +2,29 @@ import '../App.css';
 import { Link } from 'react-router-dom'
 import { NavBar } from '../components/NavBar';
 import { Footer } from '../components/Footer';
+import { useState } from 'react';
+import axios from 'axios';
 
 export const RegisterPage = () => {
+
+
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [cpf, setCPF] = useState("");
+    const [password, setPassword] = useState("");
+    const [birthDate, setBirthDate] = useState("");
+
+    const [data, getAllData]  = useState("");
+    const url = 'http://localhost:8000/'
+    const  getData = async () => {
+        try {
+            const {data} = await axios.get(`${url}api/client/`)
+            console.log(data)
+        }catch(err){
+            console.log(err)
+        }
+        
+    }
     return(
         <div>
             <NavBar/>
@@ -25,7 +46,6 @@ export const RegisterPage = () => {
 
                     </div>
                     
-
                     </div>
                     <a className="bg-blue-600 text-white font-bold p-4 rounded-[20px] w-52  text-center
                         hover:bg-white hover:text-blue-600 ease-in-out duration-300 cursor-pointer">Register</a>
