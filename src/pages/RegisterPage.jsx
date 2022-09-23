@@ -34,15 +34,9 @@ export const RegisterPage = () => {
                     <h1 className="font-bold text-3xl ">First time here?</h1>
                     <div className="flex lg:flex-row flex-col gap-8">
                     <div className="flex flex-col gap-4">
-
-                    <input placeholder="Your name" type="text" className="p-1 border-b-2 focus:outline-none" ></input>
-                    <input placeholder="Email" type="email" className="p-1 border-b-2 focus:outline-none" ></input>
-                    <input placeholder="CPF" type="text" className="p-1 border-b-2 focus:outline-none"></input>
-                    </div>
-                    <div className="flex flex-col gap-4">
-                    <input placeholder="Password" type="password" className="p-1 border-b-2 focus:outline-none"></input>
-                    <input placeholder="Confirm Password" type="password" className="p-1 border-b-2 focus:outline-none" ></input>
-                    <input placeholder="Birth date" type="date" className="p-1 border-b-2 focus:outline-none" ></input>
+                        <input placeholder="CPF" type="text" className="p-1 border-b-2 focus:outline-none"></input>
+                        <input placeholder="Password" type="password" className="p-1 border-b-2 focus:outline-none"></input>
+                        <input placeholder="Confirm Password" type="password" className="p-1 border-b-2 focus:outline-none"></input>
 
                     </div>
                     
