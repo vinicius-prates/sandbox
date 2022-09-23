@@ -1,7 +1,7 @@
 from django.db import models
 
 class User(models.Model):
-    email = models.EmailField()
+    cpf = models.CharField(max_length=11)
     passworld = models.CharField(max_length=100)
     
 
@@ -19,7 +19,7 @@ class Client(models.Model):
     ]
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     user_name = models.CharField(max_length=80)
-    cpf = models.CharField(max_length=11)
+    email = models.EmailField()
     sexo = models.CharField(max_length=1, choices=SEXO_TIPOS)
     birth_date = models.DateField()
     phone_number = models.CharField(max_length=20)
