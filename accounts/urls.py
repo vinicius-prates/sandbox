@@ -2,12 +2,14 @@
 from django.urls import path, include
 from rest_framework import routers
 from .views import (
+    UserViewSet,
     ClientViewSet, AccountViewSet, TransfersViewSet,
     CardViewSet, InvoiceViewSet, AdvanceViewSet,
-    AdvancePaymentViewSet, AbstractViewSet  
+    AdvancePaymentViewSet, AbstractViewSet, UserViewSet  
 )
 
 router = routers.DefaultRouter()
+router.register("user", UserViewSet)
 router.register("client", ClientViewSet)
 router.register("account", AccountViewSet)
 router.register("transfers", TransfersViewSet)

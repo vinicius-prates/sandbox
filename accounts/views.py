@@ -5,11 +5,15 @@ Account, Abstract, Advance,
   Transfers, User)
 from rest_framework.viewsets import ModelViewSet
 from .serializers import (
+    UserSerializer,
     ClientSerializer, AccountSerializer, TransfersSerializer,
     CardSerializer, InvoiceSerializer, AdvanceSerializer,
     AdvancePaymentSerializer, AbstractSerializer
 )
 
+class UserViewSet(ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 class ClientViewSet(ModelViewSet):
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
