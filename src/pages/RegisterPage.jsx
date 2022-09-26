@@ -5,7 +5,7 @@ import { Footer } from '../components/Footer';
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import axios from 'axios';
-
+import { createSession } from '../Session';
 export const RegisterPage = () => {
     const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ export const RegisterPage = () => {
         event.preventDefault()
         if(password == confirmPassword && password != "" ){
 
-            axios.post(url, data)
+            axios.post(url, data).then(res => createSession)
             navigate("/register/client")
         } else {
             console.log("senha inválida!")
