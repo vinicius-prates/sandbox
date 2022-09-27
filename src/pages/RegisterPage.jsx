@@ -9,8 +9,6 @@ import { createSession, logoutSession, getSession } from '../Session';
 export const RegisterPage = () => {
 
     useEffect(() => {
-
-        logoutSession()
         console.log(getSession())
     },[])
     const navigate = useNavigate();
@@ -30,7 +28,8 @@ export const RegisterPage = () => {
         event.preventDefault()
         if(password == confirmPassword && password != "" ){
 
-            axios.post(url, data).then(res => createSession)
+            axios.post(url, data).then(res => createSession(data))
+            console.log(getSession())
             navigate("/register/client")
         } else {
             console.log("senha inválida!")

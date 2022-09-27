@@ -4,6 +4,7 @@ import { CardsPage } from "./pages/CardsPage"
 import { LoginPage } from "./pages/LoginPage"
 import { RegisterClientPage } from "./pages/RegisterClientPage"
 import { RegisterPage } from "./pages/RegisterPage"
+import { UserPage } from "./pages/UserPage"
  
 export const MyRoutes = () => {
 
@@ -14,6 +15,7 @@ export const MyRoutes = () => {
             <Route path="register" element={<RegisterPage/>}/>
             <Route path="cards" element={<CardsPage/>}/>
             <Route path="register/client" element={<RegisterClientPage/>}/>
+            <Route path="/:id/home" element={<UserPage/>}/>
 
 
         </Routes>

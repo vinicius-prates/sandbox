@@ -2,6 +2,7 @@ import '../App.css';
 import { Link } from 'react-router-dom';
 import { getSession } from '../Session';
 import { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 export const RegisterClientPage = () => {
@@ -9,10 +10,10 @@ export const RegisterClientPage = () => {
     let session = getSession()
     useEffect (() => {
         let session = getSession()
-        console.log(session.cpf)
+        console.log(session)
     },[])
 
-
+    const navigate = useNavigate();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [sexo, setSexo] = useState("M");
@@ -21,8 +22,10 @@ export const RegisterClientPage = () => {
 
     const url = 'http://localhost:8000/api/client/'
 
+
+    
     var data = {
-        user: session.id,
+        user: session.cpf,
         user_name: name,
         email: email,
         sexo: sexo,
@@ -35,6 +38,11 @@ export const RegisterClientPage = () => {
         event.preventDefault()  
        
         axios.post(url, data)
+        .then(res => {
+            if (res.status = 201){
+                navigate(`/${session.cpf}/home`)
+            }
+        })        
      
 
     }
