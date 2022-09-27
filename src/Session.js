@@ -19,6 +19,7 @@ export const getSession = () => {
 
 export const logoutSession = () => {
 
-    localStorage.clear();
+    localStorage.removeItem('session');
 
 }
+
