@@ -6,13 +6,25 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { createSession, logoutSession, getSession } from '../Session';
+import { Notify } from 'notiflix';
 export const RegisterPage = () => {
 
-    useEffect(() => {
-        console.log(getSession())
-    },[])
     const navigate = useNavigate();
+    useEffect(() => {
+        let atualSession = getSession()
+        console.log(atualSession)
+        if (atualSession != null) {
+            Notify.success('Welcome back!')
+            navigate(`/${atualSession.cpf}/home`)
+        } else {
+            navigate(`/register`)
+        }
 
+    
+
+    },[])
+
+        
 
     const [cpf, setCPF] = useState("");
     const [password, setPassword] = useState("");
@@ -30,6 +42,7 @@ export const RegisterPage = () => {
 
             axios.post(url, data).then(res => createSession(data))
             console.log(getSession())
+            getSession()
             navigate("/register/client")
         } else {
             console.log("senha inválida!")

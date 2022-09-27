@@ -9,9 +9,9 @@ export const RegisterClientPage = () => {
 
     let session = getSession()
     useEffect (() => {
-        let session = getSession()
-        console.log(session)
-    },[])
+        getSession()
+        
+    })
 
     const navigate = useNavigate();
     const [name, setName] = useState("");
@@ -40,6 +40,7 @@ export const RegisterClientPage = () => {
         axios.post(url, data)
         .then(res => {
             if (res.status = 201){
+                Notify.success(`Bem-vindo, ${name}`)
                 navigate(`/${session.cpf}/home`)
             }
         })        

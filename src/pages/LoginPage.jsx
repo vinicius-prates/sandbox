@@ -37,6 +37,10 @@ export const LoginPage = () =>{
                 Notify.success("Logado com sucesso!")
                 navigate(`/${cpf}/home`)
             }
+            else {
+                Notify.failure('CPF or password wrong.')
+                navigate(`/login`)
+            }
         })
 
         
