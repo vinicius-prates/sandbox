@@ -42,7 +42,7 @@ export const CardsPage = () => {
         <BlackNavBar/>
         <h1 className="text-white bg-[#252525] text-center py-2 text-6xl justify-center ">3 Types of Cards!</h1>
 
-        <div className="bg-[#252525] grid flex-col text-center py-12 gap-12 lg:grid-flow-col lg:grid-rows-2 lg:px-40 md:px-10 ">
+        <div className="bg-[#252525] grid flex-col text-center py-12 gap-12 lg:grid-flow-col lg:grid-rows-2 lg:px-96 md:px-10 ">
 
             <div className="flex flex-col lg:w-[30rem]">
                 <img src={GoldCard} className="bg-[#252525]  animate-fadeinspecial"></img>
