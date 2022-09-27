@@ -1,7 +1,7 @@
 from django.db import models
 
 class User(models.Model):
-    cpf = models.CharField(max_length=11)
+    cpf = models.CharField(max_length=11, primary_key=True)
     password = models.CharField(max_length=100)
     
 
