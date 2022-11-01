@@ -7,7 +7,7 @@ class SneakerSize(models.Model):
     sneaker_size = models.IntegerField(default=39,  validators=[MinValueValidator(20), MaxValueValidator(50)])
 
     def __str__(self) -> str:
-        return self.sneaker_size
+        return str(self.sneaker_size)
 
 class User (models.Model):
 
