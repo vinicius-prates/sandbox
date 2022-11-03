@@ -33,7 +33,7 @@ class Condition (models.Model):
     itsnew = models.BooleanField(default=True)
 
     def __str__(self) -> str:
-        return self.condition
+        return str(self.condition)
 
 class Sneaker (models.Model):
 
