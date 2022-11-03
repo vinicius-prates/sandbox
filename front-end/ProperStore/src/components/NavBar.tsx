@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../assets/proper.png"
 
 export const NavBar = () => {
@@ -58,7 +59,7 @@ export const NavBar = () => {
                 >
                     <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
                         <li className="text-[#FAF9F6] text-lg font-bold hover:text-gray-600 transition-all">
-                            <a href="javascript:void(0)">Add New</a>
+                            <Link to="/addnew-sneaker">Add new</Link>
                         </li>
                         <li className="text-[#FAF9F6] text-lg font-bold hover:text-gray-600 transition-all">
                             <a href="javascript:void(0)">All sneakers</a>
