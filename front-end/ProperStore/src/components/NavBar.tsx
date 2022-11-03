@@ -58,16 +58,16 @@ export const NavBar = () => {
                 >
                     <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
                         <li className="text-[#FAF9F6] text-lg font-bold hover:text-gray-600 transition-all">
-                            <a href="javascript:void(0)">Login</a>
+                            <a href="javascript:void(0)">Add New</a>
                         </li>
                         <li className="text-[#FAF9F6] text-lg font-bold hover:text-gray-600 transition-all">
                             <a href="javascript:void(0)">All sneakers</a>
                         </li>
-                        <li className="text-[#FAF9F6] text-lg font-bold hover:text-gray-600 transition-all">
-                            <a href="javascript:void(0)">Add New</a>
+                        <li className="text-[#161616] bg-[#FAF9F6] px-4 py-2 rounded-lg text-lg font-bold hover:text-[#FAF9F6] hover:bg-[#323232] transition-all">
+                            <a href="javascript:void(0)">Login</a>
                         </li>
-                        <li className="text-[#FAF9F6] text-lg font-bold hover:text-gray-600 transition-all">
-                            <a href="javascript:void(0)">Contact US</a>
+                        <li className="text-[#FAF9F6] text-lg font-bold bg-blue-700 px-4 py-2 rounded-lg hover:text-blue-700 hover:bg-[#faf9f6]  transition-all">
+                            <a href="javascript:void(0)">Register</a>
                         </li>
                     </ul>
                 </div>
