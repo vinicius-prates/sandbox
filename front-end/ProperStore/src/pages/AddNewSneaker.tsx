@@ -33,33 +33,33 @@ export const AddNewSneaker = () => {
         <>
         <NavBar/>
 
-        <form className="flex flex-col text-center mx-auto w-[22rem] ">
-            <h1 className="font-bold text-xl">New Sneaker!</h1>
-            <input placeholder="Ex: Yeezy" type="text" className="bg-gray-100 border-b-2 rounded-t-lg p-2 focus:outline-none"/>
-            <input placeholder="R$" type="number"/>
-            <textarea placeholder="Description"/>
-            <select>{sneakerSizes.map((size) => {
+        <form className="flex flex-col text-center mx-auto w-[22rem] gap-6 justify-center items-center mt-8">
+            <h1 className="font-bold text-2xl ">New Sneaker!</h1>
+            <input placeholder="Ex: Yeezy" type="text" className="bg-gray-100 border-b-2 rounded-t-lg p-2 focus:outline-none w-64"/>
+            <input placeholder="R$" type="number" className="bg-gray-100 border-b-2 rounded-t-lg p-2 focus:outline-none w-64"/>
+            <textarea placeholder="Description" className="bg-gray-100 border-b-2 rounded-t-lg p-2 focus:outline-none resize-none h-24 w-64"/>
+            <select className="bg-gray-100 border-b-2 rounded-t-lg p-2 focus:outline-none w-64 font-bold">{sneakerSizes.map((size) => {
                 return(
                     <option value={size.sneaker_size} key={size.id}>
                         {size.sneaker_size}
                     </option>
                 )
             })}</select>
-            <select>{brands.map((brand) => {
+            <select className="bg-gray-100 border-b-2 rounded-t-lg p-2 focus:outline-none w-64 font-bold">{brands.map((brand) => {
                 return(
                     <option value={brand.name} key={brand.id}>
                         {brand.name}
                     </option>
                 )
             })}</select>
-            <select>{conditions.map((condition) => {
+            <select className="bg-gray-100 border-b-2 rounded-t-lg p-2 focus:outline-none w-64 font-bold">{conditions.map((condition) => {
                 return(
                 <option value={condition.id} key={condition.id}>
                     {condition.condition}
                 </option>)
             })}</select>
             <input type="file" />
-            <button>Add New</button>
+            <button className="p-4 bg-blue-600 rounded-2xl text-lg font-bold text-white">Add New</button>
         </form>
         </>
     )
