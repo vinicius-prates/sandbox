@@ -69,12 +69,12 @@ export const AddNewSneaker = () => {
         <>
         <NavBar/>
 
-        <form onSubmit={addSneaker} className="flex flex-col text-center mx-auto w-[22rem] gap-6 justify-center items-center mt-8 mb-20">
+        <form onSubmit={addSneaker} className="flex flex-col text-center mx-auto w-[22rem] md:w-[40rem] gap-6 justify-center items-center mt-8 mb-20">
             <h1 className="font-bold text-2xl ">New Sneaker!</h1>
-            <input placeholder="Ex: Yeezy" type="text" name="name" onChange={onInputChange} className="bg-gray-100 border-b-2 rounded-t-lg p-2 focus:outline-none w-64"/>
-            <input placeholder="R$" type="number" name="price" onChange={onInputChange} className="bg-gray-100 border-b-2 rounded-t-lg p-2 focus:outline-none w-64"/>
-            <textarea placeholder="Description" name="description" onChange={onInputChange} className="bg-gray-100 border-b-2 rounded-t-lg p-2 focus:outline-none resize-none h-24 w-64"/>
-            <select  className="bg-gray-100 border-b-2 rounded-t-lg p-2 focus:outline-none w-64 font-bold"
+            <input placeholder="Ex: Yeezy" type="text" name="name" onChange={onInputChange} className="bg-gray-100 border-b-2 rounded-t-lg p-2 focus:outline-none w-64 md:w-[30rem]"/>
+            <input placeholder="R$" type="number" name="price" onChange={onInputChange} className="bg-gray-100 border-b-2 rounded-t-lg p-2 focus:outline-none w-64 md:w-[30rem]"/>
+            <textarea placeholder="Description" name="description" onChange={onInputChange} className="bg-gray-100 border-b-2 rounded-t-lg p-2 focus:outline-none resize-none h-24 w-64 md:w-[30rem]"/>
+            <select  className="bg-gray-100 border-b-2 rounded-t-lg p-2 focus:outline-none w-64 md:w-[30rem] font-bold"
             name="sneaker_size" onChange={onInputChange}
             >{sneakerSizes.map((size) => {
                 return(
@@ -83,7 +83,7 @@ export const AddNewSneaker = () => {
                     </option>
                 )
             })}</select>
-            <select className="bg-gray-100 border-b-2 rounded-t-lg p-2 focus:outline-none w-64 font-bold"
+            <select className="bg-gray-100 border-b-2 rounded-t-lg p-2 focus:outline-none w-64 md:w-[30rem] font-bold"
             name="brand" onChange={onInputChange}
             >{brands.map((brand) => {
                 return(
@@ -92,7 +92,7 @@ export const AddNewSneaker = () => {
                     </option>
                 )
             })}</select>
-            <select className="bg-gray-100 border-b-2 rounded-t-lg p-2 focus:outline-none w-64 font-bold"
+            <select className="bg-gray-100 border-b-2 rounded-t-lg p-2 focus:outline-none w-64 md:w-[30rem] font-bold"
             name="condition" onChange={onInputChange} 
             >{conditions.map((condition) => {
                 return(
@@ -103,7 +103,7 @@ export const AddNewSneaker = () => {
             <input type="file" name="image" onChange={(evt) => setNewSneakerData({
                 ...newSneakerData, image: evt.target.files![0],
             })} />
-            <button className="p-4 bg-blue-600 rounded-2xl text-lg font-bold text-white" >Add New</button>
+            <button className="p-4 bg-blue-600 rounded-2xl text-lg md:w-[20rem] font-bold text-white hover:bg-black hover:text-blue-600 duration-500 transition-all" >Add New</button>
         </form>
         
         </>
