@@ -1,7 +1,8 @@
 import { NavBar } from "../components/NavBar"
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-interface SneakerProps {
+
+ interface SneakerProps {
 
     name: string, 
     price: number,

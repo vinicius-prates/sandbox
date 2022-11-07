@@ -10,9 +10,9 @@ export const NavBar = () => {
         <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
             <div>
                 <div className="flex items-center justify-between pb-8 pt-10 md:py-10 md:block">
-                    <a href="javascript:void(0)">
+                    <Link to="/">
                         <h2 className="text-2xl text-[#FAF9F6] focus:outline-none font-bold"><img src={logo} /></h2>
-                    </a>
+                        </Link>
                     <div className="md:hidden">
                         <button
                             className="p-2 text-[#FAF9F6] rounded-md outline-none focus:border-gray-400 focus:outline-none"
@@ -62,7 +62,7 @@ export const NavBar = () => {
                             <Link to="/addnew-sneaker">Add new</Link>
                         </li>
                         <li className="text-[#FAF9F6] text-lg font-bold hover:text-gray-600 transition-all">
-                            <a href="javascript:void(0)">All sneakers</a>
+                            <Link to="/all-sneakers">All sneakers</Link>
                         </li>
                         <li className="text-[#161616] bg-[#FAF9F6] px-4 py-2 rounded-lg text-lg font-bold hover:text-[#FAF9F6] hover:bg-[#323232] transition-all">
                             <a href="javascript:void(0)">Login</a>
