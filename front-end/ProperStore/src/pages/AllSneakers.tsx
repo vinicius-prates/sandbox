@@ -12,14 +12,15 @@ export const AllSneakers = () => {
         axios.get(sneakersUrl).then(res => setSneakerData(res.data))
     },[])
 
-
     
     return(
         <>
-        <NavBar/>
-        <div>
-            {sneakerData.map(sneaker => <div>
+        <NavBar/> 
+        <h1 className="text-center text-2xl font-bold">All sneakers!</h1>
+        <div className="flex grid-cols-2 gap-8 justify-evenly mx-4">
+            {sneakerData.filter(sneaker => sneaker.brand.name == "Adidas").map(sneaker => <div  key={sneaker.id  } >
                 <SmallCard 
+                    
                     name={sneaker.name}
                     price={sneaker.price}
                     image={sneaker.image}

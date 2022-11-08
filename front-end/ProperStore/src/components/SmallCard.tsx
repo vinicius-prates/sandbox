@@ -2,27 +2,37 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 
  export interface SneakerProps {
-
+    id?: number,
     name: string, 
     price: number,
     description?: string,
     image: string, 
-    size?: number,
-    brand: number,
-    condition: number
+    size?: {
+        id: number,
+        sneaker_size: number
+    },
+    brand: {
+        id: number,
+        name: string
+    },
+    condition: {
+        id: number, 
+        condition: number,
+        istnew: boolean
+    }
 }
 
 export const SmallCard = (props:SneakerProps) => {
  
     return( 
-        <div>
+        <div className="flex flex-col border-[1px] rounded-xl ">
             <div>
-                <img src={props.image}/>
+                <img src={props.image} className="bg-center w-40 h-40 bg-contain"/>
                 </div>
-            <div>
-                <h1>{props.name}</h1>
-                <h2>{props.price}</h2>
-                <h3>{props.brand} - {props.condition}</h3>
+            <div className="flex flex-col mx-2 ">
+                <h1 className="text-md  text-gray-800 uppercase ">{props.name}</h1>
+                <h2 className="font-bold italic ">R$ {props.price}</h2>
+                <h3 className="text-right text-sm text-gray-600 opacity-50 italic">{props.brand.name} - Cond: {props.condition.condition}</h3>
                 </div>
 
         </div>

@@ -21,9 +21,10 @@ class ConditionSerializer(ModelSerializer):
     class Meta:
         model = Condition
         fields = "__all__"
+        
 
 class SneakerSerializer(ModelSerializer):
     class Meta:
         model = Sneaker
         fields = "__all__"
-
+        depth = 1
