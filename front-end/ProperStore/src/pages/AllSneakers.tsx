@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { SmallCard, SneakerProps } from "../components/SmallCard"
 import sneakers from "../assets/Sneakers.png"
 import { SmallNavBar } from "../components/SmallNavBar"
+import { Link } from "react-router-dom"
 export const AllSneakers = () => {
     
 
@@ -17,11 +18,11 @@ export const AllSneakers = () => {
         <>
         <SmallNavBar/>
         <div className="text-[#FAF9F6] font-bold italic  bg-cover bg-center w-full bg-[url('./assets/bg-green.png')] h-44 md:h-[30rem] flex flex-col justify-center md:text-6xl md:px-24 px-8 mb-8" >
-            <h1 className="opacity-90">Adidas</h1>
-            <h1 className="opacity-90">Nike</h1>
-            <h1 className="opacity-90">Jordan</h1>
-            <h1 className="opacity-90">Yeezy</h1>
-            <h1 className="opacity-90">New Balance</h1>
+            <Link to=""  className="opacity-70 hover:opacity-100 transition-all">Adidas</Link>
+            <Link to="" className="opacity-70 hover:opacity-100 transition-all">Nike</Link>
+            <Link to="" className="opacity-70 hover:opacity-100 transition-all">Jordan</Link>
+            <Link to="" className="opacity-70 hover:opacity-100 transition-all">Yeezy</Link>
+            <Link to="" className="opacity-70 hover:opacity-100 transition-all">New Balance</Link>
 
         </div>
 
