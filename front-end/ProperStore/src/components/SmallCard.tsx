@@ -27,7 +27,7 @@ export const SmallCard = (props:SneakerProps) => {
     return( 
         <div className="flex flex-col border-[1px] rounded-xl ">
             <div>
-                <img src={props.image} className="bg-center w-40 h-40 bg-contain"/>
+                <img src={props.image} className="bg-center w-40 h-40 rounded-t-lg bg-contain"/>
                 </div>
             <div className="flex flex-col mx-2 ">
                 <h1 className="text-md  text-gray-800 uppercase ">{props.name}</h1>

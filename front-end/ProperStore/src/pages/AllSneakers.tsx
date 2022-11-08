@@ -1,8 +1,8 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { NavBar } from "../components/NavBar"
-
 import { SmallCard, SneakerProps } from "../components/SmallCard"
+import sneakers from "../assets/Sneakers.png"
+import { SmallNavBar } from "../components/SmallNavBar"
 export const AllSneakers = () => {
     
 
@@ -15,10 +15,18 @@ export const AllSneakers = () => {
     
     return(
         <>
-        <NavBar/> 
-        <h1 className="text-center text-2xl font-bold">All sneakers!</h1>
-        <div className="flex grid-cols-2 gap-8 justify-evenly mx-4">
-            {sneakerData.filter(sneaker => sneaker.brand.name == "Adidas").map(sneaker => <div  key={sneaker.id  } >
+        <SmallNavBar/>
+        <div className="text-[#FAF9F6] font-bold italic  bg-cover bg-center w-full bg-[url('./assets/bg-green.png')] h-44 md:h-[30rem] flex flex-col justify-center md:text-6xl md:px-24 px-8 mb-8" >
+            <h1 className="opacity-90">Adidas</h1>
+            <h1 className="opacity-90">Nike</h1>
+            <h1 className="opacity-90">Jordan</h1>
+            <h1 className="opacity-90">Yeezy</h1>
+            <h1 className="opacity-90">New Balance</h1>
+
+        </div>
+
+        <div className="flex grid-cols-2 md:grid-cols-8  gap-8 justify-evenly mx-4">
+            {sneakerData.map(sneaker => <div  key={sneaker.id  } >
                 <SmallCard 
                     
                     name={sneaker.name}

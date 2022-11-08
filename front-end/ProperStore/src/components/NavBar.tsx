@@ -65,10 +65,10 @@ export const NavBar = () => {
                             <Link to="/all-sneakers">All sneakers</Link>
                         </li>
                         <li className="text-[#161616] bg-[#FAF9F6] px-4 py-2 rounded-lg text-lg font-bold hover:text-[#FAF9F6] hover:bg-[#323232] transition-all">
-                            <a href="javascript:void(0)">Login</a>
+                            <a href="">Login</a>
                         </li>
                         <li className="text-[#FAF9F6] text-lg font-bold bg-blue-700 px-4 py-2 rounded-lg hover:text-blue-700 hover:bg-[#faf9f6]  transition-all">
-                            <a href="javascript:void(0)">Register</a>
+                            <a href="">Register</a>
                         </li>
                     </ul>
                 </div>
