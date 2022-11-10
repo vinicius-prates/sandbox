@@ -1,6 +1,7 @@
 import { NavBar } from "../components/NavBar"
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { Notify, Report } from "notiflix"
 
  interface SneakerProps {
 
@@ -31,6 +32,8 @@ export const AddNewSneaker = () => {
     });
 
 
+
+
     const urlSS = "http://localhost:8000/api/sneakers-sizes/"
     const urlBrand = "http://localhost:8000/api/brands/"
     const urlCondition = "http://localhost:8000/api/conditions/"
@@ -47,9 +50,25 @@ export const AddNewSneaker = () => {
         console.log(newSneakerData.size)
     }
 
+    const validateForm = (e:any) => {
+        
+        e.preventDefault()
+        if (newSneakerData.name.length <= 0) {
+            Notify.failure("Sneaker name field is empty!")
+            return
+        }
+        if (newSneakerData.price <= 0) {
+            Notify.failure("Your sneaker need a price.")
+            return
+        }
+        
+
+
+        addSneaker(e)
+    }
+
     const addSneaker = async (e:any) => {
 
-        e.preventDefault()
 
         const fd = new FormData()
         fd.append("name", newSneakerData.name);
@@ -66,13 +85,15 @@ export const AddNewSneaker = () => {
         });
 
         console.log(JSON.stringify(data))
+
+        Report.success('Sneaker Added!','Rederecting to main page!', 'Okay!')
     }   
 
     return(
         <>
         <NavBar/>
 
-        <form onSubmit={addSneaker} className="flex flex-col text-center mx-auto w-[22rem] md:w-[40rem] gap-6 justify-center items-center mt-8 mb-20">
+        <form onSubmit={validateForm} className="flex flex-col text-center mx-auto w-[22rem] md:w-[40rem] gap-6 justify-center items-center mt-8 mb-20">
             <h1 className="font-bold text-2xl ">New Sneaker!</h1>
             <input placeholder="Ex: Yeezy" type="text" name="name" onChange={onInputChange} className="bg-gray-100 border-b-2 rounded-t-lg p-2 focus:outline-none w-64 md:w-[30rem]"/>
             <input placeholder="R$" type="number" name="price" onChange={onInputChange} className="bg-gray-100 border-b-2 rounded-t-lg p-2 focus:outline-none w-64 md:w-[30rem]"/>
