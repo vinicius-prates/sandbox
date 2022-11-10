@@ -24,7 +24,7 @@ export const AddNewSneaker = () => {
         price: 0,
         description: "",
         image: null, 
-        size: 23,
+        size: 1,
         brand: 1,
         condition: 1
 
@@ -44,6 +44,7 @@ export const AddNewSneaker = () => {
     const onInputChange = (evt: any) => {
 
         setNewSneakerData({...newSneakerData, [evt.target.name]: evt.target.value})
+        console.log(newSneakerData.size)
     }
 
     const addSneaker = async (e:any) => {
@@ -58,7 +59,8 @@ export const AddNewSneaker = () => {
         fd.append("size", newSneakerData.size.toString());
         fd.append("brand", newSneakerData.brand.toString());
         fd.append("condition", newSneakerData.condition.toString());
-        
+        console.log(newSneakerData.size)
+
         const { data } =  await axios.post(urlSneakers, fd, {
             headers: { "Content-Type": "multipart/form-data" },
         });
@@ -76,10 +78,10 @@ export const AddNewSneaker = () => {
             <input placeholder="R$" type="number" name="price" onChange={onInputChange} className="bg-gray-100 border-b-2 rounded-t-lg p-2 focus:outline-none w-64 md:w-[30rem]"/>
             <textarea placeholder="Description" name="description" onChange={onInputChange} className="bg-gray-100 border-b-2 rounded-t-lg p-2 focus:outline-none resize-none h-24 w-64 md:w-[30rem]"/>
             <select  className="bg-gray-100 border-b-2 rounded-t-lg p-2 focus:outline-none w-64 md:w-[30rem] font-bold"
-            name="sneaker_size" onChange={onInputChange}
+            name="size" onChange={onInputChange}
             >{sneakerSizes.map((size) => {
                 return(
-                    <option value={size.sneaker_size} key={size.id}>
+                    <option value={size.id} key={size.id}>
                         {size.sneaker_size}
                     </option>
                 )
@@ -88,7 +90,7 @@ export const AddNewSneaker = () => {
             name="brand" onChange={onInputChange}
             >{brands.map((brand) => {
                 return(
-                    <option value={brand.name} key={brand.id}>
+                    <option value={brand.id} key={brand.id}>
                         {brand.name}
                     </option>
                 )

@@ -39,9 +39,9 @@ class Sneaker (models.Model):
 
     name = models.CharField(max_length=255)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    size = models.ForeignKey(SneakerSize, on_delete = models.DO_NOTHING)
-    brand = models.ForeignKey(Brand, on_delete= models.DO_NOTHING)
-    condition = models.ForeignKey(Condition, on_delete=models.DO_NOTHING)
+    size = models.ForeignKey(SneakerSize, on_delete = models.DO_NOTHING )
+    brand = models.ForeignKey(Brand, on_delete= models.DO_NOTHING )
+    condition = models.ForeignKey(Condition, on_delete=models.DO_NOTHING )
     description = models.TextField()
     image = PictureField(upload_to="sneakerImages")
     

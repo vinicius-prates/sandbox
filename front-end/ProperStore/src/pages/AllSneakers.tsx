@@ -4,13 +4,41 @@ import { SmallCard, SneakerProps } from "../components/SmallCard"
 import sneakers from "../assets/Sneakers.png"
 import { SmallNavBar } from "../components/SmallNavBar"
 import { Link } from "react-router-dom"
+
+type SneakerResponse = {
+    id?: number,
+    name: string, 
+    price: number,
+    description?: string,
+    image: string, 
+    size?: number
+    brand: number
+    condition: number
+}
+
 export const AllSneakers = () => {
     
 
     const sneakersUrl = "http://localhost:8000/api/sneakers/"
     const [sneakerData, setSneakerData] = useState<SneakerProps[]>([])
     useEffect(()=> {
-        axios.get(sneakersUrl).then(res => setSneakerData(res.data))
+        axios.get(sneakersUrl).then(res => {
+            const rawSneakers: SneakerResponse[] = res.data;
+            const sneakers = rawSneakers.map(async (sneaker: SneakerResponse) => {
+                const sizeRes = await axios.get("http://localhost:8000/api/sneakers-sizes/" + sneaker.size);
+                const conditionRes = await axios.get("http://localhost:8000/api/conditions/" + sneaker.condition)
+                const brandRes = await axios.get("http://localhost:8000/api/brands/" + sneaker.brand)
+
+                return {
+                    ...sneaker,
+                    size: sizeRes.data,
+                    condition: conditionRes.data,
+                    brand: brandRes.data,
+                } as SneakerProps
+            })
+
+            Promise.all(sneakers).then(s => setSneakerData(s))
+        })
     },[])
 
     

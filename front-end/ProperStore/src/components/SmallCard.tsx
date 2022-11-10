@@ -15,7 +15,7 @@
     },
     condition: {
         id: number, 
-        condition: number,
+        condition: string,
         istnew: boolean
     }
 }
