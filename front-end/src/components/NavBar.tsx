@@ -64,10 +64,10 @@ export const NavBar = () => {
                             <Link to="/all-sneakers">Cards</Link>
                         </li>
                         <li className="text-[#161616] bg-[#FAF9F6] px-4 py-2 rounded-lg text-lg font-bold hover:text-[#FAF9F6] hover:bg-[#323232] transition-all">
-                            <a href="">Login</a>
+                            <Link to="/login">Login</Link>
                         </li>
                         <li className="text-[#FAF9F6] text-lg font-bold bg-blue-700 px-4 py-2 rounded-lg hover:text-blue-700 hover:bg-[#faf9f6]  transition-all">
-                            <a href="">Register</a>
+                            <Link  to="/register">Register</Link>
                         </li>
                     </ul>
                 </div>
