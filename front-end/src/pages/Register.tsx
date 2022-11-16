@@ -43,6 +43,25 @@ export const Register =  () => {
         onInputChangeCpf(evt)
     }
     
+    const validateForm = (event:any) => {
+        if(newClientData.user_name.length <= 0){
+            Notify.failure("User name field is empty.")
+            return
+        }
+        if(newUserData.cpf.length <= 0){
+            Notify.failure("CPF field is empty.")
+            return
+        }
+        if(newClientData.phone_number.length <=0) {
+            Notify.failure("Phone number field is empty.")
+            return
+        }
+        if(newClientData.email.length <0) {
+            Notify.failure("Email field is empty.")
+            return
+        }
+        postUser(event)
+    }
     const postUser = async (event:any) => {
         event?.preventDefault()
         const fd = new FormData()
@@ -64,7 +83,7 @@ export const Register =  () => {
         <h1 className="flex gap-1 text-3xl font-bold "> New Here?</h1>
         <h1 className="font-bold text-blue-600 text-3xl "> Register!</h1>
             </div>
-    <form className="my-5" >
+    <form className="my-5" onSubmit={validateForm}>
     <div className="grid gap-6 mb-6 md:grid-cols-2">
         <div>
             <label htmlFor="user_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User Name</label>
@@ -108,8 +127,8 @@ export const Register =  () => {
         
         <label htmlFor="login" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Already have a account? <a href="/login" className="text-blue-600 hover:underline dark:text-blue-500 font-bold">Click Here</a>.</label>
     </div>
+    <button  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
 </form>
-    <button onClick={postUser} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
 
         </div>
     )
