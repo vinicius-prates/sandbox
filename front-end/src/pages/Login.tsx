@@ -1,9 +1,9 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { UserProps } from '../assets/props/userProps'
+import { UserProps } from '../props/userProps'
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { NavigationType, useNavigate } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
+import '../App.css'
 export const Login = () => {
    
     const [usersData, setUsersData] = useState<UserProps[]>([])
@@ -57,12 +57,14 @@ export const Login = () => {
 
    }
     return(
-        <div className="flex flex-col justify-center align-center h-screen items-center my-auto">
-            <div className="flex gap-1 text-center align-center justify-center">
+        <div className="flex flex-col justify-center align-center h-screen items-center my-auto   bg-center w-full ">
 
-    <h1 className=" font-bold text-blue-600 text-3xl">Welcome</h1><h1 className="text-black font-bold text-3xl"> back!</h1>
+            <div className="flex gap-1 text-center align-center justify-center bg-transparent">
+
+                 <h1 className=" font-bold text-blue-600 text-3xl">Welcome</h1>
+                 <h1 className="text-black font-bold text-3xl"> back!</h1>
             </div>
-    <form className="grid gap-4 mb-6 my-10 md:mx-[20rem]" onSubmit={verifyLogin}>
+    <form className="grid gap-4 mb-6 my-10 md:mx-[20rem] bg-transparent" onSubmit={verifyLogin}>
 
         <div>
             <label htmlFor="cpf" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">CPF</label>
