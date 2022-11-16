@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom"
 import { HomePage } from "./HomePage"
 import { Login } from "./pages/Login"
 import { Register } from "./pages/Register"
+import { UserPage } from "./pages/UserPage"
 
 export const MyRoutes = () => {
     return(
@@ -9,6 +10,7 @@ export const MyRoutes = () => {
             <Route path="/" element={<HomePage/>}/>
             <Route path="/register" element={<Register/>}/>
             <Route path="/login" element={<Login/>}/>
+            <Route path="/user" element={<UserPage/>}/>
         </Routes>
     )
 }
