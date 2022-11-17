@@ -1,11 +1,14 @@
-from django.shortcuts import render
 from .models import (Client, 
 Account, Abstract, Advance,
  AdvancePayment, Card, Invoice,
   Transfers, User)
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.views import APIView
+from rest_framework import status
+from rest_framework.response import Response
 from .serializers import (
     AccountCreateSerializer,
+    LoginSerializer,
     UserSerializer,
     ClientSerializer, AccountSerializer, TransfersSerializer,
     CardSerializer, InvoiceSerializer, AdvanceSerializer,
@@ -18,6 +21,23 @@ class UserViewSet(ModelViewSet):
 class ClientViewSet(ModelViewSet):
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
+
+class authViaCpf(APIView):
+    def post(self, request, *args, **kwargs):
+        password = request.data.get('password')
+        cpf = request.data.get('cpf')
+        login_data = { 'account_id': None }
+
+        try:
+            user = User.objects.get(cpf=cpf, password=password)
+            cliente = Client.objects.get(user_id=user.cpf)
+            acc = Account.objects.get(client=cliente)
+            login_data['account_id'] = acc.id
+            serializer = LoginSerializer(data=login_data)
+            return Response(serializer.initial_data, status=status.HTTP_200_OK)
+        except User.DoesNotExist:
+            serializer = LoginSerializer(data=login_data)
+            return Response(serializer.initial_data, status=status.HTTP_200_OK)
 
 class AccountViewSet(ModelViewSet):
     queryset = Account.objects.all()

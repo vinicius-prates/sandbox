@@ -5,7 +5,8 @@ from .views import (
     UserViewSet,
     ClientViewSet, AccountViewSet, TransfersViewSet,
     CardViewSet, InvoiceViewSet, AdvanceViewSet,
-    AdvancePaymentViewSet, AbstractViewSet, UserViewSet  
+    AdvancePaymentViewSet, AbstractViewSet, UserViewSet,
+    authViaCpf
 )
 
 router = routers.DefaultRouter()
@@ -20,6 +21,7 @@ router.register("advance-payment", AdvancePaymentViewSet)
 router.register("abstract", AbstractViewSet)
 
 urlpatterns = [
+    path("auth-via-cpf/", authViaCpf.as_view()),
     path("",include(router.urls)),
 
-]
+]   
