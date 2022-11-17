@@ -1,3 +1,4 @@
+from random import randint
 from django.db import models
 
 class User(models.Model):
@@ -37,6 +38,13 @@ class Account(models.Model):
     account  = models.CharField(max_length=8)
     balance = models.DecimalField(max_digits=20, decimal_places=2)
     
+    def save(self, *args, **kwargs):
+        self.agency = f"{randint(10000,99999)}"
+        self.account = f"{randint(10000000,99999999)}"
+        self.balance = 0
+
+        super(Account, self).save( *args, **kwargs)
+
     def __str__(self) -> str:
         return self.client
 

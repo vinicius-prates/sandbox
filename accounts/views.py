@@ -5,6 +5,7 @@ Account, Abstract, Advance,
   Transfers, User)
 from rest_framework.viewsets import ModelViewSet
 from .serializers import (
+    AccountCreateSerializer,
     UserSerializer,
     ClientSerializer, AccountSerializer, TransfersSerializer,
     CardSerializer, InvoiceSerializer, AdvanceSerializer,
@@ -20,7 +21,11 @@ class ClientViewSet(ModelViewSet):
 
 class AccountViewSet(ModelViewSet):
     queryset = Account.objects.all()
-    serializer_class = AccountSerializer
+    def get_serializer_class(self):
+        if self.request.method == "POST":
+            return AccountCreateSerializer
+        else:
+            return AccountSerializer
 
 class TransfersViewSet(ModelViewSet):
     queryset = Transfers.objects.all()

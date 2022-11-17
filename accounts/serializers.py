@@ -1,4 +1,5 @@
 from dataclasses import fields
+from pyexpat import model
 from rest_framework.serializers import ModelSerializer
 from .models import (Client, 
 Account, Abstract, Advance,
@@ -19,6 +20,13 @@ class AccountSerializer(ModelSerializer):
     class Meta:
         model = Account
         fields = "__all__"
+        depth = 1
+
+class AccountCreateSerializer(ModelSerializer):
+    class Meta:
+        model = Account
+        fields = ["client"]
+        
     
 
 class TransfersSerializer(ModelSerializer):
