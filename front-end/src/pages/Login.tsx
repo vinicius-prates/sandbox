@@ -5,43 +5,32 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useNavigate } from 'react-router-dom';
 import '../App.css'
 import { useUserStore } from '../userStore';
+import { Account } from '../props/ClientProps';
 
 export const Login = () => {
-   
-    const [usersData, setUsersData] = useState<UserProps[]>([])
     const [userLogin, setUserLogin]  = useState({
         cpf: "",
         password:""
-        
     })
-    const setCpf = useUserStore(state => state.setCpf)
+    const setAccount = useUserStore(state => state.setAccount)
     const userUrl = "http://localhost:8000/api/user"
     const navigate =  useNavigate();
-   useEffect(() => {
-       axios.get(userUrl).then(res => setUsersData(res.data))
-        console.log(usersData)
-   },[])
+
    
-   const verifyLogin = async  () => {
-    console.log(usersData)
-    event?.preventDefault()
-        usersData.map((item, index) => {
-
-
-            if(item.cpf == userLogin.cpf && item.password == userLogin.password){
-                
-                Notify.success("Welcome!")
-                navigate(`/${userLogin.cpf}/home`)
-                setCpf(userLogin.cpf)
-                
-            }
-           
-            if (userLogin.cpf == item.cpf && userLogin.password != item.password){
-                Notify.failure("Wrong password!")
-                return 0
-            }
-            
-        }) 
+   const verifyLogin = async  (event: any) => {
+        event.preventDefault()
+        const { data } = await axios.post('http://localhost:8000/api/auth-via-cpf/', userLogin)
+        
+        if (!data.account_id) {
+            Notify.failure('You need to log in first!')
+            return
+        }
+        
+        const account = await axios.get('http://localhost:8000/api/account/' + data.account_id)
+        
+        const accData = account.data as Account
+        setAccount(accData)
+        navigate(`/${accData.client.user}/home`)
    }
 
    const onInputChange = (evt:any) => {

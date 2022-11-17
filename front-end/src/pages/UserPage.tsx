@@ -22,10 +22,9 @@ export const UserPage = () => {
         
     },[])
     
-    const [accData, setAccData] = useState<{}>({})
     return(
         <div>
-            
+            {account?.balance}
         </div>
     )
     }
