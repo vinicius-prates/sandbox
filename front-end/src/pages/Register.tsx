@@ -5,11 +5,13 @@ import { useNavigate } from "react-router-dom";
 import { ClientProps } from "../props/ClientProps";
 import { UserProps } from "../props/userProps";
 import { LoadingSpinner } from "../components/LoadingSpinner";
+import { useUserStore } from '../userStore';
 
 const clientUrl = "http://localhost:8000/api/client/";
 const userUrl = "http://localhost:8000/api/user/";
 
 export const Register = () => {
+  const setCpf = useUserStore(state => state.setCpf)
   const navigate = useNavigate();
   const [confPass, setConfPass] = useState<string>('')
   const [newClientData, setNewClientData] = useState<ClientProps>({
@@ -90,7 +92,8 @@ export const Register = () => {
 
     console.log(resUser.status, resCli.status);
     if (resUser.status == 201 && resCli.status == 201) {
-      navigate(`/user`);
+      setCpf(newUserData.cpf)
+      navigate(`/${newUserData.cpf}/home`);
     }
   };
 

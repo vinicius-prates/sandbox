@@ -4,6 +4,8 @@ import { UserProps } from '../props/userProps'
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useNavigate } from 'react-router-dom';
 import '../App.css'
+import { useUserStore } from '../userStore';
+
 export const Login = () => {
    
     const [usersData, setUsersData] = useState<UserProps[]>([])
@@ -12,7 +14,7 @@ export const Login = () => {
         password:""
         
     })
-
+    const setCpf = useUserStore(state => state.setCpf)
     const userUrl = "http://localhost:8000/api/user"
     const navigate =  useNavigate();
    useEffect(() => {
@@ -22,33 +24,23 @@ export const Login = () => {
    
    const verifyLogin = async  () => {
     console.log(usersData)
-        event?.preventDefault()
+    event?.preventDefault()
         usersData.map((item, index) => {
-            if(userLogin.cpf.length <= 0){
-                Notify.failure("CPF field is empty.")
-                return
+
+
+            if(item.cpf == userLogin.cpf && item.password == userLogin.password){
+                
+                Notify.success("Welcome!")
+                navigate(`/${userLogin.cpf}/home`)
+                setCpf(userLogin.cpf)
+                
             }
-            if(userLogin.cpf.length != 11) {
-                Notify.failure("Invalid CPF.")
-                return  
-            }
-            if(userLogin.password.length <= 0){
-                Notify.failure("Password field is empty.")
-                return
-            }
-            if(userLogin.cpf != item.cpf){
-                Notify.failure("This CPF doesn't exists.")
-                return
-            }
-            if (userLogin.password != item.password){
+           
+            if (userLogin.cpf == item.cpf && userLogin.password != item.password){
                 Notify.failure("Wrong password!")
-                return
+                return 0
             }
             
-            if(item.cpf == userLogin.cpf && item.password == userLogin.password){
-                Notify.success("Welcome!")
-                navigate("/user")
-            }
         }) 
    }
 
