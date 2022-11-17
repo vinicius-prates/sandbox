@@ -2,16 +2,16 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
 import { useNavigate } from "react-router-dom";
-import { ClientProps } from "../props/ClientProps";
+import { Account, ClientProps } from "../props/ClientProps";
 import { UserProps } from "../props/userProps";
 import { LoadingSpinner } from "../components/LoadingSpinner";
 import { useUserStore } from '../userStore';
 
 const clientUrl = "http://localhost:8000/api/client/";
 const userUrl = "http://localhost:8000/api/user/";
-
+const accUrl = "http://localhost:8000/api/account/"
 export const Register = () => {
-  const setCpf = useUserStore(state => state.setCpf)
+  const setAccount = useUserStore(state => state.setAccount)
   const navigate = useNavigate();
   const [confPass, setConfPass] = useState<string>('')
   const [newClientData, setNewClientData] = useState<ClientProps>({
@@ -88,11 +88,11 @@ export const Register = () => {
 
     const resUser = await axios.post(userUrl, newUserData);
     const resCli = await axios.post(clientUrl, fd);
+    const resAcc = await axios.post(accUrl, { client: resCli.data.id })
     setIsLoading(false);
 
-    console.log(resUser.status, resCli.status);
-    if (resUser.status == 201 && resCli.status == 201) {
-      setCpf(newUserData.cpf)
+    if (resUser.status == 201 && resCli.status == 201 && resAcc.status == 201) {
+      setAccount(resAcc.data as Account)
       navigate(`/${newUserData.cpf}/home`);
     }
   };

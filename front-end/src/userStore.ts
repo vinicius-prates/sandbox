@@ -1,11 +1,12 @@
 import create from 'zustand';
+import { Account } from './props/ClientProps';
 
 interface UserStore {
-    cpf: string
-    setCpf: (cpf: string) => void
+    userAccount: Account | null
+    setAccount: (acc: Account) => void
 }
 
 export const useUserStore = create<UserStore>((set) => ({
-    cpf: '',
-    setCpf: (cpf) => set({ cpf: cpf })
+    userAccount: null,
+    setAccount: (acc) => set({ userAccount: acc })
 }))

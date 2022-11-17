@@ -1,25 +1,31 @@
+import axios from "axios";
 import { Notify } from "notiflix";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom"
 import { useUserStore } from "../userStore"
 
 
+
 export const UserPage = () => {
-    const cpf = useUserStore(state => state.cpf)
-    const { id } = useParams();
+
+
+    const account = useUserStore(state => state.userAccount)
+
     const navigate = useNavigate()
     useEffect(() => {
         
-        if (!cpf){
-            Notify.failure("You cant log in other user account!")
+        if (!account){
+            Notify.failure("You need to loggin first!")
             navigate("/login")
             return
         }
+        
     },[])
     
+    const [accData, setAccData] = useState<{}>({})
     return(
         <div>
-            <h1>{cpf}</h1>
+            
         </div>
     )
     }
