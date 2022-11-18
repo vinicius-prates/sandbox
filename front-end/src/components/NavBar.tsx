@@ -1,20 +1,20 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import logo from "../assets/logo.jpg"
 export const NavBar = () => {
     const [navbar, setNavbar] = useState(false);
 
     return(
-        <nav className="w-full  bg-[#161616] shadow">
+        <nav className="text-black w-full  md:fixed  border-b-1 pb-10 md:pb-0   bg-opacity-70 backdrop-blur-lg bg-[#faf9f6]  shadow">
         <div className="justify-between px-4 mx-auto lg:max-w-8xl md:items-center md:flex md:px-8">
             <div>
                 <div className="flex items-center justify-between pb-8 pt-10 md:py-10 md:block">
                     <Link to="/">
-                        <h2 className="text-2xl text-[#FAF9F6] focus:outline-none font-bold">EXOBANK</h2>
+                        <img src={logo} alt="Exo" className="w-10"/>
                         </Link>
                     <div className="md:hidden">
                         <button
-                            className="p-2 text-[#FAF9F6] rounded-md outline-none focus:border-gray-400 focus:outline-none"
+                            className="p-2 text-black  rounded-md outline-none focus:border-gray-400 focus:outline-none"
                             onClick={() => setNavbar(!navbar)}
                         >
                             {navbar ? (
@@ -56,18 +56,18 @@ export const NavBar = () => {
                         navbar ? "block" : "hidden"
                     }`}
                 >
-                    <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-                        <li className="text-[#FAF9F6] ">
-                            <Link to="/addnew-sneaker">For you</Link>
+                    <ul className="flex flex-col md:flex-row items-center justify-center w-auto space-y-8 md:flex md:space-x-6 md:space-y-0">
+                        <li className="text-black font-bold text-lg border-b-2 hover:border-b-blue-500 transition-all duration-200">
+                            <Link to="/">For you</Link>
                         </li>
-                        <li className="text-[#FAF9F6]">
-                            <Link to="/all-sneakers">Cards</Link>
+                        <li className="text-black font-bold text-lg  border-b-2 hover:border-b-blue-500 transition-all duration-200">
+                            <Link to="/">Cards</Link>
                         </li>
-                        <li className="text-[#161616] bg-[#FAF9F6] px-4 py-2 rounded-lg text-lg font-bold hover:text-[#FAF9F6] hover:bg-[#323232] transition-all">
-                            <Link to="/login">Login</Link>
+                        <li >
+                            <Link to="/login" className="text-blue-700 text-lg font-bold  bg-[#faf9f6]  border-2 px-4 py-2 rounded-lg hover:text-black hover:border-black transition-all">Login</Link>
                         </li>
-                        <li className="text-[#FAF9F6] text-lg font-bold bg-blue-700 px-4 py-2 rounded-lg hover:text-blue-700 hover:bg-[#faf9f6]  transition-all">
-                            <Link  to="/register">Register</Link>
+                        <li>
+                            <Link  to="/register" className="text-blue-700 text-lg font-bold  bg-[#faf9f6]  border-2 px-4  py-2 rounded-lg hover:text-black hover:border-black transition-all">Register</Link>
                         </li>
                     </ul>
                 </div>
