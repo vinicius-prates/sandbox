@@ -17,7 +17,7 @@ export const UserPage = () => {
         if (!account){
             Notify.failure("You need to loggin first!")
             navigate("/login")
-            return
+            return  
         }
         
     },[])

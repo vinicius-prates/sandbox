@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#landingPage{
+    background-image: url('./assets/cyborg-hand-3d-background-technology-of-artificial-intelligence.jpg');
+  }

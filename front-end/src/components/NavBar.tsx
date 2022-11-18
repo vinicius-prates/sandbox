@@ -5,7 +5,7 @@ export const NavBar = () => {
     const [navbar, setNavbar] = useState(false);
 
     return(
-        <nav className="text-black w-full  md:fixed  border-b-1 pb-10 md:pb-0   bg-opacity-70 backdrop-blur-lg bg-[#faf9f6]  shadow">
+        <nav className="text-black w-full  md:fixed  border-b-1  md:pb-0   bg-opacity-50 backdrop-blur-lg bg-[#faf9f6]  shadow">
         <div className="justify-between px-4 mx-auto lg:max-w-8xl md:items-center md:flex md:px-8">
             <div>
                 <div className="flex items-center justify-between pb-8 pt-10 md:py-10 md:block">
@@ -52,8 +52,8 @@ export const NavBar = () => {
             </div>
             <div>
                 <div
-                    className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0  ${
-                        navbar ? "block" : "hidden"
+                    className={`flex-1 justify-self-center pb-10  md:block md:pb-0 md:mt-0  ${
+                        navbar ? "block " : "hidden"
                     }`}
                 >
                     <ul className="flex flex-col md:flex-row items-center justify-center w-auto space-y-8 md:flex md:space-x-6 md:space-y-0">
