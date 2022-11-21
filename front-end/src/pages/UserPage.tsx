@@ -24,7 +24,10 @@ export const UserPage = () => {
     
     return(
         <div>
-            {account?.balance}
+            <nav>
+                
+            </nav>
+
         </div>
     )
     }

@@ -16,4 +16,5 @@ export interface ClientProps {
     created_at?:   Date;
     good_client:  boolean;
     user:         string;
+    image: File | null;
 }

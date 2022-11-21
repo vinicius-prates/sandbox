@@ -22,6 +22,7 @@ export const Register = () => {
     good_client: true,
     sexo: "M",
     email: "",
+    image: null
   });
   const [newUserData, setNewUserData] = useState<UserProps>({
     cpf: "",
@@ -82,12 +83,13 @@ export const Register = () => {
     fd.append("phone_number", newClientData.phone_number);
     fd.append("user", newClientData.user);
     fd.append("birth_date", newClientData.birth_date);
+    fd.append("image", newClientData.image!)
 
     console.log(newUserData);
     console.log(newClientData);
 
     const resUser = await axios.post(userUrl, newUserData);
-    const resCli = await axios.post(clientUrl, fd);
+    const resCli = await axios.post(clientUrl, fd, { headers: { 'Content-Type': 'multipart/form-data' } });
     const resAcc = await axios.post(accUrl, { client: resCli.data.id })
     setIsLoading(false);
 
@@ -180,6 +182,21 @@ export const Register = () => {
               type="date"
               name="birth_date"
               onChange={onInputChangeClient}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:outline-none  focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder=""
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="date"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Your Photo
+            </label>
+            <input
+              type="File"
+              name="image"
+              onChange={(e) => setNewClientData(prev => ({ ...prev, image: e.target.files![0] }))}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:outline-none  focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder=""
             />
