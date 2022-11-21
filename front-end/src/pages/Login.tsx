@@ -38,7 +38,7 @@ export const Login = () => {
 
    }
     return(
-        <div className="flex flex-col justify-center align-center h-screen items-center my-auto   bg-center w-full ">
+        <div className="flex flex-col justify-center align-center h-screen items-center my-auto bg-white  bg-center w-full ">
 
             <div className="flex gap-1 text-center align-center justify-center bg-transparent">
 

@@ -102,7 +102,7 @@ export const Register = () => {
   if (isLoading) return <LoadingSpinner />;
 
   return (
-    <div className="px-10 py-10 md:px-96">
+    <div className="px-10 py-10 md:px-96 bg-white h-screen">
       <div className="flex flex-row gap-1">
         <h1 className="flex gap-1 text-3xl font-bold "> New Here?</h1>
         <h1 className="font-bold text-blue-600 text-3xl "> Register!</h1>
