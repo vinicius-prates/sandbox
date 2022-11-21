@@ -1,5 +1,6 @@
 from random import randint
 from django.db import models
+from pictures.models import PictureField
 
 class User(models.Model):
     cpf = models.CharField(max_length=11, primary_key=True)
@@ -24,6 +25,7 @@ class Client(models.Model):
     sexo = models.CharField(max_length=1, choices=SEXO_TIPOS)
     birth_date = models.DateField()
     phone_number = models.CharField(max_length=20)
+    image = PictureField(upload_to="user_images")
     created_at = models.DateField(auto_now=True)
     good_client = models.BooleanField(default=True)
 
