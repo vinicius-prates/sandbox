@@ -17,9 +17,9 @@ export const UserPage = () => {
   }, []);
 
   return (
-    <div className="bg-[whitesmoke]" >
+    <div className="bg-white h-screen md:mx-96" >
       {/* Div NavBar */}
-      <nav className="w-full  border-b-1  md:pb-0   bg-opacity-50 backdrop-blur-lg bg-[whitesmoke]  shadow flex flex-row px-6 py-2">
+      <nav className="w-full border-b-1   md:pb-0   bg-opacity-50 backdrop-blur-lg bg-[whitesmoke]  shadow flex flex-row px-6 py-2">
         <div className="flex flex-col w-full gap-2">
             <div className="flex flex-row gap-1">
 
@@ -60,8 +60,12 @@ export const UserPage = () => {
       </div>
        
       {/* Div Cards */} 
-      <div className="border-t-1 bg-[whitesmoke]">
+      <div className="border-t-1 bg-white px-10 py-6  flex flex-col gap-4 border-t-2  ">
+        <h1 className="font-bold text-xl">Your Cards</h1>
           <Card cardCvv="123" cardMonth="22" cardYear="32" cardNumber="1234540191824751" cardHolder="Vinicius Prates" key={1} />
+        <button className="bg-[#19647E] font-bold text-xl text-[whitesmoke]  rounded-xl py-4 w-40 self-center transition-all hover:bg-[#3c96b4]">
+          New Card
+        </button>
       </div>
     </div>
   );
