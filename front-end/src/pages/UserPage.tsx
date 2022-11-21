@@ -25,7 +25,7 @@ export const UserPage = () => {
     return(
         <div>
             <nav>
-                
+                <img src={account?.client.image as string} alt="" />
             </nav>
 
         </div>
