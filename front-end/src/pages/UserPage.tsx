@@ -1,11 +1,13 @@
 import { Notify } from "notiflix";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useUserStore } from "../userStore";
 import logo from "../assets/logo.jpg";
 import transferIcon from "../assets/Initiate Money Transfer.png"
 import depositIcon from "../assets/Request Money.png"
-import drawIcon from "../assets/Banknotes.png"
+import cashHandIcon from "../assets/Cash in Hand.png"
+import moneyBagIcon from "../assets/Money Bag.png"
+
 import { Card } from "react-pay-card";
 export const UserPage = () => {
   const account = useUserStore((state) => state.userAccount);
@@ -66,9 +68,9 @@ export const UserPage = () => {
           cardCvv="123"
           cardMonth="22"
           cardYear="32"
-          cardNumber="1234 5401 9182 4751"
+          cardNumber="3437 5401 9182 4751"
           cardHolder="Vinicius Prates"
-          key={1}
+          
         />
         <button className="bg-[#19647E] font-bold text-xl text-[whitesmoke]  rounded-xl py-4 w-40 self-center transition-all hover:bg-[#3c96b4]">
           New Card
@@ -80,37 +82,46 @@ export const UserPage = () => {
           Actions
         </h1>
         <div className="flex overflow-x-scroll pb-10 hide-scroll-bar">
-          <div className="flex flex-nowrap lg:ml-40 md:ml-20 ml-10 ">
+          <div className="flex flex-nowrap lg:mx-auto md:ml-20 ml-10 mr-10   ">
             <div className="inline-block px-3">
-              <div className="w-32 h-32 max-w-xs overflow-hidden rounded-xl shadow-md bg-[#19647E] hover:shadow-xl transition-shadow items-center justify-center flex  duration-300 ease-in-out">
+              <Link to="">
+              <div className="w-32 h-32 max-w-xs overflow-hidden rounded-2xl shadow-md bg-[#e3e3e3]  hover:shadow-xl transition-shadow items-center justify-center flex flex-col  duration-300 ease-in-out">
                 <img src={transferIcon} className="w-20 h-20"/>
+                <h1 className="text-[#19647E] font-bold text-lg">Transfer</h1>
               </div>
+              </Link>
             </div>
             <div className="inline-block px-3">
-              <div className="w-32 h-32 max-w-xs overflow-hidden rounded-xl shadow-md bg-[#19647E] hover:shadow-xl transition-shadow items-center justify-center flex  duration-300 ease-in-out">
+            <Link to="">
+              <div className="w-32 h-32 max-w-xs overflow-hidden rounded-2xl shadow-md flex-col bg-[#e3e3e3] hover:shadow-xl transition-shadow items-center justify-center flex  duration-300 ease-in-out">
                 <img src={depositIcon} className="w-20 h-20"/>
+                <h1 className="text-[#19647E] font-bold text-lg">Deposit</h1>
               </div>
+            </Link>
             </div>
             <div className="inline-block px-3">
-              <div className="w-32 h-32 max-w-xs overflow-hidden rounded-xl shadow-md bg-[#19647E] hover:shadow-xl transition-shadow items-center justify-center flex  duration-300 ease-in-out">
-              <img src={drawIcon} className="w-20 h-20"/>
+              <Link to="">
+              <div className="w-32 h-32 max-w-xs overflow-hidden rounded-2xl shadow-md flex-col bg-[#e3e3e3] hover:shadow-xl transition-shadow items-center justify-center flex  duration-300 ease-in-out">
+              <img src={cashHandIcon} className="w-20 h-20"/>
+              <h1 className="text-[#19647E] font-bold text-lg">Advance</h1>
               </div>
+              </Link>
             </div>
             <div className="inline-block px-3">
-              <div className="w-32 h-32 max-w-xs overflow-hidden rounded-xl shadow-md bg-[#19647E] hover:shadow-xl transition-shadow items-center justify-center flex   duration-300 ease-in-out"></div>
+            <Link to="">
+              <div className="w-32 h-32 max-w-xs overflow-hidden rounded-2xl flex-col shadow-md bg-[#e3e3e3] hover:shadow-xl transition-shadow items-center justify-center flex   duration-300 ease-in-out">
+                <img src={moneyBagIcon} className="w-20 h-20"/>
+                <h1 className="text-[#19647E] font-bold text-lg">Draw</h1>
+              </div>
+              </Link>
             </div>
             <div className="inline-block px-3">
-              <div className="w-32 h-32 max-w-xs overflow-hidden rounded-xl shadow-md bg-[#19647E] hover:shadow-xl transition-shadow items-center justify-center flex duration-300 ease-in-out"></div>
+              <div className="w-32 h-32 max-w-xs overflow-hidden rounded-2xl shadow-md bg-[#e3e3e3] hover:shadow-xl transition-shadow items-center justify-center flex duration-300 ease-in-out"></div>
             </div>
             <div className="inline-block px-3">
-              <div className="w-32 h-32 max-w-xs overflow-hidden rounded-xl shadow-md bg-[#19647E] hover:shadow-xl transition-shadow  items-center justify-center flex duration-300 ease-in-out"></div>
+              <div className="w-32 h-32 max-w-xs overflow-hidden rounded-2xl shadow-md bg-[#e3e3e3] hover:shadow-xl transition-shadow  items-center justify-center flex duration-300 ease-in-out"></div>
             </div>
-            <div className="inline-block px-3">
-              <div className="w-32 h-32 max-w-xs overflow-hidden rounded-xl shadow-md bg-[#19647E] hover:shadow-xl transition-shadow items-center justify-center flex duration-300 ease-in-out"></div>
-            </div>
-            <div className="inline-block px-3">
-              <div className="w-32 h-32 max-w-xs overflow-hidden rounded-xl shadow-md bg-[#19647E] hover:shadow-xl transition-shadow items-center justify-center flex duration-300 ease-in-out"></div>
-            </div>
+            
           </div>
         </div>
       </div>

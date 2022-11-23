@@ -95,7 +95,7 @@ export const Register = () => {
 
     if (resUser.status == 201 && resCli.status == 201 && resAcc.status == 201) {
       setAccount(resAcc.data as Account)
-      navigate(`/${newUserData.cpf}/home`);
+      navigate(`/login`);
     }
   };
 
