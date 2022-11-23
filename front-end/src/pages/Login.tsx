@@ -30,7 +30,7 @@ export const Login = () => {
         
         const accData = account.data as Account
         setAccount(accData)
-        navigate(`/${accData.client.user}/home`)
+        navigate(`/home`)
    }
 
    const onInputChange = (evt:any) => {
