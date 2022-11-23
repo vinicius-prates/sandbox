@@ -28,9 +28,9 @@ export const UserPage = () => {
         <div className="flex flex-col w-full gap-2">
           <div className="flex flex-row gap-1">
             <h1 className="font-bold text-lg">Welcome,</h1>
-            <h1 className="text-[#19647E] text-lg italic font-bold">
+            <Link to="/home/user-info" className="text-[#19647E] text-lg italic font-bold">
               {account?.client.user_name}.
-            </h1>
+            </Link>
           </div>
 
           <div className="flex flex-row gap-1">
