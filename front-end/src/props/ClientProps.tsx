@@ -13,8 +13,8 @@ export interface ClientProps {
     sexo:         string;
     birth_date:   string;
     phone_number: string;
-    created_at?:   string | Date | null ;
+    created_at?:   string | null ;
     good_client:  boolean;
     user:         string;
-    image:  File | null | string;
+    image?:  null | string;
 }

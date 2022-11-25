@@ -41,7 +41,7 @@ export const UserInfo = () => {
             <div>
             <nav className="w-full border-b-1   md:pb-0   bg-opacity-50 backdrop-blur-lg bg-[#e3e3e3]  py-5   shadow flex flex-col gap-4 px-6 ">
                   <h1 className="text-center text-2xl font-bold text-[#19647E]">{account?.client.user_name}</h1>
-                <img src={account?.client.image} alt="your photo" className="w-52 h-52 self-center object-cover object-center md:my-10 rounded-full border-2 border-[#19647E]"  />
+                <img src={account?.client.image!} alt="your photo" className="w-52 h-52 self-center object-cover object-center md:my-10 rounded-full border-2 border-[#19647E]"  />
             </nav>
             <div className="px-8 py-6 border-b-2">
                 <h1 className="text-center mb-10 text-3xl font-bold text-[#19647E] ">Account Info</h1>
