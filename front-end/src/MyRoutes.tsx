@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import { Deposit } from "./pages/Deposit"
+import { Draw } from "./pages/Draw"
 import { HomePage } from "./pages/HomePage"
 import { Login } from "./pages/Login"
 import { Register } from "./pages/Register"
@@ -17,6 +18,7 @@ export const MyRoutes = () => {
             <Route path="/home/user-info" element={<UserInfo/>}/>
             <Route path="/home/transfer" element={<Transfer/>}/>
             <Route path="/home/deposit" element={<Deposit/>}/>
+            <Route path="/home/draw" element={<Draw/>}/>
         </Routes>
     )
 }

@@ -109,7 +109,7 @@ export const UserPage = () => {
               </Link>
             </div>
             <div className="inline-block px-3">
-            <Link to="">
+            <Link to="/home/draw">
               <div className="w-32 h-32 max-w-xs overflow-hidden rounded-2xl flex-col shadow-md bg-[#e3e3e3] hover:shadow-xl transition-shadow items-center justify-center flex   duration-300 ease-in-out">
                 <img src={moneyBagIcon} className="w-20 h-20"/>
                 <h1 className="text-[#19647E] font-bold text-lg">Draw</h1>
