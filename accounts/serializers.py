@@ -20,6 +20,9 @@ class AccountSerializer(ModelSerializer):
         model = Account
         fields = "__all__"
         depth = 1
+    def partial_update(self, request, *args, **kwargs):
+        kwargs['partial'] = True
+        return self.update(request, *args, **kwargs)
 
 class LoginSerializer(Serializer):
     class Meta:

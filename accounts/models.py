@@ -41,9 +41,10 @@ class Account(models.Model):
     balance = models.DecimalField(max_digits=20, decimal_places=2)
     
     def save(self, *args, **kwargs):
-        self.agency = f"{randint(10000,99999)}"
-        self.account = f"{randint(10000000,99999999)}"
-        self.balance = 0
+        if self.pk is None:
+            self.agency = f"{randint(10000,99999)}"
+            self.account = f"{randint(10000000,99999999)}"
+            self.balance = 0
 
         super(Account, self).save( *args, **kwargs)
 
