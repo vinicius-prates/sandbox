@@ -10,16 +10,17 @@ import moneyBagIcon from "../assets/Money Bag.png"
 
 import { Card } from "react-pay-card";
 export const UserPage = () => {
+  
   const account = useUserStore((state) => state.userAccount);
-
   const navigate = useNavigate();
   useEffect(() => {
+    
     if (!account) {
       Notify.failure("You need to loggin first!");
       navigate("/login");
       return;
     }
-  }, []);
+  },[]);
 
   return (
     <div className="bg-white h-screen md:mx-96">
