@@ -30,6 +30,11 @@ export const Deposit = () => {
             return
 
         }
+        
+        if(depositAmount <= 0){
+          Notify.warning("You to deposit at least R$1.")
+          return
+        }
         let lastBalance = Number(account?.balance!)
         let amount = Number(depositAmount)
         let finalAmount = lastBalance + amount

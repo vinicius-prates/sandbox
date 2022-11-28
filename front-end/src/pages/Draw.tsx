@@ -1,11 +1,15 @@
-import { Notify } from "notiflix";
+import axios from "axios";
+import { Notify, Report } from "notiflix";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "../userStore";
 
 export const Draw = () => {
     const [showModal, setShowModal] = useState(false);
+    const [drawAmount, setDrawAmount] = useState(0)
     const account = useUserStore((state) => state.userAccount);
+    
+    const accUrl = `http://localhost:8000/api/account/${account?.id}/`
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -15,6 +19,33 @@ export const Draw = () => {
       return;
     }
   }, []);
+
+  const makeDraw = async () => {
+    if (drawAmount <= 0) {
+      Notify.warning("You can draw at least R$1,00")
+      return
+    }
+
+    if (drawAmount > 500) {
+      Notify.warning("Your max amount to draw is R$500,00")
+      return
+    }
+
+    let lastBalance = Number(account?.balance!)
+    let amount = Number(drawAmount)
+    let finalAmount = lastBalance - amount
+
+    const fd = new FormData()
+    fd.append("balance", finalAmount.toString())
+    axios.patch(accUrl, fd).then( (res) => {
+      if (res.status == 200 ){
+        Report.success('Draw',
+        `You drew the amount of R$ ${drawAmount}`,
+        `Ok!`)
+      }
+    })
+    
+  }
 
   return (
     <div className="flex flex-col w-full justify-center h-screen items-center align-middle">
@@ -31,6 +62,7 @@ export const Draw = () => {
             <input
               type="number"
               max="99999"
+              onChange={(evt:any) => setDrawAmount(evt.target.value)}
               name="balance"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:outline-none  focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="0,00"
@@ -69,7 +101,7 @@ export const Draw = () => {
                     {/*body*/}
                     <div className="relative p-6 flex-auto text-center">
                     
-                      <h1>Do you want to draw R$ ?</h1>
+                      <h1>Do you want to draw R$ {drawAmount} ?</h1>
                     </div>
                     {/*footer*/}
                     <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
@@ -84,6 +116,7 @@ export const Draw = () => {
                         className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                         type="button"
                         onClick={() => {
+                            makeDraw()
                             setShowModal(false)
                             
                             
