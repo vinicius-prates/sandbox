@@ -15,6 +15,10 @@ export const Transfer = () => {
     }
   }, []);
     return(
-        <div>{account?.account}</div>
+        <div>
+          <div>
+            <h1>Transfer</h1>
+          </div>
+        </div>
     )
 }

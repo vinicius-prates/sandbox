@@ -9,9 +9,13 @@ import cashHandIcon from "../assets/Cash in Hand.png";
 import moneyBagIcon from "../assets/Money Bag.png";
 import logOutIcon from "../assets/Logout Rounded Left.png";
 import { Card } from "react-pay-card";
+import axios from "axios";
+
 export const UserPage = () => {
   const account = useUserStore((state) => state.userAccount);
+
   const navigate = useNavigate();
+
   useEffect(() => {
     if (!account) {
       Notify.failure("You need to loggin first!");

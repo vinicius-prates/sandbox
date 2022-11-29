@@ -12,7 +12,7 @@ export const Login = () => {
         cpf: "",
         password:""
     })
-    const setAccount = useUserStore(state => state.setAccount)
+    const fetchAccount = useUserStore(state => state.fetchAccount)
     const userUrl = "http://localhost:8000/api/user"
     const navigate =  useNavigate();
 
@@ -26,10 +26,7 @@ export const Login = () => {
             return
         }
         
-        const account = await axios.get('http://localhost:8000/api/account/' + data.account_id)
-        
-        const accData = account.data as Account
-        setAccount(accData)
+        fetchAccount(data.account_id)
         navigate(`/home`)
    }
 

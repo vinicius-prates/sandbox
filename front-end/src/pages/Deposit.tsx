@@ -16,7 +16,7 @@ export const Deposit = () => {
 
     const [showModal, setShowModal] = useState(false);
     const [depositAmount, setDepositAmount] = useState(0)
-    const account = useUserStore((state) => state.userAccount);
+    const { account, fetchAccount } = useUserStore(({ fetchAccount, userAccount }) => ({ account: userAccount, fetchAccount }));
     const navigate = useNavigate();
 
     const accUrl = `http://localhost:8000/api/account/${account?.id}/`
@@ -46,6 +46,7 @@ export const Deposit = () => {
             if (res.status == 200) {
                 Notify.success('Depósito realizado com sucesso!')
                 navigate('/home')
+                fetchAccount(account!.id)
 
                 return
             }

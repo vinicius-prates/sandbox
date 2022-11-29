@@ -1,12 +1,18 @@
+import axios from 'axios';
 import create from 'zustand';
 import { Account } from './props/ClientProps';
 
 interface UserStore {
     userAccount: Account | null
-    setAccount: (acc: Account) => void
+    fetchAccount: (accId: string | number) => void
 }
 
 export const useUserStore = create<UserStore>((set) => ({
     userAccount: null,
-    setAccount: (acc) => set({ userAccount: acc })
+    fetchAccount: async (accId) => {
+        const account = await axios.get('http://localhost:8000/api/account/' + accId)
+        
+        const accData = account.data as Account
+        set({ userAccount: accData})
+    }
 }))
