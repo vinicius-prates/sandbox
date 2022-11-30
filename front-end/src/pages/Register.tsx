@@ -11,7 +11,7 @@ const clientUrl = "http://localhost:8000/api/client/";
 const userUrl = "http://localhost:8000/api/user/";
 const accUrl = "http://localhost:8000/api/account/"
 export const Register = () => {
-  const setAccount = useUserStore(state => state.userAccount)
+  const fetchAccount = useUserStore(state => state.fetchAccount)
   const navigate = useNavigate();
   const [confPass, setConfPass] = useState<string>('')
   const [newClientData, setNewClientData] = useState<ClientProps>({
@@ -94,7 +94,7 @@ export const Register = () => {
     setIsLoading(false);
 
     if (resUser.status == 201 && resCli.status == 201 && resAcc.status == 201) {
-      setAccount(resAcc.data as Account)
+      fetchAccount(resAcc.data.id)
       navigate(`/login`);
     }
   };
