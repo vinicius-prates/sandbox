@@ -3,3 +3,7 @@
   margin: 0;
 }
 
+#bg-login-div{
+  background-image: "./assets/bg.jpg";
+}
+

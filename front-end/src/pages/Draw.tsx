@@ -5,13 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useUserStore } from "../userStore";
 
 export const Draw = () => {
-    const [showModal, setShowModal] = useState(false);
-    const [drawAmount, setDrawAmount] = useState(0)
-    const account = useUserStore((state) => state.userAccount);
-    
-    const accUrl = `http://localhost:8000/api/account/${account?.id}/`
-
-  const navigate = useNavigate();
+  
   useEffect(() => {
     if (!account) {
       Notify.failure("You need to loggin first!");
@@ -19,6 +13,14 @@ export const Draw = () => {
       return;
     }
   }, []);
+
+    const [showModal, setShowModal] = useState(false);
+    const [drawAmount, setDrawAmount] = useState(0)
+    const { account, fetchAccount } = useUserStore(({ fetchAccount, userAccount }) => ({ account: userAccount, fetchAccount }));
+    
+    const accUrl = `http://localhost:8000/api/account/${account?.id}/`
+
+  const navigate = useNavigate();
 
   const makeDraw = async () => {
     if (drawAmount <= 0) {
@@ -40,8 +42,10 @@ export const Draw = () => {
     axios.patch(accUrl, fd).then( (res) => {
       if (res.status == 200 ){
         Report.success('Draw',
-        `You drew the amount of R$ ${drawAmount}`,
+        `You drew the  amount of R$ ${drawAmount}`,
         `Ok!`)
+        fetchAccount(account!.id)
+        navigate(`/home`)
       }
     })
     

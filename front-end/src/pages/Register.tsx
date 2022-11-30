@@ -11,7 +11,7 @@ const clientUrl = "http://localhost:8000/api/client/";
 const userUrl = "http://localhost:8000/api/user/";
 const accUrl = "http://localhost:8000/api/account/"
 export const Register = () => {
-  const setAccount = useUserStore(state => state.setAccount)
+  const setAccount = useUserStore(state => state.userAccount)
   const navigate = useNavigate();
   const [confPass, setConfPass] = useState<string>('')
   const [newClientData, setNewClientData] = useState<ClientProps>({

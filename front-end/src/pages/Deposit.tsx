@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Notify } from "notiflix";
+import { Notify, Report } from "notiflix";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "../userStore";
@@ -43,16 +43,13 @@ export const Deposit = () => {
         const fd = new FormData()
         fd.append("balance",finalAmount.toString()) 
         axios.patch(accUrl, fd).then((res) => {
-            if (res.status == 200) {
-                Notify.success('Depósito realizado com sucesso!')
-                navigate('/home')
-                fetchAccount(account!.id)
-
-                return
-            }
-            else{
-                Notify.failure('Something went wrong...')
-            }
+          if (res.status == 200 ){
+            Report.success('Deposit',
+            `You deposited the  amount of R$ ${finalAmount}`,
+            `Ok!`)
+            fetchAccount(account!.id)
+            navigate(`/home`)
+          }
         })
         
     }
