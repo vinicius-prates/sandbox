@@ -73,6 +73,7 @@ export const Register = () => {
     postUser(event);
   };
 
+
   const postUser = async (event: any) => {
     event?.preventDefault();
     setIsLoading(true);
@@ -95,7 +96,7 @@ export const Register = () => {
 
     if (resUser.status == 201 && resCli.status == 201 && resAcc.status == 201) {
       fetchAccount(resAcc.data.id)
-      navigate(`/login`);
+      navigate(`/home`);
     }
   };
 
