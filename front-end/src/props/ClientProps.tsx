@@ -3,7 +3,7 @@ export interface Account {
     agency:  string;
     account: string;
     balance: string;
-    client:  ClientProps;
+    client?:  ClientProps;
 }
 
 export interface ClientProps {

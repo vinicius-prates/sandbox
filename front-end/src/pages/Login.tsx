@@ -21,10 +21,7 @@ export const Login = () => {
       userLogin
     );
 
-    if (!data.account_id) {
-      Notify.failure("You need to log in first!");
-      return;
-    }
+    
 
     fetchAccount(data.account_id);
     navigate(`/home`);

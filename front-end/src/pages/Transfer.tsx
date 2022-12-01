@@ -1,15 +1,21 @@
 import axios from "axios";
-import { Notify } from "notiflix";
+import { Notify, Report } from "notiflix";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "../userStore";
-
+import { Account, ClientProps } from "../props/ClientProps"
 export const Transfer = () => {
-  const account = useUserStore((state) => state.userAccount);
+  const { account, fetchAccount } = useUserStore(({ fetchAccount, userAccount }) => ({ account: userAccount, fetchAccount }));
   const [ accounts, setAccounts ] = useState([])
-  const [ reciever, setReciever] = useState("")
+  const [ reciever, setReciever] = useState(1)
   const [ amountTransfer, setAmountTransfer] = useState(0)
+  const [ recieverData, setRecieverData] = useState({
+    agency:  "",
+    account: "",
+    balance: 0,
+    client: null
 
+  })
   const accountsUrl = "http://localhost:8000/api/account/"
   const navigate = useNavigate();
   useEffect(() => {
@@ -17,11 +23,41 @@ export const Transfer = () => {
       Notify.failure("You need to loggin first!");
       navigate("/login");
       return;
-
-
     }
     axios.get(accountsUrl).then(res => setAccounts(res.data))
   }, []);
+
+  const makeTransfer = () => {
+      axios.get(`http://localhost:8000/api/account/${reciever}`).then((res) => { setRecieverData(res.data)})
+      let newBalance = Number(account?.balance) - amountTransfer
+      let newBalanceRec = Number(recieverData.balance) + amountTransfer
+
+      const fd2 = new FormData()
+      const fd = new FormData()
+      
+      fd.append("balance", newBalance.toString())
+      fd2.append("balance", newBalanceRec.toString( ))
+
+      axios.patch(`http://localhost:8000/api/account/${account?.id}/`, fd).then((res) => {
+        if (res.status == 200){
+
+          axios.patch(`http://localhost:8000/api/account/${reciever}/`, fd2).then((res) => {
+            if (res.status == 200){
+              Report.success('Transfer',
+          `You transfered the amount of ${amountTransfer}`,
+          `Ok!`)
+          fetchAccount(account!.id)
+          navigate(`/home`)
+            }
+          })
+        }
+        else{
+          Notify.failure("Something went wrong!")
+        }
+      })
+  }
+
+
 
   return (
     <div className="h-screen flex flex-col justify-center items-center">
@@ -46,7 +82,7 @@ export const Transfer = () => {
           </div>
         </div>
 
-        <div className=" flex flex-col gap-4 ">
+        <div className=" flex flex-col gap-8 ">
           <h1 className="text-xl ">Reciever</h1>
           <div className="flex flex-row gap-2 items-center">
             <h1 className="font-bold opacity-60 text-md italic">Account</h1>
@@ -65,7 +101,7 @@ export const Transfer = () => {
           </div>
         </div>
       </div>
-        <button className="bg-blue-500 text-white active:bg-pink-600 font-bold uppercase  text-sm px-6 py-3 rounded-xl shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 my-10">Transfer</button>
+        <button className="bg-blue-500 text-white active:bg-pink-600 font-bold uppercase  text-sm px-6 py-3 rounded-xl shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 my-10" onClick={makeTransfer}>Transfer</button>
     </div>
   );
 };
