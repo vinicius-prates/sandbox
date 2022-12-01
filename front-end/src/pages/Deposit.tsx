@@ -45,7 +45,7 @@ export const Deposit = () => {
         axios.patch(accUrl, fd).then((res) => {
           if (res.status == 200 ){
             Report.success('Deposit',
-            `You deposited the  amount of R$ ${finalAmount}`,
+            `You deposited the  amount of R$ ${amount}`,
             `Ok!`)
             fetchAccount(account!.id)
             navigate(`/home`)

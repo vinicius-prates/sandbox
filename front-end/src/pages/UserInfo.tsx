@@ -27,7 +27,8 @@ export const UserInfo = () => {
     
      axios.patch(urlUser, fd ).then((res) => {
         if (res.status == 200){
-            navigate("/home/user-info")
+            navigate("/home")
+            Notify.success("You changed your image with success")
         } else {
             Notify.failure("Error. couldn't change the photo.")
             return
