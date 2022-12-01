@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom"
+import { CardPage } from "./pages/CardPage"
 import { Deposit } from "./pages/Deposit"
 import { Draw } from "./pages/Draw"
 import { HomePage } from "./pages/HomePage"
@@ -14,6 +15,7 @@ export const MyRoutes = () => {
             <Route path="/" element={<HomePage/>}/>
             <Route path="/register" element={<Register/>}/>
             <Route path="/login" element={<Login/>}/>
+            <Route path="/cards" element={<CardPage/>}/>
             <Route path="/home" element={<UserPage/>}/>
             <Route path="/home/user-info" element={<UserInfo/>}/>
             <Route path="/home/transfer" element={<Transfer/>}/>

@@ -61,7 +61,7 @@ export const NavBar = () => {
                             <Link to="/">For you</Link>
                         </li>
                         <li className="text-black font-bold text-lg  border-b-2 hover:border-b-blue-500 transition-all duration-200">
-                            <Link to="/">Cards</Link>
+                            <Link to="/cards">Exo Card</Link>
                         </li>
                         <li >
                             <Link to="/login" className="text-blue-700 text-lg font-bold  bg-[#faf9f6]  border-2 px-4 py-2 rounded-lg hover:text-black hover:border-black transition-all">Login</Link>

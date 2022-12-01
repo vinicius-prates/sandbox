@@ -103,8 +103,9 @@ export const Register = () => {
   if (isLoading) return <LoadingSpinner />;
 
   return (
-    <div className="px-10 py-10 md:px-96 bg-white h-screen">
-      <div className="flex flex-row gap-1">
+    <div className="px-10 py-10 md:px-96  md:h-screen md:flex md:flex-col md:items-center md:justify-center bg-[url('/bg.jpg')] bg-center bg-cover">
+      <div className="bg-white p-16 rounded-xl drop-shadow-2xl">
+      <div className="flex flex-row gap-1 bg-white">
         <h1 className="flex gap-1 text-3xl font-bold "> New Here?</h1>
         <h1 className="font-bold text-blue-600 text-3xl "> Register!</h1>
       </div>
@@ -136,6 +137,7 @@ export const Register = () => {
             <input
               type="text"
               name="cpf"
+              maxLength="11"
               onChange={onInputChangeUser}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 focus:outline-none block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="000.000.000-00"
@@ -265,9 +267,10 @@ export const Register = () => {
           </label>
         </div>
         <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-          Submit
+          Register
         </button>
       </form>
+      </div>
     </div>
   );
 };
