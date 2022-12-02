@@ -9,14 +9,10 @@ export const Transfer = () => {
   const [ accounts, setAccounts ] = useState([])
   const [ reciever, setReciever] = useState(1)
   const [ amountTransfer, setAmountTransfer] = useState(0)
-  const [ recieverData, setRecieverData] = useState({
-    agency:  "",
-    account: "",
-    balance: 0,
-    client: null
 
-  })
   const accountsUrl = "http://localhost:8000/api/account/"
+  const transferUrl = "http://localhost:8000/api/transfers/"
+
   const navigate = useNavigate();
   useEffect(() => {
     if (!account) {
@@ -27,33 +23,14 @@ export const Transfer = () => {
     axios.get(accountsUrl).then(res => setAccounts(res.data))
   }, []);
 
-  const makeTransfer = () => {
-      axios.get(`http://localhost:8000/api/account/${reciever}`).then((res) => { setRecieverData(res.data)})
-      let newBalance = Number(account?.balance) - amountTransfer
-      let newBalanceRec = Number(recieverData.balance) + amountTransfer
+  const makeTransfer = async () => {
 
-      const fd2 = new FormData()
-      const fd = new FormData()
-      
-      fd.append("balance", newBalance.toString())
-      fd2.append("balance", newBalanceRec.toString( ))
-
-      axios.patch(`http://localhost:8000/api/account/${account?.id}/`, fd).then((res) => {
-        if (res.status == 200){
-
-          axios.patch(`http://localhost:8000/api/account/${reciever}/`, fd2).then((res) => {
-            if (res.status == 200){
-              Report.success('Transfer',
-          `You transfered the amount of ${amountTransfer}`,
-          `Ok!`)
-          fetchAccount(account!.id)
-          navigate(`/home`)
-            }
-          })
-        }
-        else{
-          Notify.failure("Something went wrong!")
-        }
+    const fd = new FormData()
+    fd.append("user_transfer", account!.id.toString())
+    fd.append("user_receive", reciever.toString())
+    fd.append("value_transfer", amountTransfer.toString())
+      axios.post(transferUrl, fd ).then((res) => {
+        console.log(res.data)
       })
   }
 
@@ -89,6 +66,7 @@ export const Transfer = () => {
             
           <select className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:outline-none  focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={(evt) => {
             setReciever(evt.target.value)
+            console.log(reciever)
             }}>
               {accounts.map((acc:any) => {
                 return(

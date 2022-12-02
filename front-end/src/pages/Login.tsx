@@ -20,9 +20,6 @@ export const Login = () => {
       "http://localhost:8000/api/auth-via-cpf/",
       userLogin
     );
-
-    
-
     fetchAccount(data.account_id);
     navigate(`/home`);
   };

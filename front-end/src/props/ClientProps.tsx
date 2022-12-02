@@ -2,7 +2,7 @@ export interface Account {
     id:      number;
     agency:  string;
     account: string;
-    balance: string;
+    balance: number;
     client?:  ClientProps;
 }
 
