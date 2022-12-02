@@ -49,12 +49,12 @@ class Account(models.Model):
         super(Account, self).save( *args, **kwargs)
 
     def __str__(self) -> str:
-        return self.client
+        return str(self.client)
 
 class Transfers(models.Model):
 
-    user_transfer = models.ForeignKey(Client, on_delete=models.DO_NOTHING, related_name='user_transfer')
-    user_receive = models.ForeignKey(Client, on_delete=models.DO_NOTHING, related_name='user_receive')
+    user_transfer = models.ForeignKey(Account, on_delete=models.DO_NOTHING, related_name='user_transfer')
+    user_receive = models.ForeignKey(Account, on_delete=models.DO_NOTHING, related_name='user_receive')
     value_transfer = models.DecimalField(max_digits=20, decimal_places=2)
     date_of_transfer = models.DateField(auto_now=True)
 

@@ -51,6 +51,28 @@ class TransfersViewSet(ModelViewSet):
     queryset = Transfers.objects.all()
     serializer_class = TransfersSerializer
 
+    def create(self, request, *args, **kwargs):
+        id = request.data.get('user_transfer')
+        user_to_id = request.data.get('user_receive')
+
+        user_transfer = Account.objects.get(id=id)
+        user_receive = Account.objects.get(id=user_to_id)
+        value_transfer = request.data['value_transfer']
+
+        data = Transfers(user_transfer=user_transfer, user_receive= user_receive, value_transfer=value_transfer)
+        data.save()
+
+        user_transfer.balance = float(user_transfer.balance) - float(value_transfer)
+        user_transfer.save()
+        user_receive.balance = float(user_receive.balance) + float(value_transfer)
+        user_receive.save()
+
+        return Response({'detalhe': 'Transacao adicionada com sucesso!'}, status=status.HTTP_201_CREATED)
+
+    def __str__(self) -> str:
+        return self.id
+
+
 class CardViewSet(ModelViewSet):
     queryset = Card.objects.all()
     serializer_class = CardSerializer
