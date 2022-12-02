@@ -31,6 +31,13 @@ export const Transfer = () => {
     fd.append("value_transfer", amountTransfer.toString())
       axios.post(transferUrl, fd ).then((res) => {
         console.log(res.data)
+        if (res.status == 201){
+          Report.success(`Transfer`,`You transfer of  R$ ${amountTransfer}, was made.`,`Ok!`)
+          navigate('/home')
+        } else {
+          Report.failure(`Transfer`, `Something wen't wrong...`, `Ok.`)
+          return
+        }
       })
   }
 
