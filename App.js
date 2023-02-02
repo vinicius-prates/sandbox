@@ -12,7 +12,7 @@ export default function App() {
 
       <View style={{backgroundColor: "gold" , flex: 1}}>
         <Button title="Click here!" color="#f33" onPress={() => {
-            Alert.alert('Teste', 'exemplo', [{title: 'sim'}, {title: 'no'}])
+            Alert.alert('Teste', 'exemplo',[{title: 'sim'}, {title: 'no'}], )
         }}/>
       </View>
       <View style={{backgroundColor:"red", flex: 1}}/>
